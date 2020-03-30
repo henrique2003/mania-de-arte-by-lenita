@@ -1,0 +1,133 @@
+//Menu
+.wrapper_header {
+  z-index: 100;
+  padding: 0 50px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  -webkit-box-shadow: 0px 5px 15px -1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 5px 15px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 15px -1px rgba(0, 0, 0, 0.2);
+
+  //Logo
+  .wrapper_logo {
+    width: 220px;
+    z-index: 9;
+  }
+
+  //icon-menu
+  .icon-menu {
+    display: none;
+    position: absolute;
+    z-index: 101;
+    margin-top: 20px;
+    right: 50px;
+    cursor: pointer;
+
+    span {
+      display: block;
+      width: 30px;
+      border-radius: 5px;
+      height: 3px;
+      background: #9370db;
+      margin-top: 5px;
+    }
+  }
+
+  //Nav ul
+  .wrapper_header_ul {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+
+    li {
+      margin: 20px 20px 0 20px;
+      color: #9370db;
+      font-size: 22px;
+      letter-spacing: 1px;
+      font-family: "Poppins";
+      cursor: pointer;
+
+      a {
+        color: #9370db;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+//Header mobile
+.wrapper_header_mobile {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  transform: translateX(-100%);
+  transition: all 0.5s;
+
+  &.open {
+    transform: translateX(0%);
+    transition: all 0.5s;
+  }
+
+  .icon_menu_mobile {
+    text-align: right;
+    padding: 10px 15px;
+
+    i {
+      color: #9370db;
+      font-size: 50px;
+    }
+  }
+
+  .wrapper_header_ul_mobile {
+    list-style: none;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    li {
+      margin-top: 20px;
+      
+      a {
+        text-decoration: none;
+        font-size: 24px;
+        color: #9370db;
+        font-family: "Roboto";
+      }
+    }
+  }
+}
+
+//Navbar to Mobile
+@media (max-width: 888px) {
+  .wrapper_header {
+    .wrapper_header_ul {
+      display: none;
+    }
+
+    .icon-menu {
+      display: block !important;
+    }
+  }
+}
+
+//Celphone
+@media (max-width: 480px) {
+  //Menu
+  .wrapper_header {
+    padding: 0 20px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+
+    //icon-menu
+    .icon-menu {
+      right: 25px;
+    }
+  }
+}

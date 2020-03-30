@@ -1,0 +1,11 @@
+//Link navbar
+.navbarLink {
+    a {
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            transition: all .2s ease-in-out;
+            color: #808080 !important;
+        }
+    }
+}

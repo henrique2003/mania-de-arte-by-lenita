@@ -1,0 +1,20 @@
+.paragrathAsks {
+    margin-top: 10px;
+    font-size: 17px;
+    color: rgba(0,0,0,0.6);
+    font-family: 'Poppins';
+}
+
+//Ipad
+@media(max-width: 768px) {
+    .paragrathAsks {
+        font-size: 16px;
+    }
+}
+
+//Celphone
+@media(max-width: 480px) {
+    .paragrathAsks {
+        font-size: 15px;
+    } 
+}

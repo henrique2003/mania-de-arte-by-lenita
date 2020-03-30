@@ -1,0 +1,21 @@
+.title_asks {
+    margin-bottom: 28px;
+    font-size: 24px;
+    color: #8767c8;
+    text-transform: uppercase;
+    font-family: 'Questrial';
+}
+
+//Ipad
+@media(max-width: 768px) {
+    .title_asks {
+        font-size: 22px;
+    }
+}
+
+//Celphone
+@media(max-width: 480px) {
+    .title_asks {
+        font-size: 20px;
+    }
+}

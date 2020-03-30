@@ -1,0 +1,13 @@
+.wrapper_questions {
+    margin-top: 30px;
+    padding: 30px 35px;
+    background: #eeeeee78;
+}
+
+//Celphone
+@media(max-width: 480px) {
+    .wrapper_questions {
+        margin-top: 20px;
+        padding: 30px;
+    }
+}

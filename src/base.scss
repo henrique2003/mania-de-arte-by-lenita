@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Karla|Open+Sans|Poppins|Questrial|Roboto&display=swap');
+
+//Paragrath
+$font_poppins: 'Poppins';
+//Navlink
+$font_roboto: 'Roboto';
+//Subtitles/<p>
+$font_open: 'Open Sans';
+//Title
+$font_questial: 'Questrial';
+//Title introdution
+$font_karla: 'Karla', sans-serif;
+
+$base_purple: #9370db;
+$light_black: rgba(0,0,0,0.2);
+$black_title: #464545;
+$grey: #808080;
+
+$base_padding: 0 40px;
+
+.border {
+    border: 2px solid red !important;
+}
+
+body {
+    word-break: break-all;
+    overflow-x: hidden;
+}

@@ -1,0 +1,17 @@
+.wrapper_asks {
+    padding: 20px 40px;
+}
+
+//Ipad
+@media(max-width: 768px) {
+    .wrapper_asks {
+        padding: 20px 30px;
+    }
+}
+
+//Celphone
+@media(max-width: 480px) {
+    .wrapper_asks {
+        padding: 20px 10px;
+    }
+}
