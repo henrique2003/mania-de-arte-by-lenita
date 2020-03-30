@@ -1,0 +1,170 @@
+.wrapper_product_page {
+    padding: 40px;
+
+    .title_product_page {
+        font-family: 'Roboto';
+        font-weight: bold;
+        font-size: 30px;
+        letter-spacing: 1px;
+        color: rgba(0,0,0,0.7);
+        border-bottom: 1px solid #9370db;
+    }
+
+    .cost_product_page {
+        margin-top: 30px;
+        font-size: 23px;
+        font-family: 'Questrial';
+    }
+
+    .description_product_page {
+        font-size: 19px;
+        letter-spacing: 1px;
+        font-family: 'Poppins';
+        color: rgba(0,0,0,0.7);
+
+        span {
+            font-family: 'Questrial';
+            font-weight: bold;
+            color: rgba(0,0,0,0.6);
+            font-size: 21px;
+        }
+    }
+
+    .icon_mercado_pago {
+        margin: 20px 0;
+        margin-bottom: 35px !important;
+        
+        img {
+            padding: 5px;
+            border: 1px solid rgba(0,0,0,0.4);
+            border-radius: 5px;
+            width: 150px;
+        }
+    }
+
+    .link_pay {
+        padding: 10px 20px;
+        color: white;
+        font-size: 17px;
+        font-family: 'Poppins';
+        letter-spacing: 1px;
+        border-radius: 5px;
+        background: #9370db;
+        text-decoration: none;
+        transition: all .2s ease;
+
+        &:hover {
+            background: #8867ca;
+            transition: all .2s ease;
+        }
+    }
+}
+
+//Ipad Pró
+@media(max-width: 1024px) {
+    .wrapper_product_page {
+        padding: 40px 20px;
+    
+        .title_product_page {
+            font-size: 27px;
+        }
+    
+        .cost_product_page {
+            margin-top: 20px;
+            font-size: 22px;
+        }
+    
+        .description_product_page {
+            margin-top: -10px;
+            font-size: 17px;
+    
+            span {
+                font-size: 20px;
+            }
+        }
+    
+        .icon_mercado_pago {
+            margin: 0;
+            margin-bottom: 20px !important;
+
+            img {
+                padding: 5px;
+                width: 100px;
+            }
+        }
+    
+        .link_pay {
+            padding: 10px 20px;
+            font-size: 15px;
+        }
+    }
+}
+
+//Ipad
+@media(max-width: 768px) {
+    .wrapper_product_page {
+        padding: 40px 20px;
+    
+        .title_product_page {
+            margin-top: 20px;
+            font-size: 27px;
+        }
+    
+        .cost_product_page {
+            margin-top: 10px;
+            font-size: 22px;
+        }
+
+        .icon_mercado_pago {
+            margin: 0;
+            margin-bottom: 30px !important;
+
+            img {
+                padding: 5px;
+                width: 130px;
+            }
+        }
+    
+        .link_pay {
+            padding: 10px 28px;
+        }
+    }
+}
+
+//Celphone
+@media(max-width: 480px) {
+    .wrapper_product_page {
+        padding: 40px 10px;
+    
+        .title_product_page {
+            margin-top: 17px;
+            font-size: 23px;
+        }
+    
+        .cost_product_page {
+            font-size: 20px;
+        }
+
+        .description_product_page {
+            font-size: 16px !important;
+
+            span {
+                font-size: 18px;
+            }
+        }
+
+        .icon_mercado_pago {
+            margin-top: -5px;
+            margin-bottom: 25px !important;
+
+            img {
+                padding: 5px;
+                width: 100px;
+            }
+        }
+    
+        .link_pay {
+            padding: 10px 14px;
+        }
+    }
+}
