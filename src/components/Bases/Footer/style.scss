@@ -1,0 +1,159 @@
+.wrapper_footer {
+    margin-top: 25px;
+    background: rgba(0, 0, 0, 0.125);
+    padding: 10px 20px 30px 20px;
+
+    //primary col
+    .wrapper_company {
+        margin-top: 30px;
+
+        .wrapper_img_logo {
+            width: 230px;
+        }
+
+        .paragrath_img_logo {
+            letter-spacing: 1px;
+            margin-left: 5px;
+            margin-top: 18px;
+            padding-right: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.7);
+            line-height: 20px;
+            font-family: "Questrial";
+        }
+    }
+
+    //secondary col
+    .wrapper_footer_navigation {
+        margin-top: 30px;
+        list-style: none;
+        letter-spacing: 1px;
+
+        h3 {
+            font-size: 25px;
+            color: rgba(0, 0, 0, 0.75);
+            font-family: "Poppins";
+            margin-left: -4px;
+            margin-bottom: 15px;
+            width: 160px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #8a68cf;
+        }
+
+        li {
+            margin-top: 5px;
+
+            a {
+                // letter-spacing: 0px;
+                font-size: 19px;
+                color: #9366ee;
+                font-family: "Roboto";
+                text-decoration: none;
+            }
+        }
+    }
+
+    //third col
+    .wrapper_footer_social_media {
+        margin-top: 30px;
+
+        h4 {
+            font-size: 25px;
+            color: rgba(0, 0, 0, 0.75);
+            font-family: "Poppins";
+            margin-left: -4px;
+            margin-bottom: 20px;
+            width: 200px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #8a68cf;
+        }
+
+        section {
+            list-style: none;
+
+            a {
+                text-decoration: none;
+
+                li {
+                    display: flex;
+                    margin-top: 15px !important;
+
+                    span {
+                        color: #8a68cf;
+                        font-size: 18px;
+                        font-family: "Poppins";
+                    }
+
+                    i {
+                        margin-right: 9px;
+                        color: rgba(0, 0, 0, 0.7);
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    //fourth
+    .wrapper_dev {
+        margin-top: 30px;
+
+        h3 {
+            font-size: 25px;
+            color: rgba(0, 0, 0, 0.75);
+            font-family: "Poppins";
+            margin-bottom: 15px;
+            width: 160px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #8a68cf;
+        }
+
+        p {
+            a {
+                text-decoration: none;
+                color: rgba(0, 0, 0, 0.7);
+                font-family: "Roboto";
+                letter-spacing: 1px;
+                font-size: 19px;
+            }
+        }
+    }
+}
+
+//Ipad pró
+@media (max-width: 1024px) {
+    .wrapper_img_logo {
+        width: 200px !important;
+    }
+}
+
+//Ipad
+@media (max-width: 768px) {
+    .wrapper_footer {
+        padding: 10px 30px 30px 30px;
+
+        .wrapper_company {
+            margin-top: 50px !important;
+
+            .wrapper_img_logo {
+                width: 230px;
+            }
+        }
+
+        //secondary col
+        .wrapper_footer_navigation {
+            margin-top: 50px !important;
+        }
+
+        //third col
+        .wrapper_footer_social_media {
+            margin-top: 50px !important;
+        }
+
+        //fourth
+        .wrapper_dev {
+            margin-top: 50px !important;
+        }
+    }
+}
