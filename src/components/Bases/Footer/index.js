@@ -25,13 +25,13 @@ const Footer = () => {
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 wrapper_footer_social_media">
                         <section>
                             <li><h4>Contato</h4></li>
-                            <a href="https://www.facebook.com/lenita.cristioglu" target="_blank">
+                            <a href="https://www.facebook.com/lenita.cristioglu" target="_blank" rel="noopener noreferrer">
                                 <li>
                                     <i class="fab fa-facebook-square"></i>
                                     <span>lenita.cristioglu</span>
                                 </li>
                             </a>
-                            <a href="https://www.facebook.com/lenita.cristioglu" target="_blank">
+                            <a href="https://www.instagram.com/lenitacristioglu/" target="_blank" rel="noopener noreferrer">
                                 <li>
                                     <i class="fab fa-instagram"></i>
                                     <span>@lenitacristioglu</span>
@@ -42,7 +42,7 @@ const Footer = () => {
                     <div className="col-12 col-sm-12 col-md-6 col-lg-3 wrapper_dev">
                         <h3>Feito por</h3>
                         <p>
-                            <a href="https://henriquecristioglu.netlify.com/" target="_blank">Henrique Cristioglu</a>
+                            <a href="https://henriquecristioglu.netlify.com/" target="_blank" rel="noopener noreferrer">Henrique Cristioglu</a>
                         </p>
                     </div>
                 </div>
