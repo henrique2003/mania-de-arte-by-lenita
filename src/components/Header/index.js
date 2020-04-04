@@ -16,7 +16,7 @@ const Header = () => {
 
     return (
         <>
-            <nav className="wrapper_header border">
+            <nav className="wrapper_header">
                 <div className="container-fluid">
                     <div className="row">
                         <NavLink to="/" className="wrapper_logo">
