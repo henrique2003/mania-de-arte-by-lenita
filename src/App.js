@@ -5,18 +5,19 @@ import './base.scss';
 //React-router
 import { Route, BrowserRouter, Switch, withRouter } from 'react-router-dom';
 
-//Redux
-// import { Provider } from 'react-redux';
-
 //Components Layout
-import ScrollBar from './components/Bases/ScrollBar'
+//Bases
 import Footer from './components/Bases/Footer'
-import Header from './components/Header';
-import Home from './components/Home';
+import Header from './components/Header'
+import ScrollBar from './components/Bases/ScrollBar'
+
+import Home from './components/Home'
 import Woods from './components/Woods'
 import Crochet from './components/Crochet'
 import Asks from './components/Asks'
 import ProductPage from './components/ProductPage'
+
+import DashboardIndex from './components/Dashboard/Index'
 
 function App() {
   //WithRouter Footer
@@ -35,11 +36,17 @@ function App() {
       <ScrollBar />
       <Header />
       <Switch>
-        <Route path="/" exact={true} component={Home} />
-        <Route path="/madeiras" exact component={Woods} />
-        <Route path="/croche" exact component={Crochet} />
-        <Route path="/duvidas" exact component={Asks} />
-        <Route path="/produtos/mais/:id" exact component={ProductPage} />
+        {/* Web */}
+        <Route path="/" exact component={Home} />
+        <Route path="/madeiras" component={Woods} />
+        <Route path="/croche" component={Crochet} />
+        <Route path="/duvidas" component={Asks} />
+        <Route path="/produtos/mais/:id" component={ProductPage} />
+
+        {/* Admin */}
+        <Route path="/admin" component={DashboardIndex} />
+
+        {/* Default */}
         <Route component={Home} />
       </Switch>
       <WithFooter />

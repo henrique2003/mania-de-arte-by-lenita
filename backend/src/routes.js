@@ -41,4 +41,8 @@ router.get('/all/admin/', auth, authRole.isPrimary, controllerAdmin.allAdmin);
 //auth login
 router.post('/auth', controllerAdmin.auth);
 
+//Pay
+//Mercado Pago
+router.post('/mercado_pago', controllerAdmin.auth);
+
 module.exports = app => app.use('/api', router);

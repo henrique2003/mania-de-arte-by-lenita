@@ -1,0 +1,40 @@
+.wrapper_boxinfo {
+    margin: 0 30px;
+    border-radius: 10px;
+    border: 2px solid #808080;
+    text-align: center;
+
+    .wrapper_boxinfo_content {
+        margin: 30px 0;
+
+        i {
+            font-size: 45px;
+            color: #9370db;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 23px;
+            letter-spacing: 1px;
+            font-family: 'Roboto';
+            color: rgba(0,0,0,0.78);
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            letter-spacing: 1px;
+            font-family: 'Open Sans';
+            background: rgba(0,0,0,0.6);
+            border-radius: 5px;
+            padding: 8px 40px;
+            transition: all .3s ease;
+
+            &:hover {
+                background: rgba(0,0,0,0.5);
+                transition: all .3s ease;
+            }
+        }
+    }
+}

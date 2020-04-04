@@ -1,0 +1,26 @@
+.wrapper_index {
+    margin: 0 40px;
+    margin-top: 30px;
+
+    .wrapper_welcome {
+        padding-left: 5px;
+        margin: 50px 25px 30px 25px;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+
+        h3 {
+            letter-spacing: 1px;
+            font-size: 30px;
+            font-family: 'Poppins';
+            color: #464545;
+        }
+
+        p {
+            margin-top: 15px;
+            letter-spacing: 1px;
+            line-height: 10px;
+            font-size: 18px;
+            font-family: 'Poppins';
+            color: #9370db;
+        }
+    }
+}
