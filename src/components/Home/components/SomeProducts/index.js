@@ -19,25 +19,19 @@ const SomeProducts = () => {
             'id': 1,
             'title': 'Quadro Pendular',
             'cost': '12,00',
-            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            'path': path,
-            'link': link
+            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira'
         },
         {
             'id': 2,
             'title': 'Quadro Pendular',
             'cost': '12,00',
-            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            'path': path,
-            'link': link
+            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira'
         },
         {
             'id': 3,
             'title': 'Quadro Pendular',
             'cost': '12,00',
-            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            'path': path,
-            'link': link
+            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira'
         }
     ])
 
@@ -51,8 +45,8 @@ const SomeProducts = () => {
                         title={product.title}
                         cost={product.cost}
                         description={product.description}
-                        path={product.path}
-                        link={product.link}
+                        path={path}
+                        link={link}
                     />
                 ))}
             </div>
