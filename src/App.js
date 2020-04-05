@@ -50,6 +50,7 @@ function App() {
         {/* Admin */}
         <Route path="/admin" exact component={DashboardIndex} />
         <Route path="/admin/produtos" component={AdminProducts} />
+        <Route path="/admin/produto/editar/:id" component={AdminProducts} />
 
         {/* Default */}
         <Route component={Home} />

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import AdminProduct from './components/AdminProduct'
+import Paginate from '../../../Bases/Paginate'
 import './style.scss'
 
 const AdminProducts = () => {
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
     })
 
     return (
@@ -22,7 +23,27 @@ const AdminProducts = () => {
                     Descrição: Quadro amarelo com detalhes de madeira
                     Descrição: Quadro amarelo com detalhes de madeira"
                     />
+                    <AdminProduct
+                        id={1}
+                        title="Quadro Pendular"
+                        cost="12,00"
+                        description="Descrição: Quadro amarelo com detalhes de madeira
+                    Descrição: Quadro amarelo com detalhes de madeira
+                    Descrição: Quadro amarelo com detalhes de madeira"
+                    />
+                    <AdminProduct
+                        id={1}
+                        title="Quadro Pendular"
+                        cost="12,00"
+                        description="Descrição: Quadro amarelo com detalhes de madeira
+                    Descrição: Quadro amarelo com detalhes de madeira
+                    Descrição: Quadro amarelo com detalhes de madeira"
+                    />
                 </div>
+                <Paginate paginate={{
+                    "page": 10,
+                    "pages": 10
+                }} />
             </div>
         </div>
     )
