@@ -17,7 +17,11 @@ import Crochet from './components/Crochet'
 import Asks from './components/Asks'
 import ProductPage from './components/ProductPage'
 
+//Admin
 import DashboardIndex from './components/Dashboard/Index'
+import AdminProducts from './components/Dashboard/Admin/AdminProducts'
+
+//Users
 
 function App() {
   //WithRouter Footer
@@ -44,7 +48,8 @@ function App() {
         <Route path="/produtos/mais/:id" component={ProductPage} />
 
         {/* Admin */}
-        <Route path="/admin" component={DashboardIndex} />
+        <Route path="/admin" exact component={DashboardIndex} />
+        <Route path="/admin/produtos" component={AdminProducts} />
 
         {/* Default */}
         <Route component={Home} />

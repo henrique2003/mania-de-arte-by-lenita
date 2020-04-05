@@ -15,19 +15,46 @@ const SomeProducts = () => {
                     description="Descrição: Quadro amarelo com detalhes de madeira
                     Descrição: Quadro amarelo com detalhes de madeira
                     Descrição: Quadro amarelo com detalhes de madeira"
+                    path={"/produtos/mais/"}
+                    link={[
+                        {
+                            text: 'comprar',
+                            path: '/produtos/comprar/',
+                            class: 'link_pay'
+                        }
+                    ]}
                 />
                 <Product
                     id={2}
                     title="Quadro Pendular"
                     cost="12,00"
                     description="Descrição: Quadro amarelo com detalhes de madeira
-                    Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira"
+                    Descrição: Quadro amarelo com detalhes de madeira
+                    Descrição: Quadro amarelo com detalhes de madeira"
+                    path={"/produtos/mais/"}
+                    link={[
+                        {
+                            text: 'comprar',
+                            path: '/produtos/comprar/',
+                            class: 'link_pay'
+                        }
+                    ]}
                 />
                 <Product
                     id={3}
                     title="Quadro Pendular"
                     cost="12,00"
-                    description="Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira"
+                    description="Descrição: Quadro amarelo com detalhes de madeira
+                    Descrição: Quadro amarelo com detalhes de madeira
+                    Descrição: Quadro amarelo com detalhes de madeira"
+                    path={"/produtos/mais/"}
+                    link={[
+                        {
+                            text: 'comprar',
+                            path: '/produtos/comprar/',
+                            class: 'link_pay'
+                        }
+                    ]}
                 />
             </div>
         </div>

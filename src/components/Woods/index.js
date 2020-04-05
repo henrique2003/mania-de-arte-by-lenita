@@ -15,30 +15,54 @@ const Madeiras = () => {
             <Title text="Madeiras" />
             <div className="container-fluid">
                 <div className="row">
-                    <Product
-                        id={4}
-                        title="Quadro Pendular"
-                        cost="12,00"
-                        description="Descrição: Quadro amarelo com detalhes de madeira
+                <Product
+                    id={4}
+                    title="Quadro Pendular"
+                    cost="12,00"
+                    description="Descrição: Quadro amarelo com detalhes de madeira
                     Descrição: Quadro amarelo com detalhes de madeira
                     Descrição: Quadro amarelo com detalhes de madeira"
-                    />
-                    <Product
-                        id={5}
-                        title="Quadro Pendular"
-                        cost="12,00"
-                        description="Descrição: Quadro amarelo com detalhes de madeira
+                    path={"/produtos/mais/"}
+                    link={[
+                        {
+                            text: 'comprar',
+                            path: '/produtos/comprar/',
+                            class: 'link_pay'
+                        }
+                    ]}
+                />
+                <Product
+                    id={5}
+                    title="Quadro Pendular"
+                    cost="12,00"
+                    description="Descrição: Quadro amarelo com detalhes de madeira
                     Descrição: Quadro amarelo com detalhes de madeira
                     Descrição: Quadro amarelo com detalhes de madeira"
-                    />
-                    <Product
-                        id={6}
-                        title="Quadro Pendular"
-                        cost="12,00"
-                        description="Descrição: Quadro amarelo com detalhes de madeira
+                    path={"/produtos/mais/"}
+                    link={[
+                        {
+                            text: 'comprar',
+                            path: '/produtos/comprar/',
+                            class: 'link_pay'
+                        }
+                    ]}
+                />
+                <Product
+                    id={6}
+                    title="Quadro Pendular"
+                    cost="12,00"
+                    description="Descrição: Quadro amarelo com detalhes de madeira
                     Descrição: Quadro amarelo com detalhes de madeira
                     Descrição: Quadro amarelo com detalhes de madeira"
-                    />
+                    path={"/produtos/mais/"}
+                    link={[
+                        {
+                            text: 'comprar',
+                            path: '/produtos/comprar/',
+                            class: 'link_pay'
+                        }
+                    ]}
+                />
                 </div>
             </div>
         </div>

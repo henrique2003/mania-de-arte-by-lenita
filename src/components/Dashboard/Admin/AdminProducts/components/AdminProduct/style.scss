@@ -1,0 +1,102 @@
+//AdminProducts
+.wrapper_product_card {
+    transition: all 0.5s ease;
+    font-family: "Questrial", sans-serif;
+    color: #464545;
+
+    &:hover {
+        transition: all 0.5s ease;
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.4);
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.4);
+    }
+
+    .wrapper_product_card_title {
+        font-size: 22px;
+        letter-spacing: 1px;
+        font-weight: 600;
+        border-bottom: 1px solid #7753c0;
+        padding-bottom: 5px;
+    }
+
+    .wrapper_product_card_cost {
+        font-size: 20px;
+        letter-spacing: 1px;
+        overflow-x: hidden;
+    }
+
+    .wrapper_product_card_cost_description {
+        overflow-x: hidden;
+        margin-top: -15px;
+        margin-bottom: 20px;
+        font-size: 17px;
+        letter-spacing: 1px;
+    }
+
+    .btn_edit {
+        padding: 10px 30px;
+        color: white;
+        border-radius: 3px;
+        letter-spacing: 1px;
+        font-size: 17px;
+        border: 0;
+        background: #808080;
+        transition: all 0.3s ease;
+        margin-right: 15px;
+
+        &:hover {
+            background: #727272;
+            transition: all 0.3s ease;
+        }
+    }
+
+    .btn_delete {
+        padding: 7px 30px;
+        color: white;
+        border-radius: 3px;
+        letter-spacing: 1px;
+        font-size: 17px;
+        border: 0;
+        background: #d43f3f;
+        transition: all 0.3s ease;
+        margin-right: 15px;
+
+        &:hover {
+            background: #c53c3c;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+//Ipad
+@media (max-width: 768px) {
+    .wrapper_product_card {
+        margin: 0 15px;
+
+        .wrapper_product_card_title {
+            margin-top: 20px;
+            padding-bottom: 5px;
+        }
+
+        .wrapper_product_card_cost {
+            font-size: 18px !important;
+            margin-bottom: 23px;
+        }
+
+        .wrapper_product_card_cost_description {
+            margin-top: 0px;
+            margin-bottom: 23px;
+            font-size: 16px !important;
+        }
+
+        .btn_edit {
+            padding: 10px 30px;
+            font-size: 16px !important;
+        }
+
+        .btn_delete {
+            padding: 10px 30px;
+            font-size: 16px !important;
+        }
+    }
+}

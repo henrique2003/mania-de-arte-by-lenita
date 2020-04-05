@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import BoxInfo from './components/BoxInfo'
 import './style.scss'
 
 const Index = () => {
+    useEffect(() => {
+        window.scrollTo(0,0)
+    })
+
     return (
         <div className="wrapper_index">
             <div className="container-fluid">
@@ -14,13 +18,13 @@ const Index = () => {
                     <BoxInfo 
                         icon="far fa-plus-square"
                         text="Cadastrados"
-                        link="adicionar/produto"
+                        link="produtos"
                         length="20"
                     />
                     <BoxInfo 
                         icon="fas fa-cart-plus"
                         text="Pedidos"
-                        link="produto"
+                        link="pedidos"
                         length="5"
                     />
                     <BoxInfo 
