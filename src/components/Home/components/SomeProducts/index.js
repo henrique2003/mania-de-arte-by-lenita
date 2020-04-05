@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Product from '../../../Product';
 import Title from '../../../Bases/Title';
+import Paginate from '../../../Bases/Paginate'
 import './style.scss';
 
 const SomeProducts = () => {
@@ -50,6 +51,12 @@ const SomeProducts = () => {
                     />
                 ))}
             </div>
+            <Paginate
+                paginate= {{
+                    pages: 1,
+                    page: 1
+                }}
+            />
         </div>
     )
 }
