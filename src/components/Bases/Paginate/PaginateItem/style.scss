@@ -1,0 +1,14 @@
+.paginate_item {
+    text-decoration: none !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+
+    li {
+        margin-right: 10px;
+        padding: 15px 20px;
+        border-radius: 50%;
+        background: rgb(216, 216, 216);
+        font-family: "Roboto";
+        font-weight: bold;
+        line-height: 23px;
+    }
+}
