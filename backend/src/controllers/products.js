@@ -1,5 +1,6 @@
 const { Products, Admin } = require('../models');
 const { success, serverError, badRequest, notFound, dateNow, destroyImage } = require('../utils')
+const auth = require('../config/auth.json')
 const fs = require('fs');
 
 module.exports = {
@@ -24,13 +25,12 @@ module.exports = {
             if (!req.file)
                 return badRequest(res, 'Image required')
 
-            const { originalname: name, size: size, filename: key } = req.file;
+            const { originalname: name, size, filename: key } = req.file;
 
             //Valid if product exists
             if (await Products.findOne({ title })) {
-                if (fs.existsSync(`tmp/uploads/${key}`)) {
-                    await fs.unlinkSync(`tmp/uploads/${key}`);
-                }
+                let filename = key
+                await destroyImage({ filename })
 
                 return badRequest(res, "product already exists")
             }
@@ -65,17 +65,15 @@ module.exports = {
 
             //Valid if product exist
             if (!lastProduct) {
-                if (req.file) {
-                    await destroyImage(req.file)
-                }
+                if (req.file) await destroyImage(req.file)
+
                 return notFound(res, "Product not found")
             }
 
             //Valid if have a repeat product
             if (lastProduct.title === title) {
-                if (req.file) {
-                    await destroyImage(req.file)
-                }
+                if (req.file) await destroyImage(req.file)
+
                 return badRequest(res, "product already exists")
             }
 
@@ -84,11 +82,10 @@ module.exports = {
 
             //Update Image
             if (req.file) {
-                const { originalname: name, size: size, filename: key } = req.file;
+                const { originalname: name, size, filename: key } = req.file;
 
-                if (fs.existsSync(`tmp/uploads/${lastProduct.image.key}`)) {
-                    fs.unlinkSync(`tmp/uploads/${lastProduct.image.key}`);
-                }
+                let filename = lastProduct.image.key
+                await destroyImage({ filename })
 
                 image = {
                     name,
@@ -101,7 +98,6 @@ module.exports = {
 
 
             let user = await Admin.findById(req.userId)
-            console.log()
             let update = {
                 name: user.name,
                 date: dateNow()
@@ -135,13 +131,13 @@ module.exports = {
     async show(req, res) {
         try {
             const { id } = req.params
-                
+
             const product = await Products.findOne(id);
 
             if (!product) {
                 return notFound(res, "product not found");
             }
-            
+
             return success(res, product)
         }
         catch (error) {
@@ -158,9 +154,8 @@ module.exports = {
             if (!lastProduct)
                 return notFound(res, "Products not Found")
 
-            if (fs.existsSync(`tmp/uploads/${lastProduct.image.key}`)) {
-                fs.unlinkSync(`tmp/uploads/${lastProduct.image.key}`);
-            }
+            let filename = lastProduct.image.key
+            await destroyImage({ filename })
 
             await Products.findByIdAndRemove(req.params.id);
 
@@ -174,7 +169,7 @@ module.exports = {
         try {
             let products = await Products.find({});
             products.map((product) => (
-                fs.existsSync(`tmp/uploads/${product.image.key}`) ? fs.unlinkSync(`tmp/uploads/${product.image.key}`) : ""
+                fs.existsSync(`${auth.productsDir}${product.image.key}`) ? fs.unlinkSync(`${auth.productsDir}${product.image.key}`) : ""
             ));
 
             await Products.remove({});
