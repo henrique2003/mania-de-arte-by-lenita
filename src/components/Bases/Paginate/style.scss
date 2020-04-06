@@ -8,3 +8,17 @@
         margin: 0;
     }
 }
+
+//Ipad pró
+@media(max-width: 1024px) {
+    .wrapper_paginate {
+        margin-top: 30px;
+    }
+}
+
+//Ipad
+@media(max-width: 768px) {
+    .wrapper_paginate {
+        margin-top: 45px;
+    }
+}

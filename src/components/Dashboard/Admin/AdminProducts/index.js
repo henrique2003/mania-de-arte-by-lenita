@@ -41,8 +41,8 @@ const AdminProducts = () => {
                     />
                 </div>
                 <Paginate paginate={{
-                    "page": 10,
-                    "pages": 10
+                    "page": 1,
+                    "pages": 3
                 }} />
             </div>
         </div>
