@@ -45,10 +45,7 @@ const SomeProducts = () => {
                 <Warning color="greey" text="Sem produtos no momento!" />:
                 ProductData.map((product) => (
                     <Product
-                        id={product.id}
-                        title={product.title}
-                        cost={product.cost}
-                        description={product.description}
+                        data={product}
                         path={path}
                         link={link}
                     />

@@ -4,7 +4,9 @@ import ProductImage from '../../utils/images/Products/produto-test.jpg'
 import titleize from '../../utils/scripts/titleize'
 import './style.scss'
 
-const Product = ({ id , title, cost, description, path, link }) => {
+const Product = ({ data, path, link }) => {
+    const { id , title, cost, description } = data
+
     return (
         <div key={id} className="col-12 col-sm-12 col-md-6 col-lg-4 wrapper_product">
             <Link to={`${path}${id}`}>
