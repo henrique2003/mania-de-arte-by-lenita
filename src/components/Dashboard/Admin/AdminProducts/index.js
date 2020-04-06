@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import AdminProduct from './components/AdminProduct'
+import AdminProduct from './AdminProduct'
 import Paginate from '../../../Bases/Paginate'
 import './style.scss'
 

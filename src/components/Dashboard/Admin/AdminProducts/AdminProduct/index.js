@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ProductImage from '../../../../../../utils/images/Products/produto-test.jpg'
+import ProductImage from '../../../../../utils/images/Products/produto-test.jpg'
 import './style.scss'
 
 const AdminProduct = ({ id, title, cost, description }) => {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Product from '../../../Product';
 import Title from '../../../Bases/Title';
 import Paginate from '../../../Bases/Paginate'
+import Warning from '../../../Bases/Warning'
 import './style.scss';
 
 const SomeProducts = () => {
@@ -40,7 +41,9 @@ const SomeProducts = () => {
         <div className="wrapper_some_products container-fluid">
             <Title text="Produtos mais Populares" />
             <div className="row">
-                {ProductData.map((product) => (
+                {ProductData.length === 0 ?
+                <Warning color="greey" text="Sem produtos no momento!" />:
+                ProductData.map((product) => (
                     <Product
                         id={product.id}
                         title={product.title}

@@ -1,4 +1,4 @@
-export function titleize(text) {
+const titleize = (text) => {
 
     text = text.charAt(0).toUpperCase() + text.slice(1);
 
@@ -13,3 +13,5 @@ export function titleize(text) {
     }
     return text
 }
+
+export default titleize

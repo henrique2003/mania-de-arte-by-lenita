@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Title from '../Bases/Title'
 import Product from '../Product'
 import Paginate from '../Bases/Paginate'
+import Warning from '../Bases/Warning'
 
 import './style.scss'
 
@@ -47,16 +48,19 @@ const Madeiras = () => {
             <Title text="Madeiras" />
             <div className="container-fluid">
                 <div className="row">
-                    {ProductData.map((product) => (
-                        <Product
-                            id={product.id}
-                            title={product.title}
-                            cost={product.cost}
-                            description={product.description}
-                            path={path}
-                            link={link}
-                        />
-                    ))}
+                    {ProductData.length === 0 ?
+                        <Warning color="greey" text="Sem produtos no momento!" /> :
+                        ProductData.map((product) => (
+                            <Product
+                                id={product.id}
+                                title={product.title}
+                                cost={product.cost}
+                                description={product.description}
+                                path={path}
+                                link={link}
+                            />
+                        ))
+                    }
                 </div>
                 <Paginate
                     paginate={{

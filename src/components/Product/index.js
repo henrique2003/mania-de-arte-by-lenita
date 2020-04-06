@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ProductImage from '../../utils/images/Products/produto-test.jpg'
-import { titleize } from '../../utils/scripts/titleize'
+import titleize from '../../utils/scripts/titleize'
 import './style.scss'
 
 const Product = ({ id , title, cost, description, path, link }) => {
