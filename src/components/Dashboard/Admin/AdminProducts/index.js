@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import AdminProduct from './AdminProduct'
+import ProductAdmin from './ProductAdmin'
 import Paginate from '../../../Bases/Paginate'
 import Warning from '../../../Bases/Warning'
 import './style.scss'
@@ -43,7 +43,7 @@ const AdminProducts = () => {
                 {ProductData.length === 0 ?
                         <Warning color="greey" text="Sem produtos no momento!" /> :
                         ProductData.map((product) => (
-                            <AdminProduct
+                            <ProductAdmin
                                 data={product}
                             />
                         ))

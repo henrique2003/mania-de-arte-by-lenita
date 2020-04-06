@@ -21,19 +21,22 @@ const SomeProducts = () => {
             'id': 1,
             'title': 'Quadro Pendular',
             'cost': '12,00',
-            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira'
+            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
+            'image': 'produto-test.jpg'
         },
         {
             'id': 2,
             'title': 'Quadro Pendular',
             'cost': '12,00',
-            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira'
+            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
+            'image': 'produto-test.jpg'
         },
         {
             'id': 3,
             'title': 'Quadro Pendular',
             'cost': '12,00',
-            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira'
+            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
+            'image': 'produto-test.jpg'
         }
     ])
 

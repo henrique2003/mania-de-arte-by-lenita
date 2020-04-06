@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './style.scss'
 
-const AdminProduct = ({ data }) => {
+const ProductAdmin = ({ data }) => {
     const { id, title, cost, description, image } = data
     const productImg = require(`../../../../../utils/images/Products/${image}`)
 
@@ -24,4 +24,4 @@ const AdminProduct = ({ data }) => {
     )
 }
 
-export default AdminProduct
+export default ProductAdmin
