@@ -1,17 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ProductImage from '../../../../../utils/images/Products/produto-test.jpg'
 import './style.scss'
 
-const AdminProduct = ({ id, title, cost, description }) => {
-    const delteProduct = id => {
-        //Delete product
-    }
+const AdminProduct = ({ data }) => {
+    const { id, title, cost, description, image } = data
+    const productImg = require(`../../../../../utils/images/Products/${image}`)
 
     return (
         <div key={id} className="col-12 col-sm-12 col-md-6 col-lg-4 wrapper_product_admin">
             <div className="wrapper_product_card">
-                <img src={ProductImage} alt="" className="img-fluid" />
+                <img src={productImg}  alt="" className="img-fluid" />
                 <div className="text-left p-lg-3">
                     <h4 className="wrapper_product_card_title">{title}</h4>
                     <div className="mt-3">
@@ -19,7 +17,7 @@ const AdminProduct = ({ id, title, cost, description }) => {
                         <p className="wrapper_product_card_cost_description">{description}</p>
                     </div>
                     <Link className="btn_edit" to={`/admin/produto/editar/${id}`}>Editar</Link>
-                    <button className="btn_delete" type="button" onClick={() => delteProduct(id)}>Apagar</button>
+                    <button className="btn_delete" type="button">Apagar</button>
                 </div>
             </div>
         </div>
