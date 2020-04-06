@@ -1,15 +1,8 @@
 //AdminProducts
-.wrapper_product_card {
-    transition: all 0.5s ease;
+.wrapper_product_admin {
+    margin-top: 40px;
     font-family: "Questrial", sans-serif;
     color: #464545;
-
-    &:hover {
-        transition: all 0.5s ease;
-        -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.4);
-        -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.4);
-        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.4);
-    }
 
     .wrapper_product_card_title {
         font-size: 22px;
@@ -70,8 +63,8 @@
 
 //Ipad
 @media (max-width: 768px) {
-    .wrapper_product_card {
-        margin: 0 15px;
+    .wrapper_product_admin {
+        margin-top: 30px;
 
         .wrapper_product_card_title {
             margin-top: 20px;
@@ -90,13 +83,26 @@
         }
 
         .btn_edit {
-            padding: 10px 30px;
             font-size: 16px !important;
         }
 
         .btn_delete {
-            padding: 10px 30px;
             font-size: 16px !important;
+        }
+    }
+}
+
+//Celphone
+@media (max-width: 480px) {
+    .wrapper_product_admin {
+        .btn_edit {
+            padding: 9px 27px;
+            font-size: 15px !important;
+        }
+
+        .btn_delete {
+            padding: 5px 27px;
+            font-size: 15px !important;
         }
     }
 }

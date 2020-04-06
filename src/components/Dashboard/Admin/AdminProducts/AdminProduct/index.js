@@ -9,7 +9,7 @@ const AdminProduct = ({ id, title, cost, description }) => {
     }
 
     return (
-        <div key={id} className="col-12 col-sm-12 col-md-6 col-lg-4 wrapper_product">
+        <div key={id} className="col-12 col-sm-12 col-md-6 col-lg-4 wrapper_product_admin">
             <div className="wrapper_product_card">
                 <img src={ProductImage} alt="" className="img-fluid" />
                 <div className="text-left p-lg-3">

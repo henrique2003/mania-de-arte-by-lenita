@@ -11,3 +11,33 @@
         border-bottom: 1px solid #808080c7;
     }
 }
+
+//Ipad pró
+@media(max-width: 1024px) {
+    .wrapper_admin_products {
+        h3 {
+            font-size: 33px;
+        }
+    }
+}
+
+//Ipad
+@media(max-width: 768px) {
+    .wrapper_admin_products {
+        h3 {
+            font-size: 31px;
+        }
+    }
+}
+
+//Celphone
+@media(max-width: 480px) {
+    .wrapper_admin_products {
+        padding: 0 40px 20px 40px;
+        margin-top: 30px;
+    
+        h3 {
+            font-size: 27px;
+        }
+    }
+}
