@@ -8,12 +8,12 @@ module.exports = {
         try {
             const { page = 1 } = req.query;
 
-            const products = await Products.paginate({}, { page, limit: 10 });
+            const products = await Products.paginate({}, { page, limit: 10 })
 
             return success(res, products)
         }
         catch (error) {
-            return serverError(res, error, 'read products')
+            return serverError(res, error, 'Server erro in read products')
         }
     },
 
@@ -23,16 +23,23 @@ module.exports = {
 
             //Valid image
             if (!req.file)
-                return badRequest(res, 'Image required')
+                return badRequest(res, 'Campo imagem em branco')
 
-            const { originalname: name, size, filename: key } = req.file;
+            const { originalname: name, filename: key } = req.file;
+
+            //Valid fields
+            if (!title || !cost || !description || !role) {
+                let filename = key
+                await destroyImage({ filename })
+                return badRequest(res, "Campos em branco")
+            }
 
             //Valid if product exists
             if (await Products.findOne({ title })) {
                 let filename = key
                 await destroyImage({ filename })
 
-                return badRequest(res, "product already exists")
+                return badRequest(res, "Produto ja existe")
             }
 
             let produtcBody = {
@@ -42,7 +49,6 @@ module.exports = {
                 role,
                 image: {
                     name,
-                    size,
                     key
                 }
             };
@@ -52,7 +58,7 @@ module.exports = {
             return success(res, products)
         }
         catch (error) {
-            return serverError(res, error, 'create products')
+            return serverError(res, error, 'Server erro in create products')
         }
     },
 
@@ -66,15 +72,13 @@ module.exports = {
             //Valid if product exist
             if (!lastProduct) {
                 if (req.file) await destroyImage(req.file)
-
-                return notFound(res, "Product not found")
+                    return notFound(res, "Produto não encontrado")
             }
 
             //Valid if have a repeat product
             if (lastProduct.title === title) {
                 if (req.file) await destroyImage(req.file)
-
-                return badRequest(res, "product already exists")
+                     return badRequest(res, "Produto já existe")
             }
 
             let productBody = {};
@@ -82,14 +86,13 @@ module.exports = {
 
             //Update Image
             if (req.file) {
-                const { originalname: name, size, filename: key } = req.file;
+                const { originalname: name, filename: key } = req.file;
 
                 let filename = lastProduct.image.key
                 await destroyImage({ filename })
 
                 image = {
                     name,
-                    size,
                     key
                 }
 
@@ -124,7 +127,7 @@ module.exports = {
         }
         catch (error) {
             await destroyImage(req.file)
-            return serverError(res, error, 'update products')
+            return serverError(res, error, 'Server erro in update products')
         }
     },
 
@@ -132,16 +135,31 @@ module.exports = {
         try {
             const { id } = req.params
 
-            const product = await Products.findOne(id);
+            const product = await Products.findById(id);
 
-            if (!product) {
-                return notFound(res, "product not found");
-            }
+            if (!product)
+                return notFound(res, "Produto não encontrado")
 
             return success(res, product)
         }
         catch (error) {
             return serverError(res, error, 'show products')
+        }
+    },
+
+    async show_pages (req, res) {
+        try {
+            const { page } = req.params
+
+            let product = await Products.paginate({ role: page }, { limit: 10 })
+
+            if(product.length === 0)
+                return badRequest(res, `Produtos com da pagina ${page} não encontrado!`)
+
+            return success(res, product)
+        } catch (error) {
+            console.log(error.message)
+            return serverError(res, error, "Server error in show_pages")
         }
     },
 
@@ -152,7 +170,7 @@ module.exports = {
             let lastProduct = await Products.findById(id);
 
             if (!lastProduct)
-                return notFound(res, "Products not Found")
+                return notFound(res, "Produto não encontrado")
 
             let filename = lastProduct.image.key
             await destroyImage({ filename })
@@ -161,7 +179,7 @@ module.exports = {
 
             return success(res, "Deletado com sucesso")
         } catch (error) {
-            return serverError(res, error, 'destroy products')
+            return serverError(res, error, 'Server erro in destroy products')
         }
     },
 
@@ -169,14 +187,14 @@ module.exports = {
         try {
             let products = await Products.find({});
             products.map((product) => (
-                fs.existsSync(`${auth.productsDir}${product.image.key}`) ? fs.unlinkSync(`${auth.productsDir}${product.image.key}`) : ""
-            ));
+                fs.existsSync(`${auth.productsDir}/${product.image.key}`) ? fs.unlinkSync(`${auth.productsDir}/${product.image.key}`) : ""
+            ))
 
-            await Products.remove({});
+            await Products.remove({})
 
             return success(res, "Deletado com sucesso")
         } catch (error) {
-            return serverError(res, error, 'destroy all products')
+            return serverError(res, error, 'Server erro in destroy all products')
         }
     },
 
@@ -187,7 +205,7 @@ module.exports = {
             return success(res, products)
         }
         catch (error) {
-            return serverError(res, error, 'destroy in all products')
+            return serverError(res, error, 'Server erro in all products')
         }
     }
 }

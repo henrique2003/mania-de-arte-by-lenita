@@ -21,9 +21,7 @@ const productsSchema = new mongoose.Schema({
     },
     image: {
         name: String,
-        size: String,
-        key: String,
-        url: String
+        key: String
     },
     createAt: {
         type: Date,

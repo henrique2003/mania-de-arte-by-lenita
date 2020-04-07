@@ -14,7 +14,9 @@ router.post('/products', auth, authRole.isPrimary, multer(multerConfig).single('
 //Update Product
 router.put('/products/:id', auth, authRole.isPrimary, multer(multerConfig).single('file'), controllerProducts.update);
 //Show a Product
-router.get('/products/:title', controllerProducts.show);
+router.get('/products/:id', controllerProducts.show);
+//Show a Product page
+router.get('/products/page/:page', controllerProducts.show_pages);
 //Delete Product
 router.delete('/products/:id', auth, authRole.isPrimary, controllerProducts.destroy);
 //Delete all Products
