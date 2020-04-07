@@ -5,7 +5,7 @@ import './style.scss'
 
 const Product = ({ data, path, link }) => {
     const { id , title, cost, description, image } = data
-    const productImg = require(`../../utils/images/Products/${image}`)
+    const productImg = require(`../../utils/images/Products/${image.key}`)
 
     return (
         <div key={id} className="col-12 col-sm-12 col-md-6 col-lg-4 wrapper_product">
