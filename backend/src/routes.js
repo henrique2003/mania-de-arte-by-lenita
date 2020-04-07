@@ -10,6 +10,8 @@ const pay = require('./controllers/pay')
 
 //List Products with paginate
 router.get('/products', controllerProducts.index);
+//Index a Product home
+router.get('/products/home', controllerProducts.index_home);
 //Create Products
 router.post('/products', auth, authRole.isPrimary, multer(multerConfig).single('file'), controllerProducts.store);
 //Update Product

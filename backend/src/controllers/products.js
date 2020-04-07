@@ -17,6 +17,19 @@ module.exports = {
         }
     },
 
+    async index_home (req, res) {
+        try {
+            const product = await Products.find({}).sort({ field: 'asc', purchased: -1 }).limit(3)
+
+            if(!product)
+                return notFound(res, "Produtos não encontrados")
+
+            return success(res, product)
+        } catch (error) {
+            return serverError(res, error, "Server error in show_home")
+        }
+    },
+
     async store(req, res) {
         try {
             const { title, cost, description, role } = req.body;
