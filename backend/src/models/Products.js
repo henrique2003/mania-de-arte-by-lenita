@@ -23,6 +23,10 @@ const productsSchema = new mongoose.Schema({
         name: String,
         key: String
     },
+    purchased: {
+        type: Number,
+        default: 0
+    },
     createAt: {
         type: Date,
         default: Date.now,

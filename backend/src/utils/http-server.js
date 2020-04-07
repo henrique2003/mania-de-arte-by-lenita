@@ -11,6 +11,6 @@ exports.notFound = (res, payload) => {
 }
 
 exports.serverError = (res, error, payload) => {
-    console.log(error);
-    return res.status(500).send(`Server error in ${payload}`);
+    console.log(error.message)
+    return res.status(500).send(`Server error in ${payload}`)
 }

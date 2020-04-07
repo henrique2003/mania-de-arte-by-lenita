@@ -5,6 +5,7 @@ const controllerProducts = require('./controllers/products');
 const controllerAdmin = require('./controllers/admin');
 const auth = require('./middlewares/auth');
 const authRole = require('./middlewares/role');
+const pay = require('./controllers/pay')
 
 
 //List Products with paginate
@@ -45,6 +46,6 @@ router.post('/auth', controllerAdmin.auth);
 
 //Pay
 //Mercado Pago
-router.post('/mercado_pago', controllerAdmin.auth);
+router.post('/mercado_pago', pay.mercadopago);
 
 module.exports = app => app.use('/api', router);
