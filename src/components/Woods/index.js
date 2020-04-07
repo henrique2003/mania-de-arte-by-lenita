@@ -29,16 +29,6 @@ const Madeiras = () => {
         page: 1
     })
 
-    const [path] = useState("/produtos/mais/")
-
-    const [link] = useState([
-        {
-            text: 'comprar',
-            path: '/produtos/comprar/',
-            class: 'link_pay'
-        }
-    ])
-
     const [ProductData, setProductData] = useState([])
 
     return (
@@ -49,17 +39,11 @@ const Madeiras = () => {
                     {ProductData.length === 0 ?
                         <Warning color="greey" text="Sem produtos no momento!" /> :
                         ProductData.map((product) => (
-                            <Product
-                                data={product}
-                                path={path}
-                                link={link}
-                            />
+                            <Product data={product}/>
                         ))
                     }
                 </div>
-                <Paginate
-                    paginate={paginate}
-                />
+                <Paginate paginate={paginate}/>
             </div>
         </div>
     )

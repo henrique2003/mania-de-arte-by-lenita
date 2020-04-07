@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import api from '../../services/api'
 
 import Title from '../Bases/Title'
 import Product from '../Product'
@@ -10,47 +11,25 @@ import './style.scss'
 const Crochet = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
+        loadCrochet()
     }, [])
 
-    const [path] = useState("/produtos/mais/")
+    async function loadCrochet() {
+        const res = await api.get('/products/page/crochet')
 
-    const [link] = useState([
-        {
-            text: 'comprar',
-            path: '/produtos/comprar/',
-            class: 'link_pay'
-        }
-    ])
+        setProductData(res.data.docs)
+        setPaginate({
+            pages: res.data.pages,
+            page: res.data.page
+        })
+    }
 
-    const [ProductData] = useState([
-        {
-            id: 1,
-            title: 'Quadro Pendular',
-            cost: '12,00',
-            description: 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            image: {
-                key: 'produto-test.jpg'
-            }
-        },
-        {
-            id: 2,
-            title: 'Quadro Pendular',
-            cost: '12,00',
-            description: 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            image: {
-                key: 'produto-test.jpg'
-            }
-        },
-        {
-            id: 3,
-            title: 'Quadro Pendular',
-            cost: '12,00',
-            description: 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            image: {
-                key: 'produto-test.jpg'
-            }
-        }
-    ])
+    const [ProductData, setProductData] = useState([])
+
+    const [panigate, setPaginate] = useState({
+        pages: 1,
+        page: 0
+    })
 
     return (
         <div className="wrapper_crochet">
@@ -60,20 +39,11 @@ const Crochet = () => {
                     {ProductData.length === 0 ?
                         <Warning color="greey" text="Sem produtos no momento!" /> :
                         ProductData.map((product) => (
-                            <Product
-                                data={product}
-                                path={path}
-                                link={link}
-                            />
+                            <Product data={product}/>
                         ))
                     }
                 </div>
-                <Paginate
-                    paginate={{
-                        pages: 1,
-                        page: 1
-                    }}
-                />
+                <Paginate paginate={panigate}/>
             </div>
         </div>
     )

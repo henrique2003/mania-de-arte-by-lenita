@@ -6,16 +6,6 @@ import Warning from '../../../Bases/Warning'
 import './style.scss';
 
 const SomeProducts = () => {
-    const [path] = useState("/produtos/mais/")
-
-    const [link] = useState([
-        {
-            text: 'comprar',
-            path: '/produtos/comprar/',
-            class: 'link_pay'
-        }
-    ])
-
     const [ProductData] = useState([
         {
             id: 1,
@@ -53,11 +43,7 @@ const SomeProducts = () => {
                 {ProductData.length === 0 ?
                 <Warning color="greey" text="Sem produtos no momento!" />:
                 ProductData.map((product) => (
-                    <Product
-                        data={product}
-                        path={path}
-                        link={link}
-                    />
+                    <Product data={product}/>
                 ))}
             </div>
             <Paginate

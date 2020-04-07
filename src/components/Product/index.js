@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import titleize from '../../utils/scripts/titleize'
+import link from './link.json'
 import './style.scss'
 
-const Product = ({ data, path, link }) => {
+const Product = ({ data }) => {
     const { id , title, cost, description, image } = data
     const productImg = require(`../../utils/images/Products/${image.key}`)
 
     return (
         <div key={id} className="col-12 col-sm-12 col-md-6 col-lg-4 wrapper_product">
-            <Link to={`${path}${id}`}>
+            <Link to={`/produtos/mais/${id}`}>
                 <div className="wrapper_product_card">
                     <img src={productImg} alt="" className="img-fluid" />
                     <div className="text-left p-lg-3">
