@@ -13,7 +13,7 @@ const ProductAdmin = ({ data }) => {
                 <div className="text-left p-lg-3">
                     <h4 className="wrapper_product_card_title">{title}</h4>
                     <div className="mt-3">
-                        <p className="wrapper_product_card_cost">R$ - {cost}</p>
+                        <p className="wrapper_product_card_cost">R$ - {cost.toFixed(2).replace(".", ",")}</p>
                         <p className="wrapper_product_card_cost_description">{description}</p>
                     </div>
                     <Link className="btn_edit" to={`/admin/produto/editar/${_id}`}>Editar</Link>
