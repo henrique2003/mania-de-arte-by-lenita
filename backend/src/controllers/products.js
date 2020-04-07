@@ -1,5 +1,6 @@
 const { Products, Admin } = require('../models');
-const { success, serverError, badRequest, notFound, dateNow, destroyImage } = require('../utils')
+const { ok, serverError, notFound, badRequest } = require('http-server-res')
+const { dateNow, destroyImage } = require('../utils')
 const auth = require('../config/auth.json')
 const fs = require('fs');
 
@@ -10,10 +11,11 @@ module.exports = {
 
             const products = await Products.paginate({}, { page, limit: 10 })
 
-            return success(res, products)
+            return ok(res, products)
         }
         catch (error) {
-            return serverError(res, error, 'Server erro in read products')
+            console.log(error.message)
+            return serverError(res, 'Server erro in read products')
         }
     },
 
@@ -24,9 +26,10 @@ module.exports = {
             if(!product)
                 return notFound(res, "Produtos não encontrados")
 
-            return success(res, product)
+            return ok(res, product)
         } catch (error) {
-            return serverError(res, error, "Server error in show_home")
+            console.log(error.message)
+            return serverError(res, "Server error in show_home")
         }
     },
 
@@ -65,10 +68,11 @@ module.exports = {
 
             const products = await Products.create(produtcBody);
 
-            return success(res, products)
+            return ok(res, products)
         }
         catch (error) {
-            return serverError(res, error, 'Server erro in create products')
+            console.log(error.message)
+            return serverError(res, 'Server erro in create products')
         }
     },
 
@@ -139,11 +143,12 @@ module.exports = {
                     upsert: true
                 });
 
-            return success(res, products)
+            return ok(res, products)
         }
         catch (error) {
             await destroyImage(req.file)
-            return serverError(res, error, 'Server erro in update products')
+            console.log(error.message)
+            return serverError(res, 'Server erro in update products')
         }
     },
 
@@ -156,10 +161,11 @@ module.exports = {
             if (!product)
                 return notFound(res, "Produto não encontrado")
 
-            return success(res, product)
+            return ok(res, product)
         }
         catch (error) {
-            return serverError(res, error, 'show products')
+            console.log(error.message)
+            return serverError(res, 'show products')
         }
     },
 
@@ -172,10 +178,10 @@ module.exports = {
             if(product.length === 0)
                 return badRequest(res, `Produtos com da pagina ${page} não encontrado!`)
 
-            return success(res, product)
+            return ok(res, product)
         } catch (error) {
             console.log(error.message)
-            return serverError(res, error, "Server error in show_pages")
+            return serverError(res, "Server error in show_pages")
         }
     },
 
@@ -193,9 +199,9 @@ module.exports = {
 
             await Products.findByIdAndRemove(req.params.id);
 
-            return success(res, "Deletado com sucesso")
+            return ok(res, "Deletado com sucesso")
         } catch (error) {
-            return serverError(res, error, 'Server erro in destroy products')
+            return serverError(res, 'Server erro in destroy products')
         }
     },
 
@@ -208,9 +214,10 @@ module.exports = {
 
             await Products.remove({})
 
-            return success(res, "Deletado com sucesso")
+            return ok(res, "Deletado com sucesso")
         } catch (error) {
-            return serverError(res, error, 'Server erro in destroy all products')
+            console.log(error.message)
+            return serverError(res, 'Server erro in destroy all products')
         }
     },
 
@@ -218,10 +225,11 @@ module.exports = {
         try {
             const products = await Products.find({}).select("_id");
 
-            return success(res, products)
+            return ok(res, products)
         }
         catch (error) {
-            return serverError(res, error, 'Server erro in all products')
+            console.log(error.message)
+            return serverError(res, 'Server erro in all products')
         }
     }
 }

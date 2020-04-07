@@ -6100,6 +6100,11 @@ http-proxy@^1.17.0:
     follow-redirects "^1.0.0"
     requires-port "^1.0.0"
 
+http-server-res@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/http-server-res/-/http-server-res-2.0.0.tgz#6751793b0de14ea747d660cfd49c9c0b90988274"
+  integrity sha512-tm4vA6Y70KsuPdXN32N7v3vf8jpZVT1rCUUY71k3MUXHcFRaCbXik1mN8Bz0v3IlfhpEcTKENOCjQ0cjIzME7Q==
+
 http-signature@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/http-signature/-/http-signature-1.2.0.tgz#9aecd925114772f3d95b65a60abb8f7c18fbace1"
