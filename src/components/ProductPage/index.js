@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../../services/api'
 
-import Products from '../../utils/images/Products/produto-test.jpg'
 import MercadoPago from '../../utils/icons/mercado_pago.jpg'
 import Warning from '../Bases/Warning'
 
@@ -13,14 +12,18 @@ const ProductPage = ({ match }) => {
         window.scrollTo(0, 0)
         loadProduct()
     }, [])
-
+    
     async function loadProduct() {
         const res = await api.get(`/products/${match.params.id}`)
-
+        
         setProduct(res.data)
+        
+        const image = require(`../../utils/images/Products/${res.data.image.key}`)
+        setImage({ image })
     }
-
+    
     const [product, setProduct] = useState({})
+    const [Image, setImage] = useState({ image: '' })
 
     return (
         <div className="wrapper_product_page">
@@ -30,7 +33,7 @@ const ProductPage = ({ match }) => {
                         <Warning color="greey" text="Não foi possivel achar o produto no momento" /> :
                         <>
                             <div className="col-12 col-sm-12 col-md-12 col-lg-6">
-                                <img src={Products} alt="" className="img-fluid" />
+                                <img src={Image.image} alt="" className="img-fluid" />
                             </div>
                             <div className="col-12 col-sm-12 col-md-12 col-lg-6">
                                 <h4 className="title_product_page">{product.title}</h4>
