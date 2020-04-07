@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import api from '../../services/api'
 
 import Title from '../Bases/Title'
 import Product from '../Product'
@@ -10,7 +11,23 @@ import './style.scss'
 const Madeiras = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
+        loadWoods()
     }, [])
+
+    async function loadWoods() {
+        const res = await api.get('/products/page/madeira')
+
+        setProductData(res.data.docs)
+        setPaginate({
+            pages: res.data.pages,
+            page: res.data.page
+        })
+    }
+
+    const [paginate, setPaginate] = useState({
+        pages: 1,
+        page: 1
+    })
 
     const [path] = useState("/produtos/mais/")
 
@@ -22,35 +39,7 @@ const Madeiras = () => {
         }
     ])
 
-    const [ProductData] = useState([
-        {
-            id: 1,
-            title: 'Quadro Pendular',
-            cost: '12,00',
-            description: 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            image: {
-                key: 'produto-test.jpg'
-            }
-        },
-        {
-            id: 2,
-            title: 'Quadro Pendular',
-            cost: '12,00',
-            description: 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            image: {
-                key: 'produto-test.jpg'
-            }
-        },
-        {
-            id: 3,
-            title: 'Quadro Pendular',
-            cost: '12,00',
-            description: 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            image: {
-                key: 'produto-test.jpg'
-            }
-        }
-    ])
+    const [ProductData, setProductData] = useState([])
 
     return (
         <div className="wrapper_woods">
@@ -69,10 +58,7 @@ const Madeiras = () => {
                     }
                 </div>
                 <Paginate
-                    paginate={{
-                        pages: 1,
-                        page: 1
-                    }}
+                    paginate={paginate}
                 />
             </div>
         </div>
