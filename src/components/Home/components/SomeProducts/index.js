@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../../../services/api'
 
-import Product from '../../../Product';
-import Title from '../../../Bases/Title';
-import Paginate from '../../../Bases/Paginate'
+import Product from '../../../Product'
+import Title from '../../../Bases/Title'
 import Warning from '../../../Bases/Warning'
 
 import './style.scss';
@@ -31,12 +30,6 @@ const SomeProducts = () => {
                     <Product data={product}/>
                 ))}
             </div>
-            <Paginate
-                paginate= {{
-                    pages: 1,
-                    page: 1
-                }}
-            />
         </div>
     )
 }
