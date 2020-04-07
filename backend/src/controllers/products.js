@@ -29,16 +29,13 @@ module.exports = {
 
             //Valid fields
             if (!title || !cost || !description || !role) {
-                let filename = key
-                await destroyImage({ filename })
+                await destroyImage(key)
                 return badRequest(res, "Campos em branco")
             }
 
             //Valid if product exists
             if (await Products.findOne({ title })) {
-                let filename = key
-                await destroyImage({ filename })
-
+                await destroyImage(key)
                 return badRequest(res, "Produto ja existe")
             }
 
@@ -71,14 +68,20 @@ module.exports = {
 
             //Valid if product exist
             if (!lastProduct) {
-                if (req.file) await destroyImage(req.file)
+                if (req.file) await destroyImage(req.file.filename)
                     return notFound(res, "Produto não encontrado")
             }
 
             //Valid if have a repeat product
-            if (lastProduct.title === title) {
-                if (req.file) await destroyImage(req.file)
-                     return badRequest(res, "Produto já existe")
+            let titleRepeat = await Products.findOne({ title })
+            if (titleRepeat) {
+                if(titleRepeat.title === title) {
+
+                }
+                else {
+                    if (req.file) await destroyImage(req.file.filename)
+                    return badRequest(res, "Produto já existe")
+                }
             }
 
             let productBody = {};
@@ -89,7 +92,7 @@ module.exports = {
                 const { originalname: name, filename: key } = req.file;
 
                 let filename = lastProduct.image.key
-                await destroyImage({ filename })
+                await destroyImage(filename)
 
                 image = {
                     name,
@@ -173,7 +176,7 @@ module.exports = {
                 return notFound(res, "Produto não encontrado")
 
             let filename = lastProduct.image.key
-            await destroyImage({ filename })
+            await destroyImage(filename)
 
             await Products.findByIdAndRemove(req.params.id);
 
