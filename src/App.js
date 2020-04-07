@@ -18,12 +18,20 @@ import Asks from './components/Asks'
 import ProductPage from './components/ProductPage'
 
 //Admin
+import Auth from './components/Auth'
 import DashboardIndex from './components/Dashboard/Index'
 import AdminProducts from './components/Dashboard/Admin/AdminProducts'
 
 //Users
 
 function App() {
+  //WithHeader Header
+  const NeverHeader = withRouter(({ location }) => {
+    if (location.pathname !== '/login'
+    ) return <Header />
+    else return false
+  })
+
   //WithRouter Footer
   const WithFooter = withRouter(({ location }) => {
     if (location.pathname === '/' ||
@@ -38,7 +46,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollBar />
-      <Header />
+      <NeverHeader />
       <Switch>
         {/* Web */}
         <Route path="/" exact component={Home} />
@@ -51,6 +59,9 @@ function App() {
         <Route path="/admin" exact component={DashboardIndex} />
         <Route path="/admin/produtos" component={AdminProducts} />
         <Route path="/admin/produto/editar/:id" component={AdminProducts} />
+
+        {/* Auth */}
+        <Route path="/login" component={Auth} />
 
         {/* Default */}
         <Route component={Home} />
