@@ -221,9 +221,9 @@ module.exports = {
         }
     },
 
-    async allProducts(req, res) {
+    async count(req, res) {
         try {
-            const products = await Products.find({}).select("_id");
+            const products = await Products.find({}).count()
 
             return ok(res, products)
         }

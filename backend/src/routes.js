@@ -25,7 +25,7 @@ router.delete('/products/:id', auth, authRole.isPrimary, controllerProducts.dest
 //Delete all Products
 router.delete('/deleteall/products', auth, authRole.isPrimary, controllerProducts.destroyAll);
 //Products registered
-router.get('/all/products/', auth, controllerProducts.allProducts);
+router.get('/all/products/', auth, controllerProducts.count);
 
 
 //create Admin
