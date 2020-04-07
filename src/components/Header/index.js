@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import HeaderLink from './components/HeaderLink'
+import HeaderLink from './HeaderLink'
 import logo from '../../utils/images/logo.png'
 import './style.scss';
 
