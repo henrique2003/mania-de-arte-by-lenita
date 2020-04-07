@@ -1,40 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import api from '../../../../services/api'
+
 import Product from '../../../Product';
 import Title from '../../../Bases/Title';
 import Paginate from '../../../Bases/Paginate'
 import Warning from '../../../Bases/Warning'
+
 import './style.scss';
 
 const SomeProducts = () => {
-    const [ProductData] = useState([
-        {
-            id: 1,
-            title: 'Quadro Pendular',
-            cost: '12,00',
-            description: 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            image: {
-                key: 'produto-test.jpg'
-            }
-        },
-        {
-            id: 2,
-            title: 'Quadro Pendular',
-            cost: '12,00',
-            description: 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            image: {
-                key: 'produto-test.jpg'
-            }
-        },
-        {
-            id: 3,
-            title: 'Quadro Pendular',
-            cost: '12,00',
-            description: 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            image: {
-                key: 'produto-test.jpg'
-            }
-        }
-    ])
+    useEffect(() => {
+        loadProducts()
+    }, [])
+
+    async function loadProducts() {
+        const res = await api.get('/products/home')
+
+        setProductData(res.data)
+    }
+
+    const [ProductData, setProductData] = useState([])
 
     return (
         <div className="wrapper_some_products container-fluid">
