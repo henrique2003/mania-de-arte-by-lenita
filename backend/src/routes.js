@@ -1,11 +1,13 @@
 const router = require('express').Router();
 const multer = require("multer")
 const multerConfig = require("./middlewares/multer")
-const controllerProducts = require('./controllers/products')
-const controllerAdmin = require('./controllers/admin')
 const auth = require('./middlewares/auth')
 const { isPrimary, isAdmin } = require('./middlewares/role')
-const pay = require('./controllers/pay')
+const controllerpay = require('./controllers/pay')
+const controllerProducts = require('./controllers/products')
+const controllerAdmin = require('./controllers/admin')
+const controllerPurchased = require('./controllers/purchased')
+
 
 
 //List Products with paginate
@@ -25,7 +27,12 @@ router.delete('/products/:id', auth, isPrimary, controllerProducts.destroy)
 //Delete all Products
 router.delete('/deleteall/products', auth, isPrimary, controllerProducts.destroyAll)
 //Products registered
-router.get('/all/products/', auth, controllerProducts.count)
+router.get('/all/products', auth, controllerProducts.count)
+
+
+//Purchased
+//list purchased
+router.get('/purchased', auth, isAdmin, controllerPurchased.index)
 
 
 //create Admin
@@ -52,6 +59,6 @@ router.get('/admin/load', auth, isAdmin, controllerAdmin.load)
 
 //Pay
 //Mercado Pago
-router.post('/mercado_pago', pay.mercadopago)
+router.post('/mercado_pago', controllerpay.mercadopago)
 
 module.exports = app => app.use('/api', router)
