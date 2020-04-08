@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import api from '../../../services/api'
+import token from '../../../config/token'
 
 import BoxInfo from './components/BoxInfo'
 
@@ -12,11 +13,7 @@ const Index = () => {
     }, [])
 
     async function loadRegistered() {
-        const res = await api.get('/all/products', {
-            headers: {
-                Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNjQwNjU0YWE2ZTZlMjE4MGVmOWFhZCIsImlhdCI6MTU4NjIxNzMzNywiZXhwIjoxNTg2MzAzNzM3fQ.FekyUcp-Mm31kddOjwwtREwDEPuA_F5bqcCxFt74hCQ'
-            }
-        })
+        const res = await api.get('/all/products', token)
 
         setRegistered(res.data)
     }

@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const multer = require("multer");
-const multerConfig = require("./middlewares/multer");
-const controllerProducts = require('./controllers/products');
-const controllerAdmin = require('./controllers/admin');
-const auth = require('./middlewares/auth');
-const { isPrimary, isAdmin } = require('./middlewares/role');
+const multer = require("multer")
+const multerConfig = require("./middlewares/multer")
+const controllerProducts = require('./controllers/products')
+const controllerAdmin = require('./controllers/admin')
+const auth = require('./middlewares/auth')
+const { isPrimary, isAdmin } = require('./middlewares/role')
 const pay = require('./controllers/pay')
 
 
