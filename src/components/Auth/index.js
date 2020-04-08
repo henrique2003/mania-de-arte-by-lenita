@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import api from '../../services/api'
 
+import Error from '../Bases/Error'
+
 import './style.scss'
 
 const Auth = ({ history }) => {
@@ -13,52 +15,70 @@ const Auth = ({ history }) => {
         email: '',
         password: ''
     })
+    const [error, setError] = useState({
+        show: false,
+        message: ''
+    })
 
+    const { show, message } = error
     const { email, password } = FormData
 
-    const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value })
+    const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
 
     const onSubmit = async e => {
         e.preventDefault()
 
-        let res = await api.post('/auth', FormData)
+        if (!email || !password)
+            return setError({ show: true, message: "Campo em branco" })
 
-        localStorage.setItem('token', res.data.token)
-        localStorage.setItem('name', res.data.user.name)
+        setError({ show: false })
 
-        history.push('/admin')
+        try {
+            let res = await api.post('/auth', FormData)
+
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('name', res.data.user.name)
+
+            return history.push('/admin')
+        } catch (error) {
+            console.log("efge")
+            return setError({ show: true, message: "Usuário o senha incorreta" })
+        }
     }
 
-        return (
-            <div className="wrapper_auth">
-                <h4>Acesso admin:</h4>
-                <form onSubmit={onSubmit}>
-                    <div className="form-group col-12">
-                        <label>Email:</label>
-                        <input
-                            type="text"
-                            placeholder="Exemplo: email@gmail.com"
-                            className="form-control"
-                            name="email"
-                            value={email}
-                            onChange={onChange}
-                        />
-                    </div>
-                    <div className="form-group col-12">
-                        <label>Senha:</label>
-                        <input
-                            type="password"
-                            placeholder="Exemplo: senha123"
-                            className="form-control"
-                            name="password"
-                            value={password}
-                            onChange={onChange}
-                        />
-                    </div>
-                    <button type="submit">Login</button>
-                </form>
-            </div>
-        )
-    }
+    return (
+        <div className="wrapper_auth">
+            <h4>Acesso admin:</h4>
+            {show && <Error text={message} />}
+            <form onSubmit={onSubmit}>
+                <div className="form-group col-12">
+                    <label>Email:</label>
+                    <input
+                        type="text"
+                        placeholder="Exemplo: email@gmail.com"
+                        className="form-control"
+                        name="email"
+                        value={email}
+                        onChange={onChange}
+                        required={true}
+                    />
+                </div>
+                <div className="form-group col-12">
+                    <label>Senha:</label>
+                    <input
+                        type="password"
+                        placeholder="Exemplo: senha123"
+                        className="form-control"
+                        name="password"
+                        value={password}
+                        onChange={onChange}
+                        required={true}
+                    />
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    )
+}
 
-    export default withRouter(Auth)
+export default withRouter(Auth)
