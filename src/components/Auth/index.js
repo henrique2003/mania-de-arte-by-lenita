@@ -1,12 +1,58 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { withRouter } from 'react-router-dom'
+
 import './style.scss'
 
-const Auth = () => {
-    return (
-        <div className="wrapper_auth">
+const Auth = ({ history }) => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
-        </div>
-    )
-}
+    const [FormData, setFormData] = useState({
+        email: '',
+        password: ''
+    })
 
-export default Auth
+    const { email, password } = FormData
+
+    const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value })
+
+    const onSubmit = e => {
+        e.preventDefault()
+
+
+    }
+
+        return (
+            <div className="wrapper_auth">
+                <h4>Acesso admin:</h4>
+                <form onSubmit={onSubmit}>
+                    <div className="form-group col-12">
+                        <label>Email:</label>
+                        <input
+                            type="text"
+                            placeholder="Exemplo: email@gmail.com"
+                            className="form-control"
+                            name="email"
+                            value={email}
+                            onChange={onChange}
+                        />
+                    </div>
+                    <div className="form-group col-12">
+                        <label>Senha:</label>
+                        <input
+                            type="password"
+                            placeholder="Exemplo: senha123"
+                            className="form-control"
+                            name="password"
+                            value={password}
+                            onChange={onChange}
+                        />
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        )
+    }
+
+    export default withRouter(Auth)

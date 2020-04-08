@@ -30,3 +30,9 @@ body {
 .root {
     overflow-x: hidden !important;
 }
+
+input, textarea {
+    outline: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+}
