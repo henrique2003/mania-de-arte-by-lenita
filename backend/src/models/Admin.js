@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose')
+const mongoosePaginate = require('mongoose-paginate')
 
 const adminSchema = new mongoose.Schema ({
     name: {
@@ -27,14 +27,9 @@ const adminSchema = new mongoose.Schema ({
     updateAt: {
         type: Date
     }
-});
-
-adminSchema.pre('save', async function(next) {
-    const hash = await bcrypt.hash(this.password, 10);
-    this.password = hash;
-    next();
 })
 
-const Admin = mongoose.model('Admin', adminSchema);
+adminSchema.plugin(mongoosePaginate);
+const Admin = mongoose.model('Admin', adminSchema)
 
-module.exports = Admin;
+module.exports = Admin

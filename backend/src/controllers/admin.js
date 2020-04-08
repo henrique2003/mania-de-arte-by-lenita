@@ -1,50 +1,56 @@
-const { Admin } = require('../models');
-const { success, serverError, badRequest, notFound, dateNow } = require('../utils')
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const authConfig = require('../config/auth.json');
+const { Admin } = require('../models')
+const { ok, serverError, badRequest, notFound } = require('http-server-res')
+const { dateNow } = require('../utils')
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const authConfig = require('../config/auth.json')
 
 module.exports = {
     async index(req, res) {
         try {
-            const admins = await Admin.find({});
-            return success(res, admins)
+            const { page = 1 } = req.query
+
+            const admins = await Admin.paginate({}, { page, limit: 40 })
+
+            return ok(res, admins)
         } catch (error) {
-            return serverError(res, error, 'Server error in read Admin')
+            console.error(error.message)
+            return serverError(res, 'Server error in read Admin')
         }
     },
 
     async store(req, res) {
-        const { email } = req.body;
+        const { email, password } = req.body
         try {
-            if (await Admin.findOne({ email })) {
+            if (await Admin.findOne({ email }))
                 return badRequest(res, "Admin already exists")
-            }
 
-            const admins = await Admin.create(req.body);
-            admins.password = undefined;
+            req.body.password = await bcrypt.hash(password, 10)
 
-            return success(res, admins)
+            const admins = await Admin.create(req.body)
+            admins.password = undefined
+
+            return ok(res, admins)
         } catch (error) {
-            return serverError(res, error, 'Server error in create Admin')
+            console.log(error.message)
+            return serverError(res, 'Server error in create Admin')
         }
     },
 
     async update(req, res) {
         try {
-            const { name, email, password, role } = req.body;
-            const { id } = req.params
+            const { name, email, password } = req.body
+            const id = req.userId
 
-            if(!await Admin.findById(id))
+            if (!await Admin.findById(id))
                 return notFound(res, "Admin not found")
 
-            let AdminBody = {};
+            let AdminBody = {}
 
-            if (name) AdminBody.name = name;
-            if (email) AdminBody.email = email;
-            if (password) AdminBody.password = password;
-            if (role) AdminBody.role = role;
-            AdminBody.updateAt = dateNow();
+            if (name) AdminBody.name = name
+            if (email) AdminBody.email = email
+            if (password) AdminBody.password = password
+            AdminBody.updateAt = dateNow()
 
             const admin = await Admin.findOneAndUpdate(
                 {
@@ -57,10 +63,34 @@ module.exports = {
                     upsert: true
                 });
 
-            return success(res, admin)
+            return ok(res, admin)
         }
         catch (error) {
-            return serverError(res, error, "Server error in update Admin")
+            console.log(error.message)
+            return serverError(res, "Server error in update Admin")
+        }
+    },
+
+    async update_access(req, res) {
+        try {
+            const { id } = req.params
+            const { role } = req.body
+
+            console.log(role)
+
+            const admin = await Admin.findByIdAndUpdate({
+                _id: id
+            },
+                {
+                    $set: { role }
+                }, {
+                upsert: true
+            })
+
+            return ok(res, admin)
+        } catch (error) {
+            console.log(error.message)
+            serverError(res, "Server Error in update_access")
         }
     },
 
@@ -68,14 +98,13 @@ module.exports = {
         try {
             const admin = await Admin.findOne({ _id: req.params.id });
 
-            if (admin) {
-                return success(res, admin)
-            }
-            
-            return notFound(res, "Admin not found");
+            if (!admin) notFound(res, "Admin not found");
+
+            return ok(res, admin)
         }
         catch (error) {
-            return serverError(res, error, "Server error in show admin")
+            console.log(error.message)
+            return serverError(res, "Server error in show admin")
         }
     },
 
@@ -87,28 +116,32 @@ module.exports = {
                 return notFound(res, "Admin not found")
 
             await Admin.findByIdAndRemove({ _id: id });
-            return success(res, "Apagado com sucesso")
+            return ok(res, "Apagado com sucesso")
         } catch (error) {
-            return serverError(res, error, "Server error in destroy Admin")
+            console.log(error.message)
+            return serverError(res, "Server error in destroy Admin")
         }
     },
 
     async destroyAll(req, res) {
         try {
-            await Admin.remove({ role: "Secondary" });
-            return success(res, "Good job")
+            await Admin.remove({ role: "Secondary" })
+
+            return ok(res, "Good job")
         } catch (error) {
-            return serverError(res, error, "Server error in destroy all Admins")
+            return serverError(res, "Server error in destroy all Admins")
         }
     },
 
     async allAdmin(req, res) {
         try {
-            const admin = await Admin.find({}).select("_id");
-            return success(res, admin)
+            const admin = await Admin.find({}).count()
+
+            return ok(res, admin)
         }
         catch (error) {
-            return serverError(res, error, 'Server error in all Admin')
+            console.log(error.message)
+            return serverError(res, 'Server error in all Admin')
         }
     },
 
@@ -118,8 +151,7 @@ module.exports = {
 
             const user = await Admin.findOne({ email }).select('+password');
 
-            if (!user)
-                return badRequest(res, "User not found")
+            if (!user) badRequest(res, "User not found")
 
             if (!await bcrypt.compare(password, user.password))
                 return badRequest(res, "Invalid password")
@@ -129,9 +161,10 @@ module.exports = {
             //token
             const token = jwt.sign({ id: user.id }, authConfig.secret, { expiresIn: 86400, });
 
-            return success(res, { user, token })
+            return ok(res, { user, token })
         } catch (error) {
-            return serverError(res, error, 'Server error in auth')
+            console.log(error.message)
+            return serverError(res, 'Server error in auth')
         }
     }
 }
