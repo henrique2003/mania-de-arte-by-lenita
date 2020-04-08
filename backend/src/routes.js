@@ -37,6 +37,8 @@ router.get('/purchased', auth, isAdmin, controllerPurchased.index)
 router.post('/purchased', auth, isPrimary, controllerPurchased.store)
 //create delete
 router.delete('/purchased/:id', auth, isAdmin, controllerPurchased.destroy)
+//count purchased
+router.get('/purchased/all', auth, isAdmin, controllerPurchased.count)
 
 
 //create Admin

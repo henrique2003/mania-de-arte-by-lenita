@@ -40,5 +40,15 @@ module.exports = {
         } catch (error) {
             return serverError(res, "Server Erros in purchased destroy")
         }
+    },
+
+    async count (req, res) {
+        try {
+            let purchased = await Purchased.find({}).count()
+
+            return ok(res, purchased)
+        } catch (error) {
+            return serverError(res, "Server Erros in purchased count")
+        }
     }
 }
