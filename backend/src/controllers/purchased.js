@@ -26,5 +26,19 @@ module.exports = {
         } catch (error) {
             return serverError(res, "Server Erros in purchased store")
         }
+    },
+
+    async destroy (req, res) {
+        try {
+            const { id } = req.params
+
+            if(!id) return badRequest(res, "Id requerido")
+
+            await Purchased.findByIdAndDelete(id)
+
+            return ok(res, "Deletado com sucesso")
+        } catch (error) {
+            return serverError(res, "Server Erros in purchased destroy")
+        }
     }
 }
