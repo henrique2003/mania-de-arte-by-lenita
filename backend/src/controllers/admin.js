@@ -1,4 +1,4 @@
-const { ok, serverError, badRequest, notFound } = require('http-server-res')
+const { ok, serverError, badRequest, notFound, unauthorized } = require('http-server-res')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const authConfig = require('../config/auth.json')
@@ -90,14 +90,14 @@ module.exports = {
 
     async show(req, res) {
         try {
-            const admin = await Admin.findOne({ _id: req.params.id });
+            const admin = await Admin.findById(req.params.id)
 
-            if (!admin) notFound(res, "Admin not found");
+            if (!admin) return notFound(res, "Admin not found")
 
             return ok(res, admin)
         }
         catch (error) {
-            console.log(error.message)
+            console.error(error.message)
             return serverError(res, "Server error in show admin")
         }
     },
@@ -158,6 +158,20 @@ module.exports = {
         } catch (error) {
             console.log(error.message)
             return serverError(res, 'Server error in auth')
+        }
+    },
+
+    async load(req, res) {
+        try {
+            const id = req.userId
+            if(!id) unauthorized(res, "Acesso negado")
+
+            let user = await Admin.findById(id)
+            if(!user) return unauthorized(res, "Acesso negado")
+
+            return ok(res, user)
+        } catch (error) {
+            return serverError(res, "Server error in load user")
         }
     }
 }

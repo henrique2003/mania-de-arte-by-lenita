@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { withRouter } from 'react-router-dom'
 import api from '../../../services/api'
 import token from '../../../config/token'
 
@@ -6,16 +7,20 @@ import BoxInfo from './components/BoxInfo'
 
 import './style.scss'
 
-const Index = () => {
+const Index = ({ history }) => {
     useEffect(() => {
         window.scrollTo(0,0)
+        loadUser()
         loadRegistered()
     }, [])
 
     async function loadRegistered() {
         const res = await api.get('/all/products', token)
-
         setRegistered(res.data)
+    }
+
+    async function loadUser() {
+        if(!await api.get('/admin/load', token)) return history.push('/')
     }
 
     const [Registered, setRegistered] = useState(0)
@@ -24,7 +29,7 @@ const Index = () => {
         <div className="wrapper_index">
             <div className="container-fluid">
                 <div className="wrapper_welcome">
-                    <h3>Olá, Lenita!</h3>
+                    <h3>Olá, {localStorage.getItem('name')}</h3>
                     <p>Eu estava a sua espera, o que vamos fazer hoje?</p>
                 </div>
                 <div className="row">
@@ -52,4 +57,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default withRouter(Index)

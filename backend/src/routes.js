@@ -33,7 +33,7 @@ router.post('/admin', auth, isPrimary, controllerAdmin.store)
 //list Admin
 router.get('/admin', auth, isPrimary, controllerAdmin.index)
 //Show Admin
-router.get('/admin/:id', auth, isPrimary, controllerAdmin.show)
+router.get('/admin/show/:id', auth, isPrimary, controllerAdmin.show)
 //Delte Admin
 router.delete('/admin/:id', auth, isPrimary, controllerAdmin.destroy)
 //Delte all Admins
@@ -43,10 +43,12 @@ router.put('/admin/update', auth, isAdmin, controllerAdmin.update)
 //Update Admin accsess
 router.put('/admin/:id', auth, isPrimary, controllerAdmin.update_access)
 //Admin registered
-router.get('/all/admin/', auth, isPrimary, controllerAdmin.count)
+router.get('/all/admin', auth, isPrimary, controllerAdmin.count)
 
 //auth login
 router.post('/auth', controllerAdmin.auth)
+//load user
+router.get('/admin/load', auth, isAdmin, controllerAdmin.load)
 
 //Pay
 //Mercado Pago
