@@ -1,31 +1,32 @@
-const Admin = require('../models/Admin');
+const { unauthorized, serverError, notFound } = require('http-server-res')
+const Admin = require('../models/Admin')
 
-module.exports = {
-    async isPrimary(req, res, next) {
-        try {
-            let user = await Admin.findById(req.userId);
+exports.isPrimary = async (req, res, next) => {
+    try {
+        let user = await Admin.findById(req.userId)
 
-            if(user.role !== "Primary")
-                return res.status(400).send({ error: "access denied" });
+        if(!user) return notFound(res, { msg: "Usuátio não encontrado" })
 
-            next();
-        } catch (error) {
-            console.log(error);
-            return res.status(500).send({ error: "Error in aurth role" });
-        }
-    },
+        if (user.role !== "Primary") unauthorized(res, { error: "Acesso negado" })
 
-    async isSecondary(req, res, next) {
-        try {
-            let user = await Admin.findById(req.userId);
+        next()
+    } catch (error) {
+        console.log(error)
+        return serverError(res, { error: "Error in aurth role" })
+    }
+}
 
-            if(user.role !== "Secondary")
-                return res.status(400).send({ error: "access denied" });
+exports.isAdmin = async (req, res, next) => {
+    try {
+        let user = await Admin.findById(req.userId)
 
-            next();
-        } catch (error) {
-            console.log(error);
-            return res.status(500).send({ error: "Error in aurth role" });
-        }
+        if(!user) return notFound(res, { msg: "Usuátio não encontrado" })
+
+        if (user.role !== "Primary" && user.role !== "Secondary") unauthorized(res, { error: "Acesso negado" })
+
+        next()
+    } catch (error) {
+        console.log(error)
+        return serverError(res, { error: "Error in aurth role" })
     }
 }

@@ -39,25 +39,19 @@ module.exports = {
 
     async update(req, res) {
         try {
-            const { name, email, password } = req.body
             const id = req.userId
 
             if (!await Admin.findById(id))
                 return notFound(res, "Admin not found")
 
-            let AdminBody = {}
-
-            if (name) AdminBody.name = name
-            if (email) AdminBody.email = email
-            if (password) AdminBody.password = password
-            AdminBody.updateAt = dateNow()
+            req.body.updateAt = dateNow()
 
             const admin = await Admin.findOneAndUpdate(
                 {
                     _id: id
                 },
                 {
-                    $set: AdminBody
+                    $set: req.body
                 },
                 {
                     upsert: true
