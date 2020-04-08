@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
+import api from '../../services/api'
 
 import './style.scss'
 
@@ -17,10 +18,15 @@ const Auth = ({ history }) => {
 
     const onChange = e => setFormData({...FormData, [e.target.name]: e.target.value })
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
 
+        let res = await api.post('/auth', FormData)
 
+        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('name', res.data.user.name)
+
+        history.push('/admin')
     }
 
         return (
