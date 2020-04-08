@@ -43,7 +43,7 @@ router.put('/admin/update', auth, isAdmin, controllerAdmin.update)
 //Update Admin accsess
 router.put('/admin/:id', auth, isPrimary, controllerAdmin.update_access)
 //Admin registered
-router.get('/all/admin/', auth, isPrimary, controllerAdmin.allAdmin)
+router.get('/all/admin/', auth, isPrimary, controllerAdmin.count)
 
 //auth login
 router.post('/auth', controllerAdmin.auth)

@@ -1,9 +1,9 @@
-const { Admin } = require('../models')
 const { ok, serverError, badRequest, notFound } = require('http-server-res')
-const { dateNow } = require('../utils')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const authConfig = require('../config/auth.json')
+const { Admin } = require('../models')
+const { dateNow } = require('../utils')
 
 module.exports = {
     async index(req, res) {
@@ -70,7 +70,7 @@ module.exports = {
             const { id } = req.params
             const { role } = req.body
 
-            console.log(role)
+            if(!role) return badRequest(res, "Campo role requerido")
 
             const admin = await Admin.findByIdAndUpdate({
                 _id: id
@@ -84,7 +84,7 @@ module.exports = {
             return ok(res, admin)
         } catch (error) {
             console.log(error.message)
-            serverError(res, "Server Error in update_access")
+            return serverError(res, "Server Error in update_access")
         }
     },
 
@@ -109,7 +109,7 @@ module.exports = {
             if (!await Admin.findById(id))
                 return notFound(res, "Admin not found")
 
-            await Admin.findByIdAndRemove({ _id: id });
+            await Admin.findByIdAndRemove({ _id: id })
             return ok(res, "Apagado com sucesso")
         } catch (error) {
             console.log(error.message)
@@ -121,13 +121,13 @@ module.exports = {
         try {
             await Admin.remove({ role: "Secondary" })
 
-            return ok(res, "Good job")
+            return ok(res, "Deletados com sucesso")
         } catch (error) {
             return serverError(res, "Server error in destroy all Admins")
         }
     },
 
-    async allAdmin(req, res) {
+    async count(req, res) {
         try {
             const admin = await Admin.find({}).count()
 
@@ -145,10 +145,9 @@ module.exports = {
 
             const user = await Admin.findOne({ email }).select('+password');
 
-            if (!user) badRequest(res, "User not found")
+            if (!user) return badRequest(res, "User not found")
 
-            if (!await bcrypt.compare(password, user.password))
-                return badRequest(res, "Invalid password")
+            if (!await bcrypt.compare(password, user.password)) return badRequest(res, "Invalid password")
 
             user.password = undefined;
 
