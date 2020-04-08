@@ -33,6 +33,8 @@ router.get('/all/products', auth, controllerProducts.count)
 //Purchased
 //list purchased
 router.get('/purchased', auth, isAdmin, controllerPurchased.index)
+//create purchased
+router.post('/purchased', auth, isPrimary, controllerPurchased.store)
 
 
 //create Admin

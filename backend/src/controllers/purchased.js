@@ -12,5 +12,19 @@ module.exports = {
         } catch (error) {
             return serverError(res, "Server Erros in purchased index")
         }
+    },
+
+    async store (req, res) {
+        try {
+            const { title, quantify, color } = req.body
+
+            if(!title || !quantify || !color) return badRequest(res, "Campos em branco")
+
+            let purchased = await Purchased.create(req.body)
+
+            return ok(res, purchased)
+        } catch (error) {
+            return serverError(res, "Server Erros in purchased store")
+        }
     }
 }
