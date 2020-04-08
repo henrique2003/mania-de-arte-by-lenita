@@ -42,6 +42,16 @@ module.exports = {
         }
     },
 
+    async detroyAll (req, res) {
+        try {
+            await Purchased.remove({})
+
+            return ok(res, "Deletado com sucesso")
+        } catch (error) {
+            return serverError(res, "Server Erro in purchased destroy all")
+        }
+    },
+
     async count (req, res) {
         try {
             let purchased = await Purchased.find({}).count()
