@@ -9,47 +9,64 @@ import './style.scss'
 
 const Index = ({ history }) => {
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
         loadUser()
         loadRegistered()
+        // loadPurchased()
+        loadAdmins()
     }, [])
 
+    async function loadUser() {
+        let res = await api.get('/admin/load', token)
+
+        if (!res) return history.push('/')
+        setUser(res.data)
+    }
+
     async function loadRegistered() {
-        const res = await api.get('/all/products', token)
+        let res = await api.get('/all/products', token)
         setRegistered(res.data)
     }
 
-    async function loadUser() {
-        if(!await api.get('/admin/load', token)) return history.push('/')
+    // async function loadPurchased() {
+    //     let res = await api.get('')
+    // }
+
+    async function loadAdmins() {
+        let res = await api.get('/all/admin/', token)
+        setAdmins(res.data)
     }
 
+    const [User, setUser] = useState({})
     const [Registered, setRegistered] = useState(0)
+    const [Purchased, setPurchased] = useState(0)
+    const [Admins, setAdmins] = useState(0)
 
     return (
         <div className="wrapper_index">
             <div className="container-fluid">
                 <div className="wrapper_welcome">
-                    <h3>Olá, {localStorage.getItem('name')}</h3>
+                    <h3>Olá, {User.name}</h3>
                     <p>Eu estava a sua espera, o que vamos fazer hoje?</p>
                 </div>
                 <div className="row">
-                    <BoxInfo 
+                    <BoxInfo
                         icon="far fa-plus-square"
                         text="Cadastrados"
                         link="produtos"
                         length={Registered}
                     />
-                    <BoxInfo 
+                    <BoxInfo
                         icon="fas fa-cart-plus"
                         text="Pedidos"
                         link="pedidos"
-                        length="5"
+                        length={Purchased}
                     />
-                    <BoxInfo 
+                    <BoxInfo
                         icon="fas fa-user-plus"
                         text="Admins"
                         link="all"
-                        length="4"
+                        length={Admins}
                     />
                 </div>
             </div>
