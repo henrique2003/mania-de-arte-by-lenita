@@ -34,6 +34,12 @@
     "sass-loader": "^8.0.2",
     "uuid": "^7.0.1"
   },
+  "husky": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "backend/*sepc.js": ["", "git add"]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -54,5 +60,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "husky": "^4.2.3"
   }
 }

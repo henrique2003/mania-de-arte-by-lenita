@@ -12,7 +12,7 @@ const Index = ({ history }) => {
         window.scrollTo(0, 0)
         loadUser()
         loadRegistered()
-        // loadPurchased()
+        loadPurchased()
         loadAdmins()
     }, [])
 
@@ -28,9 +28,10 @@ const Index = ({ history }) => {
         setRegistered(res.data)
     }
 
-    // async function loadPurchased() {
-    //     let res = await api.get('')
-    // }
+    async function loadPurchased() {
+        let res = await api.get('/purchased/all', token)
+        setPurchased(res.data)
+    }
 
     async function loadAdmins() {
         let res = await api.get('/all/admin/', token)
