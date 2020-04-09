@@ -9,7 +9,7 @@ const BoxInfo = ({ icon, text, length, link, role }) => {
                 <div className="wrapper_boxinfo_content">
                     <i className={icon}></i>
                     <p>{text}: {length}</p>
-                    {role === "Primary" && <Link to={`/admin/${link}`}>Ver todos</Link>}
+                    {role && <Link to={`/admin/${link}`}>Ver todos</Link>}
                 </div>
             </div>
         </div>

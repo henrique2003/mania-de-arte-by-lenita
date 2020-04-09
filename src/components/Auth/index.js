@@ -33,7 +33,7 @@ const Auth = ({ history }) => {
         try {
             let res = await api.post('/auth', FormData)
 
-            localStorage.setItem('token', res.data.token)
+            await localStorage.setItem('token', res.data.token)
 
             return history.push('/admin')
         } catch (error) {

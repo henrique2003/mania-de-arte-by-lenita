@@ -56,21 +56,21 @@ const Index = ({ history }) => {
                         text="Cadastrados"
                         link="produtos"
                         length={Registered}
-                        role={User.role}
+                        role={User.role === "Primary" && true}
                     />
                     <BoxInfo
                         icon="fas fa-cart-plus"
                         text="Pedidos"
                         link="pedidos"
                         length={Purchased}
-                        role={User.role}
+                        role={User.role === "Primary" && true}
                     />
                     <BoxInfo
                         icon="fas fa-user-plus"
                         text="Admins"
                         link="all"
                         length={Admins}
-                        role={User.role}
+                        role={User.role === "Primary" && true}
                     />
                 </div>
             </div>
