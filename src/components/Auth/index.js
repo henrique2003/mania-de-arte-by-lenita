@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
-import api from '../../services/api'
+
+//Redux
+import { connect } from 'react-redux'
+import { login } from '../../redux/actions/Auth'
 
 import Error from '../Bases/Error'
 
 import './style.scss'
 
-const Auth = ({ history }) => {
+const Auth = ({ history, login }) => {
     useEffect(() => window.scrollTo(0, 0), [])
 
     const [FormData, setFormData] = useState({
@@ -27,18 +30,9 @@ const Auth = ({ history }) => {
         e.preventDefault()
 
         if (!email || !password) setError({ show: true, message: "Campo em branco" })
-
         setError({ show: false })
 
-        try {
-            let res = await api.post('/auth', FormData)
-
-            await localStorage.setItem('token', res.data.token)
-
-            return history.push('/admin')
-        } catch (error) {
-            return setError({ show: true, message: "Usuário o senha incorreta" })
-        }
+        return login(FormData, history)
     }
 
     return (
@@ -78,4 +72,4 @@ const Auth = ({ history }) => {
     )
 }
 
-export default withRouter(Auth)
+export default connect(null, { login })(withRouter(Auth))

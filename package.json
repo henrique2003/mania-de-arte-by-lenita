@@ -30,6 +30,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "require-dir": "^1.2.0",
     "sass-loader": "^8.0.2",
     "uuid": "^7.0.1"
@@ -38,7 +39,10 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "backend/*sepc.js": ["", "git add"]
+    "backend/*sepc.js": [
+      "",
+      "git add"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",

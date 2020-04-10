@@ -61,7 +61,7 @@ router.put('/admin/:id', auth, isPrimary, controllerAdmin.update_access)
 router.get('/all/admin', auth, isPrimary, controllerAdmin.count)
 
 //auth login
-router.post('/auth', controllerAdmin.auth)
+router.post('/login', controllerAdmin.login)
 //load user
 router.get('/admin/load', auth, isAdmin, controllerAdmin.load)
 

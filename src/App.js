@@ -5,6 +5,10 @@ import './base.scss';
 //React-router
 import { Route, BrowserRouter, Switch, withRouter } from 'react-router-dom';
 
+//Redux
+import { Provider } from 'react-redux'
+import store from './redux/reducers'
+
 //Components Layout
 //Bases
 import Footer from './components/Bases/Footer'
@@ -44,30 +48,32 @@ function App() {
   })
 
   return (
-    <BrowserRouter>
-      <ScrollBar />
-      <NeverHeader />
-      <Switch>
-        {/* Web */}
-        <Route path="/" exact component={Home} />
-        <Route path="/madeiras" component={Woods} />
-        <Route path="/croche" component={Crochet} />
-        <Route path="/duvidas" component={Asks} />
-        <Route path="/produtos/mais/:id" component={ProductPage} />
+    <Provider store={store} >
+      <BrowserRouter>
+        <ScrollBar />
+        <NeverHeader />
+        <Switch>
+          {/* Web */}
+          <Route path="/" exact component={Home} />
+          <Route path="/madeiras" component={Woods} />
+          <Route path="/croche" component={Crochet} />
+          <Route path="/duvidas" component={Asks} />
+          <Route path="/produtos/mais/:id" component={ProductPage} />
 
-        {/* Admin */}
-        <Route path="/admin" exact component={DashboardIndex} />
-        <Route path="/admin/produtos" component={AdminProducts} />
-        <Route path="/admin/produto/editar/:id" component={AdminProducts} />
+          {/* Admin */}
+          <Route path="/admin" exact component={DashboardIndex} />
+          <Route path="/admin/produtos" component={AdminProducts} />
+          <Route path="/admin/produto/editar/:id" component={AdminProducts} />
 
-        {/* Auth */}
-        <Route path="/login" component={Auth} />
+          {/* Auth */}
+          <Route path="/login" component={Auth} />
 
-        {/* Default */}
-        <Route component={Home} />
-      </Switch>
-      <WithFooter />
-    </BrowserRouter>
+          {/* Default */}
+          <Route component={Home} />
+        </Switch>
+        <WithFooter />
+      </BrowserRouter>
+    </Provider>
   );
 }
 

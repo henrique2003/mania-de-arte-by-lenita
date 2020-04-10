@@ -139,7 +139,7 @@ module.exports = {
         }
     },
 
-    async auth(req, res) {
+    async login(req, res) {
         try {
             const { email, password } = req.body;
 
