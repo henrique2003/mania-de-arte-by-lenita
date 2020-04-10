@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify'
 
 import './base.scss';
 
@@ -30,7 +31,7 @@ import AdminProducts from './components/Dashboard/Admin/AdminProducts'
 
 function App() {
   //WithHeader Header
-  const NeverHeader = withRouter(({ location }) => {
+  const IfHeader = withRouter(({ location }) => {
     if (location.pathname !== '/login'
     ) return <Header />
     else return false
@@ -51,7 +52,8 @@ function App() {
     <Provider store={store} >
       <BrowserRouter>
         <ScrollBar />
-        <NeverHeader />
+        <IfHeader />
+        <ToastContainer autoClose={2200} />
         <Switch>
           {/* Web */}
           <Route path="/" exact component={Home} />
