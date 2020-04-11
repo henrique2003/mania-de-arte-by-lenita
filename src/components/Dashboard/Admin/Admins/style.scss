@@ -8,12 +8,14 @@
         padding-left: 5px;
         margin: 50px 25px 30px 25px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        padding-bottom: 5px;
 
         h3 {
             letter-spacing: 1px;
             font-size: 28px;
             font-family: "Poppins";
             color: #464545;
+            margin: 0;
         }
 
         .action_add {
@@ -98,8 +100,16 @@
         .wrapper_title {
             margin: 50px 10px 30px 10px;
 
-            
+            h3 {
+                font-size: 27px;
+            }
+
+            .action_add {
+                padding: 5.5px 25px;
+            }
         }
+
+
     }
 }
 
@@ -111,7 +121,17 @@
             margin: 40px 0px 20px 0px;
 
             h3 {
-                font-size: 28px;
+                font-size: 26px;
+            }
+
+            .action_add {
+                padding: 5px 23px;
+                font-size: 16px;
+            }
+
+            .action_delete_all {
+                padding: 2px 23px;
+                font-size: 16px;
             }
         }
     }
@@ -124,9 +144,23 @@
           
         .wrapper_title {
             margin: 40px 0px 20px 0px;
-    
+            display: block;
+            border: none;
+            
             h3 {
                 font-size: 25px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            }
+
+            .action_add {
+                padding: 4px 20px;
+                font-size: 15px;
+            }
+
+            .action_delete_all {
+                padding: 1.5px 20px;
+                font-size: 15px;
             }
         }
     }
