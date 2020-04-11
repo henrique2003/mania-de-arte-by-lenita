@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import './style.scss'
 
 const Admins = () => {
@@ -6,7 +8,11 @@ const Admins = () => {
         <div className="wrapper_admins">
             <div className="container-fluid">
                 <div className="wrapper_title">
-                    <h3>Administradores cadastrados</h3>
+                    <h3>Admins</h3>
+                    <div className="wrapper_title_actions">
+                        <Link to="admin/admins/novo" className="action_add">Criar novo</Link>
+                        <button type="submit" className="action_delete_all">Deletar todos</button>
+                    </div>
                 </div>
                 <div className="wrapper_admins_all">
                     <ul className="wrapper_admins_all_head">

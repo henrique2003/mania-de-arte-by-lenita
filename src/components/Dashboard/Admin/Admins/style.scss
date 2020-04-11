@@ -3,6 +3,8 @@
     margin-top: 30px;
 
     .wrapper_title {
+        display: flex;
+        justify-content: space-between;
         padding-left: 5px;
         margin: 50px 25px 30px 25px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -12,6 +14,45 @@
             font-size: 28px;
             font-family: "Poppins";
             color: #464545;
+        }
+
+        .action_add {
+            margin-right: 10px;
+            border-radius: 5px;
+            padding: 5px 25px;
+            color: #9370db;
+            letter-spacing: 1px;
+            font-family: 'Roboto';
+            font-size: 17px;
+            background: white;
+            border: 1px solid #9370db;
+            transition: all .3s ease;
+
+            &:hover {
+                transition: all .3s ease;
+                background: #9370db;
+                color: white;
+                text-decoration: none;
+            }
+        }
+
+        .action_delete_all {
+            border-radius: 5px;
+            padding: 2.5px 25px;
+            color: white;
+            letter-spacing: 1px;
+            font-family: 'Roboto';
+            font-size: 17px;
+            background: #9370db;
+            border: 1px solid #9370db;
+            transition: all .3s ease;
+
+            &:hover {
+                transition: all .3s ease;
+                background: white;
+                color: #9370db;
+                text-decoration: none;
+            }
         }
     }
 
@@ -56,6 +97,8 @@
     .wrapper_admins {
         .wrapper_title {
             margin: 50px 10px 30px 10px;
+
+            
         }
     }
 }
