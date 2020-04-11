@@ -60,8 +60,9 @@
 
     .wrapper_admins_all {
         margin: 0 40px;
-
+        
         .wrapper_admins_all_head {
+            margin-top: 40px;
             list-style: none;
             padding: 0;
             padding-bottom: 7px;
@@ -78,6 +79,7 @@
         }
 
         .wrapper_admins_all_body {
+            margin-top: 25px;
             list-style: none;
             padding: 0;
             padding-bottom: 7px;
@@ -109,7 +111,21 @@
             }
         }
 
-
+        .wrapper_admins_all {
+            margin: 0 27px;
+            
+            .wrapper_admins_all_head {
+                margin-top: 35px;
+            }
+    
+            .wrapper_admins_all_body {
+                margin-top: 20px;
+    
+                &:nth-child(2) {
+                    margin-top: 25px;
+                }
+            }
+        }
     }
 }
 
@@ -132,6 +148,22 @@
             .action_delete_all {
                 padding: 2px 23px;
                 font-size: 16px;
+            }
+        }
+
+        .wrapper_admins_all {
+            margin: 0 17px;
+            
+            .wrapper_admins_all_head {                
+                li {
+                    font-size: 17px;
+                }
+            }
+    
+            .wrapper_admins_all_body {
+                li {
+                    font-size: 15px;
+                }
             }
         }
     }
@@ -161,6 +193,24 @@
             .action_delete_all {
                 padding: 1.5px 20px;
                 font-size: 15px;
+            }
+        }
+
+        .wrapper_admins_all {
+            margin: 0 17px;
+            
+            .wrapper_admins_all_head {                
+                li {
+                    font-size: 17px;
+                }
+            }
+    
+            .wrapper_admins_all_body {
+                margin-top: 15px !important;
+    
+                li {
+                    font-size: 15px;
+                }
             }
         }
     }

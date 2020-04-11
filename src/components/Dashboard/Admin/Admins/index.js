@@ -18,24 +18,24 @@ const Admins = () => {
                     <ul className="wrapper_admins_all_head">
                         <div className="row">
                             <li className="col-6 col-sm-6 col-md-4 col-lg-3">Nome</li>
-                            <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-md-block">Email</li>
-                            <li className="col-6 col-sm-6 col-md-4 col-lg-3">Função</li>
+                            <li className="col-3 col-sm-3 col-md-5 col-lg-4 d-none d-md-block">Email</li>
+                            <li className="col-6 col-sm-6 col-md-3 col-lg-2">Função</li>
                             <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">Criação</li>
                         </div>
                     </ul>
                     <ul className="wrapper_admins_all_body">
                         <div className="row">
                             <li className="col-6 col-sm-6 col-md-4 col-lg-3">Sandra</li>
-                            <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-md-block">sandrasio.cristioglu@gmail.com</li>
-                            <li className="col-6 col-sm-6 col-md-4 col-lg-3">Ajudante</li>
+                            <li className="col-3 col-sm-3 col-md-5 col-lg-4 d-none d-md-block">sandrasio.cristioglu@gmail.com</li>
+                            <li className="col-6 col-sm-6 col-md-3 col-lg-2">Ajudante</li>
                             <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">17/02/2003</li>
                         </div>
                     </ul>
                     <ul className="wrapper_admins_all_body">
                         <div className="row">
                             <li className="col-6 col-sm-6 col-md-4 col-lg-3">Sandra</li>
-                            <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-md-block">sandrasio.cristioglu@gmail.com</li>
-                            <li className="col-6 col-sm-6 col-md-4 col-lg-3">Ajudante</li>
+                            <li className="col-3 col-sm-3 col-md-5 col-lg-4 d-none d-md-block">sandrasio.cristioglu@gmail.com</li>
+                            <li className="col-6 col-sm-6 col-md-3 col-lg-2">Ajudante</li>
                             <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">17/02/2003</li>
                         </div>
                     </ul>
