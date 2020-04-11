@@ -1,22 +1,51 @@
+import { toast } from 'react-toastify'
 import api from '../../../services/api'
-// import token from '../../../config/token'
-import { LOGIN } from './types'
+import token from '../../../config/token'
+import { LOGIN, LOAD_USER, LOGOUT, USER_ERROR } from './types'
+
+export const loadUser = (history) => async dispatch => {
+    try {
+        token()
+        const res = await api.get("/admin/load")
+
+        dispatch({
+            type: LOAD_USER,
+            payload: res.data
+        })
+    } catch (error) {
+        dispatch({ type: USER_ERROR })
+        toast.error("Acesso negado")
+        return history.push("/login")
+    }
+}
 
 export const login = (data, history) => async dispatch => {
     try {
-        console.log("data")
-        console.log(data)
-        // const res = api.post('/login', data)
+        const res = await api.post('/login', data)
 
-        // localStorage.setItem('token', res.data.token)
-        // dispatch({
-        //     type: LOGIN,
-        //     user: res.data,
-        //     isAuthemticate: true
-        // })
-        // return history.push('/admin')        
-        return false
+        localStorage.setItem('token', res.data.token)
+        token()
+        dispatch({
+            type: LOGIN,
+            payload: res.data.user
+        })
+
+        toast.success("Logado com sucesso")
+        return history.push('/admin')
     } catch (error) {
-        // return to
+        dispatch({ type: USER_ERROR })
+        return toast.error("Email ou senha inválida")
+    }
+}
+
+export const logout = history => async dispatch => {
+    try {
+        token()
+        dispatch({ type: LOGOUT })
+        toast.success("Saiu com sucesso")
+        return history.push('/login')
+    } catch (error) {
+        dispatch({ type: USER_ERROR })
+        return history.push('/login')
     }
 }

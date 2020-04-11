@@ -4,7 +4,7 @@
   padding: 0 50px;
   padding-top: 10px;
   padding-bottom: 15px;
-  border-bottom: 1px solid rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 
   //Logo
   .wrapper_logo {
@@ -91,7 +91,10 @@
 
     li {
       margin-top: 20px;
-      
+      font-size: 24px;
+      color: #fff;
+      font-family: "Roboto";
+
       a {
         text-decoration: none;
         font-size: 24px;
@@ -103,7 +106,7 @@
 }
 
 //Navbar to Mobile
-@media (max-width: 888px) {
+@media (max-width: 1064px) {
   .wrapper_header {
     .wrapper_header_ul {
       display: none;

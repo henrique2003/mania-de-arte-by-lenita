@@ -1,5 +1,8 @@
 import React from 'react';
+
+//React tostify
 import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import './base.scss';
 
@@ -8,7 +11,7 @@ import { Route, BrowserRouter, Switch, withRouter } from 'react-router-dom';
 
 //Redux
 import { Provider } from 'react-redux'
-import store from './redux/reducers'
+import store from './redux'
 
 //Components Layout
 //Bases
@@ -28,6 +31,11 @@ import DashboardIndex from './components/Dashboard/Index'
 import AdminProducts from './components/Dashboard/Admin/AdminProducts'
 
 //Users
+
+
+// store.subscribe(() => {
+//     console.log(store.getState());
+// })
 
 function App() {
   //WithHeader Header

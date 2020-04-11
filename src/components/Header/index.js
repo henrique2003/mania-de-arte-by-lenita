@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { logout } from '../../redux/actions/Auth'
 
-import api from '../../services/api'
-import token from '../../config/token'
 import HeaderLink from './HeaderLink'
 
 import logo from '../../utils/images/logo.png'
 
 import './style.scss';
 
-const Header = () => {
-    // useEffect(() => (), [])
-
-    const [User, setUser] = useState({})
-
+const Header = ({ history, user, logout }) => {
     const [navShow, setNavShow] = useState({
         show: false
     })
@@ -22,7 +19,7 @@ const Header = () => {
     const closeNavbar = () => setNavShow({ show: !show })
 
     function validLinksWeb() {
-        switch (User.role) {
+        switch (user.role) {
             case "Primary":
                 return (
                     <>
@@ -30,7 +27,7 @@ const Header = () => {
                         <HeaderLink to="/admin/produtos" title="Produtos" />
                         <HeaderLink to="/admin/pedidos" title="Pedidos" />
                         <HeaderLink to="/admin/admins" title="Admins" />
-                        <HeaderLink to="/logout" title="Logout" />
+                        <li className="navbarLink" onClick={() => logout(history)}>Logout</li>
                     </>
                 )
             case "Secondary":
@@ -38,7 +35,7 @@ const Header = () => {
                     <>
                         <HeaderLink to="/admin" title="Dashboard" />
                         <HeaderLink to="/admin/pedidos" title="Pedidos" />
-                        <HeaderLink to="/logout" title="Logout" />
+                        <li className="navbarLink" onClick={() => logout(history)}>Logout</li>
                     </>
                 )
             default:
@@ -54,7 +51,7 @@ const Header = () => {
     }
 
     function validLinksMobile() {
-        switch (User.role) {
+        switch (user.role) {
             case "Primary":
                 return (
                     <>
@@ -62,7 +59,7 @@ const Header = () => {
                         <span onClick={closeNavbar}><HeaderLink to="/admin/produtos" title="Produtos" /></span>
                         <span onClick={closeNavbar}><HeaderLink to="/admin/pedidos" title="Pedidos" /></span>
                         <span onClick={closeNavbar}><HeaderLink to="/admin/admins" title="Admins" /></span>
-                        <span onClick={closeNavbar}><HeaderLink to="/logout" title="Logout" /></span>
+                        <span onClick={closeNavbar}><li className="navbarLink" onClick={() => logout(history)}>Logout</li></span>
                     </>
                 )
             case "Secondary":
@@ -70,7 +67,7 @@ const Header = () => {
                     <>
                         <span onClick={closeNavbar}><HeaderLink to="/admin" title="Dashboard" /></span>
                         <span onClick={closeNavbar}><HeaderLink to="/admin/pedidos" title="Pedidos" /></span>
-                        <span onClick={closeNavbar}><HeaderLink to="/logout" title="Logout" /></span>
+                        <span onClick={closeNavbar}><li className="navbarLink" onClick={() => logout(history)}>Logout</li></span>
                     </>
                 )
             default:
@@ -116,4 +113,12 @@ const Header = () => {
     )
 }
 
-export default Header
+const mapDispatchToProps = dispatch => ({
+    logout: (history) => dispatch(logout(history))
+})
+
+const mapStateToProps = state => ({
+    user: state.user
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))

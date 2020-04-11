@@ -10,18 +10,19 @@ import './style.scss'
 const ProductPage = ({ match }) => {
     useEffect(() => {
         window.scrollTo(0, 0)
+        async function loadProduct() {
+            const res = await api.get(`/products/${match.params.id}`)
+
+            setProduct(res.data)
+
+            const image = require(`../../utils/images/Products/${res.data.image.key}`)
+            setImage({ image })
+        }
+        
         loadProduct()
-    }, [])
-    
-    async function loadProduct() {
-        const res = await api.get(`/products/${match.params.id}`)
-        
-        setProduct(res.data)
-        
-        const image = require(`../../utils/images/Products/${res.data.image.key}`)
-        setImage({ image })
-    }
-    
+    }, [match.params.id])
+
+
     const [product, setProduct] = useState({})
     const [Image, setImage] = useState({ image: '' })
 
@@ -40,9 +41,9 @@ const ProductPage = ({ match }) => {
                                 <p className="cost_product_page">R$: {product.cost.toFixed(2).replace(".", ",")}</p>
                                 <p className="description_product_page">
                                     <span>Descrição:</span> {product.description}
-                            </p>
+                                </p>
                                 <div className="icon_mercado_pago">
-                                    <img src={MercadoPago} alt=""/>
+                                    <img src={MercadoPago} alt="" />
                                 </div>
                                 <Link to={`/produtos/comprar/${product._id}`} className="link_pay">Comprar</Link>
                             </div>
