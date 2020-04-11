@@ -19,6 +19,7 @@
         }
 
         .action_add {
+            outline: none;
             margin-right: 10px;
             border-radius: 5px;
             padding: 5px 25px;
@@ -39,6 +40,7 @@
         }
 
         .action_delete_all {
+            outline: none;
             border-radius: 5px;
             padding: 2.5px 25px;
             color: white;
@@ -85,12 +87,24 @@
             padding-bottom: 7px;
 
             li {
+                outline: none;
                 padding: 0;
                 font-size: 16px;
                 letter-spacing: 1px;
                 font-family: 'Roboto';
                 border-bottom: 1px solid rgba(0,0,0,0.2);
                 border-left: 5px solid white;
+
+                .delete_item {
+                    float: right;
+                    border: none;
+                    background: white;
+                    outline: none;
+
+                    i {
+                        color: red;
+                    }
+                }
             }
         }
     }

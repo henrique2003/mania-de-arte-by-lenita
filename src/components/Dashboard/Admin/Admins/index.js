@@ -6,37 +6,40 @@ import { withRouter } from 'react-router-dom'
 import { loadUser } from '../../../../redux/actions/Auth'
 import token from '../../../../config/token'
 import api from '../../../../services/api'
+import editDate from '../../../../utils/scripts/editDate'
 
 import './style.scss'
 
 const Admins = ({ loadUser, history }) => {
-    const [Admins, setAdmins] = useState([
-        {
-            _id: "5e640654aa6e6e2180ef9aad",
-            name: "Sandra",
-            email: "henrique.de.melo.cristioglu@gmail.com",
-            role: "Primary",
-            createAt: "2020-03-07T20:38:44.227Z"
-        },
-        {
-            _id: "5e640654aa6e6e2180ef9sad",
-            name: "Sandra",
-            email: "henrique.de.melo.cristioglu@gmail.com",
-            role: "Primary",
-            createAt: "2020-03-07T20:38:44.227Z"
-        }
-    ])
+    const [Admins, setAdmins] = useState([])
     useEffect(() => {
         window.scrollTo(0, 0)
         token()
         loadUser(history)
+
+        async function loadAdmins() {
+            let res = await api.get('/admin')
+
+            setAdmins(res.data.docs)
+        }
+        loadAdmins()
     }, [loadUser, history])
 
-    const deleteAll = async () => {
+    async function deleteAll() {
         try {
             let res = await api.delete('/deleteall/admin')
             toast.success(res.data)
-            return setAdmins([])
+            return setAdmins(res.data.docs)
+        } catch (error) {
+            return toast.error("Erro ao deletar")
+        }
+    }
+
+    async function delete_item(id) {
+        try {
+            let res = await api.delete(`/admin/${id}`)
+            toast.success("Deletado com sucesso")
+            return setAdmins(res.data.docs)
         } catch (error) {
             return toast.error("Erro ao deletar")
         }
@@ -66,8 +69,17 @@ const Admins = ({ loadUser, history }) => {
                             <div className="row">
                                 <li className="col-6 col-sm-6 col-md-4 col-lg-3">{admin.name}</li>
                                 <li className="col-3 col-sm-3 col-md-5 col-lg-4 d-none d-md-block">{admin.email}</li>
-                                <li className="col-6 col-sm-6 col-md-3 col-lg-2">{admin.role}</li>
-                                <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">{admin.createAt}</li>
+                                <li className="col-6 col-sm-6 col-md-3 col-lg-2">
+                                    {admin.role}
+                                    <button type="button" className="delete_item d-block d-lg-none" onClick={() => alert(delete_item(admin._id))}><i class="fas fa-trash-alt"></i></button>
+                                </li>
+                                <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">
+                                    {editDate(admin.createAt)}
+                                    <button type="button" className="delete_item" onClick={() => alert(
+                                        "Você tem certeza que deseja deseja apagar esse usuário ?" + 
+                                        delete_item(admin._id)
+                                    )}><i class="fas fa-trash-alt"></i></button>
+                                </li>
                             </div>
                         </ul>
                     ))}

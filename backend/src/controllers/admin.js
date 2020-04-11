@@ -104,13 +104,17 @@ module.exports = {
 
     async destroy(req, res) {
         try {
+            const { page = 1 } = req.params
             const { id } = req.params
 
             if (!await Admin.findById(id))
                 return notFound(res, "Admin not found")
 
             await Admin.findByIdAndRemove({ _id: id })
-            return ok(res, "Apagado com sucesso")
+
+            let admins = await Admin.paginate({}, { page, limit: 40 })
+
+            return ok(res, admins)
         } catch (error) {
             console.log(error.message)
             return serverError(res, "Server error in destroy Admin")
@@ -119,9 +123,13 @@ module.exports = {
 
     async destroyAll(req, res) {
         try {
-            await Admin.remove({ role: "Secondary" })
+            const { page = 1 } = req.params
 
-            return ok(res, "Deletados com sucesso")
+            await Admin.remove({ role: "Secondary" })
+            
+            let admins = await Admin.paginate({}, { page, limit: 40 })
+
+            return ok(res, admins)
         } catch (error) {
             return serverError(res, "Server error in destroy all Admins")
         }
