@@ -1,0 +1,90 @@
+.wrapper_admins {
+    margin: 0 40px;
+    margin-top: 30px;
+
+    .wrapper_title {
+        padding-left: 5px;
+        margin: 50px 25px 30px 25px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+        h3 {
+            letter-spacing: 1px;
+            font-size: 28px;
+            font-family: "Poppins";
+            color: #464545;
+        }
+    }
+
+    .wrapper_admins_all {
+        margin: 0 40px;
+
+        .wrapper_admins_all_head {
+            list-style: none;
+            padding: 0;
+            padding-bottom: 7px;
+            
+            li {
+                font-size: 18px;
+                letter-spacing: 1px;
+                font-family: 'Roboto';
+                color: #9370db;
+                border-bottom: 1px solid rgba(0,0,0,0.2);
+                border-left: 5px solid white;
+                padding: 0;
+            }
+        }
+
+        .wrapper_admins_all_body {
+            list-style: none;
+            padding: 0;
+            padding-bottom: 7px;
+
+            li {
+                padding: 0;
+                font-size: 16px;
+                letter-spacing: 1px;
+                font-family: 'Roboto';
+                border-bottom: 1px solid rgba(0,0,0,0.2);
+                border-left: 5px solid white;
+            }
+        }
+    }
+}
+
+//Ipad Pró
+@media (max-width: 1024px) {
+    .wrapper_admins {
+        .wrapper_title {
+            margin: 50px 10px 30px 10px;
+        }
+    }
+}
+
+//Ipad
+@media (max-width: 768px) {
+    .wrapper_admins {
+        .wrapper_title {
+            padding-left: 5px;
+            margin: 40px 0px 20px 0px;
+
+            h3 {
+                font-size: 28px;
+            }
+        }
+    }
+}
+
+//Celphone
+@media(max-width: 480px) {
+    .wrapper_admins {  
+        margin: 0 20px;
+          
+        .wrapper_title {
+            margin: 40px 0px 20px 0px;
+    
+            h3 {
+                font-size: 25px;
+            }
+        }
+    }
+}
