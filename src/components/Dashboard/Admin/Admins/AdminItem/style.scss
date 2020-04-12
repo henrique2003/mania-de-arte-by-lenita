@@ -41,6 +41,11 @@
 
                 i {
                     color: red;
+
+                    &:nth-child(1) {
+                        color: rgb(12, 170, 12);
+                        margin-right: 7px;
+                    }
                 }
             }
         }
@@ -88,7 +93,7 @@
 //Celphone
 @media (max-width: 480px) {
     .wrapper_admins_all {
-        margin: 0 17px;
+        margin: 0 17px !important;
 
         .wrapper_admins_all_head {
             li {
@@ -101,6 +106,14 @@
 
             li {
                 font-size: 15px;
+
+                .delete_item {    
+                    i {
+                        &:nth-child(1) {
+                            margin-right: 2px;
+                        }
+                    }
+                }
             }
         }
     }
