@@ -42,7 +42,11 @@ const Admins = ({ loadPrimary, history, location }) => {
         try {
             let res = await api.delete('/deleteall/admin')
             toast.success(res.data)
-            return setAdmins(res.data.docs)
+            setAdmins(res.data.docs)
+            setPaginate({
+                path: '/admin/admins',
+                pages: res.data.pages
+            })
         } catch (error) {
             return toast.error("Erro ao deletar")
         }
@@ -52,7 +56,11 @@ const Admins = ({ loadPrimary, history, location }) => {
         try {
             let res = await api.delete(`/admin/${id}`)
             toast.success("Deletado com sucesso")
-            return setAdmins(res.data.docs)
+            setAdmins(res.data.docs)
+            setPaginate({
+                path: '/admin/admins',
+                pages: res.data.pages
+            })
         } catch (error) {
             return toast.error("Erro ao deletar")
         }
