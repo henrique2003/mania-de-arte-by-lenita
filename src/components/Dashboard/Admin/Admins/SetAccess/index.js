@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { loadPrimary } from '../../../../../redux/actions/Auth/index'
 import token from '../../../../../config/token'
@@ -8,7 +9,7 @@ import api from '../../../../../services/api'
 
 import './style.scss'
 
-const SetAccess = ({ loadPrimary, history }) => {
+const SetAccess = ({ loadPrimary, history, match }) => {
     const [Role, setRole] = useState({ role: "Primary" })
 
     useEffect(() => {
@@ -17,10 +18,16 @@ const SetAccess = ({ loadPrimary, history }) => {
         loadPrimary(history)
     }, [loadPrimary, history])
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
+        try {
+            await api.put(`/admin/access/${match.params.id}`, Role)
 
-        console.log(Role.role)
+            toast.success("Alterado com sucesso")
+            return history.push('/admin/admins')
+        } catch (error) {
+            return toast.error("Erro ao editar função")
+        }
     }
 
     return (

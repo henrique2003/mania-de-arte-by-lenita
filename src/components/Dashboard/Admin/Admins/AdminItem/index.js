@@ -14,7 +14,7 @@ const AdminItem = ({ admin, alert }) => {
                 <li className="col-6 col-sm-6 col-md-4 col-lg-3">{name}</li>
                 <li className="col-3 col-sm-3 col-md-5 col-lg-4 d-none d-md-block">{email}</li>
                 <li className="col-6 col-sm-6 col-md-3 col-lg-2">
-                    {role}
+                    {role === "Primary" ? "Admin" : "Ajudante"}
                     <button type="button" className="delete_item d-block d-lg-none">
                         <Link to={`/admin/admins/${_id}`} >
                             <i className="fas fa-user-edit"></i>
