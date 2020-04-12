@@ -10,7 +10,7 @@ const controllerPurchased = require('./controllers/purchased')
 
 
 
-//List Products with paginate
+//List Products
 router.get('/products', controllerProducts.index)
 //Index a Product home
 router.get('/products/home', controllerProducts.index_home)
@@ -34,7 +34,7 @@ router.get('/all/products', auth, controllerProducts.count)
 //list purchased
 router.get('/purchased', auth, isAdmin, controllerPurchased.index)
 //create purchased
-router.post('/purchased', auth, isPrimary, controllerPurchased.store)
+router.post('/purchased', controllerPurchased.store)
 //delete purchased
 router.delete('/purchased/:id', auth, isAdmin, controllerPurchased.destroy)
 //delete all purchased
@@ -56,7 +56,7 @@ router.delete('/deleteall/admin', auth, isPrimary, controllerAdmin.destroyAll)
 //Update Admin Primary and Secondary
 router.put('/admin/update', auth, isAdmin, controllerAdmin.update)
 //Update Admin accsess
-router.put('/admin/:id', auth, isPrimary, controllerAdmin.update_access)
+router.put('/admin/access/:id', auth, isPrimary, controllerAdmin.update_access)
 //Admin registered
 router.get('/all/admin', auth, isPrimary, controllerAdmin.count)
 
