@@ -112,7 +112,7 @@ module.exports = {
 
             await Admin.findByIdAndRemove({ _id: id })
 
-            let admins = await Admin.paginate({}, { page, limit: 40 })
+            let admins = await Admin.paginate({}, { page, limit: 10 })
 
             return ok(res, admins)
         } catch (error) {
@@ -127,7 +127,7 @@ module.exports = {
 
             await Admin.remove({ role: "Secondary" })
             
-            let admins = await Admin.paginate({}, { page, limit: 40 })
+            let admins = await Admin.paginate({}, { page, limit: 10 })
 
             return ok(res, admins)
         } catch (error) {
