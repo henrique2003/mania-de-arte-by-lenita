@@ -6,7 +6,6 @@ const token = () => {
     }
     else {
         delete api.defaults.headers.common['Authorization']
-        localStorage.removeItem('token')
     }
 }
 

@@ -63,7 +63,7 @@ const Index = ({ user, history, loadUser }) => {
                         <BoxInfo
                             icon="fas fa-user-plus"
                             text="Admins"
-                            link="all"
+                            link="admins"
                             length={Admins}
                         />
                     </div>

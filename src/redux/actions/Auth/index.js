@@ -40,6 +40,7 @@ export const login = (data, history) => async dispatch => {
 
 export const logout = history => async dispatch => {
     try {
+        localStorage.removeItem('token')
         token()
         dispatch({ type: LOGOUT })
         toast.success("Saiu com sucesso")
