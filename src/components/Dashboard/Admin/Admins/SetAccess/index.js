@@ -27,13 +27,13 @@ const SetAccess = ({ loadPrimary, history }) => {
         <div className="wrapper_set_access">
             <form className="wrapper_set_access_form col-12 col-sm-12 col-md-11 col-lg-8  mx-auto" onSubmit={onSubmit}>
                 <div className="form-row">
-                    <div className="form-group col-12 col-sm-12 col-md-6">
+                    <div className="form-group col-6">
                         <select id="inputState" className="form-control" onChange={(e) => setRole({ role: e.target.value })}>
                             <option value="Primary">Admin</option>
                             <option value="Secondary">Ajudante</option>
                         </select>
                     </div>
-                    <div className="form-group col-12 col-sm-12 col-md-6 text-center">
+                    <div className="form-group col-6 text-center">
                         <button type="submit">Editar</button>
                     </div>
                 </div>
