@@ -1,4 +1,7 @@
-import React from 'react';
+import React from 'react'
+
+//React confirm alert
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 //React tostify
 import { ToastContainer } from 'react-toastify'

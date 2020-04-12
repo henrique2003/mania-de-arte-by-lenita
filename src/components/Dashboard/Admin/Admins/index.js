@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { confirmAlert } from 'react-confirm-alert'
 import { loadUser } from '../../../../redux/actions/Auth'
 import token from '../../../../config/token'
 import api from '../../../../services/api'
-import editDate from '../../../../utils/scripts/editDate'
+
+import AdminItem from './AdminItem'
 
 import './style.scss'
 
@@ -45,6 +47,22 @@ const Admins = ({ loadUser, history }) => {
         }
     }
 
+    function alert(id) {
+        confirmAlert({
+            title: 'Você tem certeza',
+            message: 'Você tem certeza que deseja apagar esse usuário?',
+            buttons: [
+                {
+                    label: 'Deletar',
+                    onClick: () => delete_item(id)
+                },
+                {
+                    label: 'Cancelar'
+                }
+            ]
+        })
+    }
+
     return (
         <div className="wrapper_admins">
             <div className="container-fluid">
@@ -64,25 +82,7 @@ const Admins = ({ loadUser, history }) => {
                             <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">Criação</li>
                         </div>
                     </ul>
-                    {Admins.map((admin) => (
-                        <ul className="wrapper_admins_all_body" key={admin._id}>
-                            <div className="row">
-                                <li className="col-6 col-sm-6 col-md-4 col-lg-3">{admin.name}</li>
-                                <li className="col-3 col-sm-3 col-md-5 col-lg-4 d-none d-md-block">{admin.email}</li>
-                                <li className="col-6 col-sm-6 col-md-3 col-lg-2">
-                                    {admin.role}
-                                    <button type="button" className="delete_item d-block d-lg-none" onClick={() => alert(delete_item(admin._id))}><i class="fas fa-trash-alt"></i></button>
-                                </li>
-                                <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">
-                                    {editDate(admin.createAt)}
-                                    <button type="button" className="delete_item" onClick={() => alert(
-                                        "Você tem certeza que deseja deseja apagar esse usuário ?" + 
-                                        delete_item(admin._id)
-                                    )}><i class="fas fa-trash-alt"></i></button>
-                                </li>
-                            </div>
-                        </ul>
-                    ))}
+                    {Admins.map((admin) => (<AdminItem key={admin._id} admin={admin} alert={alert}/>))}
                 </div>
             </div>
         </div>

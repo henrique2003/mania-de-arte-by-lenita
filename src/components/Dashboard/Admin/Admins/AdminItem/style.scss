@@ -1,0 +1,107 @@
+.wrapper_admins_all {
+    margin: 0 40px;
+
+    .wrapper_admins_all_head {
+        margin-top: 40px;
+        list-style: none;
+        padding: 0;
+        padding-bottom: 7px;
+
+        li {
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-family: "Roboto";
+            color: #9370db;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            border-left: 5px solid white;
+            padding: 0;
+        }
+    }
+
+    .wrapper_admins_all_body {
+        margin-top: 25px;
+        list-style: none;
+        padding: 0;
+        padding-bottom: 7px;
+
+        li {
+            outline: none;
+            padding: 0;
+            font-size: 16px;
+            letter-spacing: 1px;
+            font-family: "Roboto";
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            border-left: 5px solid white;
+
+            .delete_item {
+                float: right;
+                border: none;
+                background: white;
+                outline: none;
+
+                i {
+                    color: red;
+                }
+            }
+        }
+    }
+}
+
+//Ipad Pró
+@media (max-width: 1024px) {
+    .wrapper_admins_all {
+        margin: 0 27px;
+
+        .wrapper_admins_all_head {
+            margin-top: 35px;
+        }
+
+        .wrapper_admins_all_body {
+            margin-top: 20px;
+
+            &:nth-child(2) {
+                margin-top: 25px;
+            }
+        }
+    }
+}
+
+//Ipad
+@media (max-width: 768px) {
+    .wrapper_admins_all {
+        margin: 0 17px;
+
+        .wrapper_admins_all_head {
+            li {
+                font-size: 17px;
+            }
+        }
+
+        .wrapper_admins_all_body {
+            li {
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+//Celphone
+@media (max-width: 480px) {
+    .wrapper_admins_all {
+        margin: 0 17px;
+
+        .wrapper_admins_all_head {
+            li {
+                font-size: 17px;
+            }
+        }
+
+        .wrapper_admins_all_body {
+            margin-top: 15px !important;
+
+            li {
+                font-size: 15px;
+            }
+        }
+    }
+}

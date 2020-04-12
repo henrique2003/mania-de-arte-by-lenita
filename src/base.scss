@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Karla|Open+Sans|Poppins|Questrial|Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Karla|Open+Sans|Poppins|Questrial|Roboto&display=swap");
 
 //Paragrath
-$font_poppins: 'Poppins';
+$font_poppins: "Poppins";
 //Navlink
-$font_roboto: 'Roboto';
+$font_roboto: "Roboto";
 //Subtitles/<p>
-$font_open: 'Open Sans';
+$font_open: "Open Sans";
 //Title
-$font_questial: 'Questrial';
+$font_questial: "Questrial";
 //Title introdution
-$font_karla: 'Karla', sans-serif;
+$font_karla: "Karla", sans-serif;
 
 $base_purple: #9370db;
-$light_black: rgba(0,0,0,0.2);
+$light_black: rgba(0, 0, 0, 0.2);
 $black_title: #464545;
 $grey: #808080;
 
@@ -31,8 +31,38 @@ body {
     overflow-x: hidden !important;
 }
 
-input, textarea {
+input,
+textarea {
     outline: 0 !important;
     box-shadow: none !important;
     border: none !important;
+}
+
+.react-confirm-alert-button-group > button {
+    background: #9370db;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-size: "Roboto";
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: white;
+        border: 1px solid #9370db;
+        color: #9370db;
+        transition: all 0.3s ease;
+    }
+
+    &:nth-child(1) {
+        transition: all 0.3s ease;
+        background: white;
+        border: 1px solid #9370db;
+        color: #9370db;
+
+        &:hover {
+            transition: all 0.3s ease;
+            background: #9370db;
+            border: 1px solid white;
+            color: white;
+        }
+    }
 }
