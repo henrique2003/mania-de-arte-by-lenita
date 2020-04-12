@@ -19,8 +19,8 @@ const Madeiras = () => {
 
         setProductData(res.data.docs)
         setPaginate({
-            pages: res.data.pages,
-            page: res.data.page
+            path: '/madeiras',
+            pages: res.data.pages
         })
     }
 

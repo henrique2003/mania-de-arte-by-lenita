@@ -3,30 +3,30 @@ import PaginateItem from './PaginateItem'
 import './style.scss'
 
 const Paginate = ({ paginate }) => {
-    const { page, pages } = paginate
+    const { pages, path } = paginate
 
-    function validPaginate(page, pages) {
+    function validPaginate(pages) {
         if (pages <= 3) {
-            if (page === 1) return false
+            if (pages === 1) return false
             return (
                 <>
                     <PaginateItem 
-                        classContent={page - 2 <= 0 ? "d-none" : ""}
-                        path={`/admin/produtos?page=${page - 2}`}
-                        text={page - 2}
+                        classContent={pages - 2 <= 0 ? "d-none" : ""}
+                        path={`${path}?page=${pages - 2}`}
+                        text={pages - 2}
                     />
                     <PaginateItem
-                        path={`/admin/produtos?page=${page - 1}`}
-                        text={page - 1}
+                        path={`${path}?page=${pages - 1}`}
+                        text={pages - 1}
                     />
                     <PaginateItem 
-                        path={`/admin/produtos?page=${page}`}
-                        text={page}
+                        path={`${path}?page=${pages}`}
+                        text={pages}
                     />
                     <PaginateItem 
-                        classContent={page + 1 > pages ? "d-none" : ""}
-                        path={`/admin/produtos?page=${page + 1}`}
-                        text={page + 1}
+                        classContent={pages + 1 > pages ? "d-none" : ""}
+                        path={`${path}?page=${pages + 1}`}
+                        text={pages + 1}
                     />
                 </>
             )
@@ -34,37 +34,37 @@ const Paginate = ({ paginate }) => {
         return (
             <>
                 <PaginateItem 
-                        classContent={page - 1 <= 0 ? "d-none" : ""}
-                        path={`/admin/produtos?page=${page - 1}`}
+                        classContent={pages - 1 <= 0 ? "d-none" : ""}
+                        path={`${path}?page=${pages - 1}`}
                         text={<i className='fas fa-chevron-left'></i>}
                 />
                 <PaginateItem 
-                        classContent={page + 2 > pages ? "d-block" : "d-none"}
-                        path={`/admin/produtos?page=${page - 2}`}
-                        text={page - 2}
+                        classContent={pages + 2 > pages ? "d-block" : "d-none"}
+                        path={`${path}?page=${pages - 2}`}
+                        text={pages - 2}
                 />
                 <PaginateItem 
-                        classContent={page - 2 <= 0 ? "d-none" : ""}
-                        path={`/admin/produtos?page=${page - 1}`}
-                        text={page - 1}
+                        classContent={pages - 2 <= 0 ? "d-none" : ""}
+                        path={`${path}?page=${pages - 1}`}
+                        text={pages - 1}
                 />
                 <PaginateItem
-                        path={`/admin/produtos?page=${page}`}
-                        text={page}
+                        path={`${path}?page=${pages}`}
+                        text={pages}
                 />
                 <PaginateItem 
-                        classContent={page + 1 > pages ? "d-none" : ""}
-                        path={`/admin/produtos?page=${page + 1}`}
-                        text={page + 1}
+                        classContent={pages + 1 > pages ? "d-none" : ""}
+                        path={`${path}?page=${pages + 1}`}
+                        text={pages + 1}
                 />
                 <PaginateItem 
-                        classContent={page - 2 <= 0 ? "d-block" : "d-none"}
-                        path={`/admin/produtos?page=${page + 2}`}
-                        text={page + 2}
+                        classContent={pages - 2 <= 0 ? "d-block" : "d-none"}
+                        path={`${path}?page=${pages + 2}`}
+                        text={pages + 2}
                 />
                 <PaginateItem 
-                        classContent={page + 1 > pages ? "d-none" : ""}
-                        path={`/admin/produtos?page=${page + 1}`}
+                        classContent={pages + 1 > pages ? "d-none" : ""}
+                        path={`${path}?page=${pages + 1}`}
                         text={<i className="fas fa-chevron-right"></i>}
                 />
             </>
@@ -74,7 +74,7 @@ const Paginate = ({ paginate }) => {
     return (
         <div className="wrapper_paginate">
             <ul>
-                {validPaginate(page, pages)}
+                {validPaginate(pages)}
             </ul>
         </div>
     )

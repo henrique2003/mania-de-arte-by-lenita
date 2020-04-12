@@ -4,28 +4,39 @@ import { toast } from 'react-toastify'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { confirmAlert } from 'react-confirm-alert'
+
 import { loadPrimary } from '../../../../redux/actions/Auth'
 import token from '../../../../config/token'
 import api from '../../../../services/api'
 
 import AdminItem from './AdminItem'
+import Paginate from '../../../Bases/Paginate'
 
 import './style.scss'
 
-const Admins = ({ loadPrimary, history }) => {
+const Admins = ({ loadPrimary, history, location }) => {
     const [Admins, setAdmins] = useState([])
+    const [paginate, setPaginate] = useState({
+        page: 1,
+        pages: 1 
+    })
+
     useEffect(() => {
         window.scrollTo(0, 0)
         token()
         loadPrimary(history)
 
         async function loadAdmins() {
-            let res = await api.get('/admin')
+            let res = await api.get(`/admin${location.search}`)
 
             setAdmins(res.data.docs)
+            setPaginate({
+                path: '/admin/admins',
+                pages: res.data.pages
+            })
         }
         loadAdmins()
-    }, [loadPrimary, history])
+    }, [loadPrimary, history, location.search])
 
     async function deleteAll() {
         try {
@@ -83,6 +94,7 @@ const Admins = ({ loadPrimary, history }) => {
                         </div>
                     </ul>
                     {Admins.map((admin) => (<AdminItem key={admin._id} admin={admin} alert={alert}/>))}
+                    <Paginate paginate={paginate} />
                 </div>
             </div>
         </div>

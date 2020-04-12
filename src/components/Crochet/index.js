@@ -19,8 +19,8 @@ const Crochet = () => {
 
         setProductData(res.data.docs)
         setPaginate({
-            pages: res.data.pages,
-            page: res.data.page
+            path: '/crochet',
+            pages: res.data.pages
         })
     }
 

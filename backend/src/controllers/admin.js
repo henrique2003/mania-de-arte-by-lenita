@@ -10,7 +10,7 @@ module.exports = {
         try {
             const { page = 1 } = req.query
 
-            const admins = await Admin.paginate({}, { page, limit: 40 })
+            const admins = await Admin.paginate({}, { page, limit: 10 })
 
             return ok(res, admins)
         } catch (error) {
