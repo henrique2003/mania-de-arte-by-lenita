@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { confirmAlert } from 'react-confirm-alert'
-import { loadUser } from '../../../../redux/actions/Auth'
+import { loadPrimary } from '../../../../redux/actions/Auth'
 import token from '../../../../config/token'
 import api from '../../../../services/api'
 
@@ -12,12 +12,12 @@ import AdminItem from './AdminItem'
 
 import './style.scss'
 
-const Admins = ({ loadUser, history }) => {
+const Admins = ({ loadPrimary, history }) => {
     const [Admins, setAdmins] = useState([])
     useEffect(() => {
         window.scrollTo(0, 0)
         token()
-        loadUser(history)
+        loadPrimary(history)
 
         async function loadAdmins() {
             let res = await api.get('/admin')
@@ -25,7 +25,7 @@ const Admins = ({ loadUser, history }) => {
             setAdmins(res.data.docs)
         }
         loadAdmins()
-    }, [loadUser, history])
+    }, [loadPrimary, history])
 
     async function deleteAll() {
         try {
@@ -90,7 +90,7 @@ const Admins = ({ loadUser, history }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    loadUser: (history) => dispatch(loadUser(history))
+    loadPrimary: (history) => dispatch(loadPrimary(history))
 })
 
 export default connect(null, mapDispatchToProps)(withRouter(Admins))

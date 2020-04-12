@@ -188,7 +188,7 @@ module.exports = {
             const id = req.userId
             if(!id) unauthorized(res, "Acesso negado")
 
-            let user = await Admin.find({ _id: id, role: "Primary" })
+            let user = await Admin.findOne({ _id: id, role: "Primary" })
             if(!user) return unauthorized(res, "Acesso negado")
 
             return ok(res, user)

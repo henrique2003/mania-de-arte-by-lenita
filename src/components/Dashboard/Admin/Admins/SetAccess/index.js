@@ -3,20 +3,20 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Select from 'react-select'
 
-import { loadUser } from '../../../../../redux/actions/Auth/index'
+import { loadPrimary } from '../../../../../redux/actions/Auth/index'
 import token from '../../../../../config/token'
 import api from '../../../../../services/api'
 
 import './style.scss'
 
-const SetAccess = ({ loadUser, history }) => {
+const SetAccess = ({ loadPrimary, history }) => {
     const [Role, setRole] = useState({ role: null })
 
     useEffect(() => {
         window.scrollTo(0,0)
         token()
-        loadUser(history)
-    }, [loadUser, history])
+        loadPrimary(history)
+    }, [loadPrimary, history])
 
     return (
         <div className="wrapper_set_access">
@@ -26,7 +26,7 @@ const SetAccess = ({ loadUser, history }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    loadUser: (history) => dispatch(loadUser(history))
+    loadPrimary: (history) => dispatch(loadPrimary(history))
 })
 
 export default connect(null, mapDispatchToProps)(withRouter(SetAccess))
