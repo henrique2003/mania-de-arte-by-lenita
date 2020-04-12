@@ -19,6 +19,22 @@ export const loadUser = (history) => async dispatch => {
     }
 }
 
+export const loadPrimary = (history) => async dispatch => {
+    try {
+        token()
+        const res = await api.get("/admin/load/primary")
+
+        dispatch({
+            type: LOAD_USER,
+            payload: res.data
+        })
+    } catch (error) {
+        dispatch({ type: USER_ERROR })
+        toast.error("Acesso negado")
+        return history.push("/login")
+    }
+}
+
 export const login = (data, history) => async dispatch => {
     try {
         const res = await api.post('/login', data)

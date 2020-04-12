@@ -64,6 +64,7 @@ router.get('/all/admin', auth, isPrimary, controllerAdmin.count)
 router.post('/login', controllerAdmin.login)
 //load user
 router.get('/admin/load', auth, isAdmin, controllerAdmin.load)
+router.get('/admin/load/primary', auth, isPrimary, controllerAdmin.loadPrimary)
 
 //Pay
 //Mercado Pago

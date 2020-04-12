@@ -181,5 +181,19 @@ module.exports = {
         } catch (error) {
             return serverError(res, "Server error in load user")
         }
+    },
+
+    async loadPrimary(req, res) {
+        try {
+            const id = req.userId
+            if(!id) unauthorized(res, "Acesso negado")
+
+            let user = await Admin.find({ _id: id, role: "Primary" })
+            if(!user) return unauthorized(res, "Acesso negado")
+
+            return ok(res, user)
+        } catch (error) {
+            return serverError(res, "Server error in load primary")
+        }
     }
 }
