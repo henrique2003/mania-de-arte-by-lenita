@@ -26,14 +26,14 @@ const CreateAdmin = ({ loadPrimary, history }) => {
 
     const onSubmit = async e => {
         e.preventDefault()
-        try {
-            await api.post(`/admin`, data)
+        // try {
+        //     let res = await api.post(`/admin`, data)
 
-            toast.success("Cadastrado com sucesso")
-            return history.push('/admin/admins')
-        } catch (error) {
-            return toast.error("Erro ao cadastrar novo usuário")
-        }
+        //     toast.success("Cadastrado com sucesso")
+        //     return history.push('/admin/admins')
+        // } catch (error) {
+        //     return toast.error("Erro ao cadastrar novo usuário")
+        // }
     }
 
     return (
@@ -51,14 +51,37 @@ const CreateAdmin = ({ loadPrimary, history }) => {
                             className="form-control"
                         />
                     </div>
-                    <div className="form-group col-6">
-                        <select id="inputState" className="form-control" onChange={(e) => setData({ role: e.target.value })}>
+                    <div className="form-group col-12 col-sm-12 col-md-6">
+                        <label for="email">Email:</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={email}
+                            placeholder="Exemplo: henrique@gmail.com"
+                            className="form-control"
+                        />
+                    </div>
+                    <div className="form-group col-12 col-sm-12 col-md-6">
+                        <label for="password">Senha:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={password}
+                            placeholder="Exemplo: henrique123"
+                            className="form-control"
+                        />
+                    </div>
+                    <div className="form-group col-12 col-sm-12 col-md-6">
+                        <label for="role">Função:</label>
+                        <select id="role" className="form-control" onChange={(e) => setData({ role: e.target.value })}>
                             <option value="Primary">Admin</option>
                             <option value="Secondary">Ajudante</option>
                         </select>
                     </div>
                 </div>
-                <button type="submit">Editar</button>
+                <button type="submit">Cadastrar</button>
             </form>
         </div>
     )
