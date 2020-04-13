@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+
+import { load } from '../../redux/actions/Auth'
+import token from '../../config/token'
 import api from '../../services/api'
 
 import Title from '../Bases/Title'
@@ -8,21 +12,23 @@ import Warning from '../Bases/Warning'
 
 import './style.scss'
 
-const Madeiras = () => {
+const Madeiras = ({ load }) => {
     useEffect(() => {
+        token()
         window.scrollTo(0, 0)
+        load()
+
+        async function loadWoods() {
+            const res = await api.get('/products/page/madeira')
+
+            setProductData(res.data.docs)
+            setPaginate({
+                path: '/madeiras',
+                pages: res.data.pages
+            })
+        }
         loadWoods()
-    }, [])
-
-    async function loadWoods() {
-        const res = await api.get('/products/page/madeira')
-
-        setProductData(res.data.docs)
-        setPaginate({
-            path: '/madeiras',
-            pages: res.data.pages
-        })
-    }
+    }, [load])
 
     const [paginate, setPaginate] = useState({
         pages: 1,
@@ -39,14 +45,18 @@ const Madeiras = () => {
                     {ProductData.length === 0 ?
                         <Warning color="greey" text="Sem produtos no momento!" /> :
                         ProductData.map((product) => (
-                            <Product data={product}/>
+                            <Product data={product} />
                         ))
                     }
                 </div>
-                <Paginate paginate={paginate}/>
+                <Paginate paginate={paginate} />
             </div>
         </div>
     )
 }
 
-export default Madeiras
+const mapDispatchToProps = dispatch => ({
+    load: () => dispatch(load())
+})
+
+export default connect(null, mapDispatchToProps)(Madeiras)
