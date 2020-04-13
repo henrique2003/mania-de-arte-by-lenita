@@ -1,16 +1,20 @@
 import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { load } from '../../redux/actions/Auth'
+import token from '../../config/token'
 
 import Title from '../../components/Bases/Title'
 import Questions from './components/Questions'
 
 import './style.scss'
 
-const Asks = () => {
+const Asks = ({ load }) => {
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [])
+        token()
+        load()
+    }, [load])
 
     return (
         <div className="wrapper_asks">
@@ -43,4 +47,8 @@ const Asks = () => {
     )
 }
 
-export default Asks
+const mapDispatchToProps = dispatch => ({
+    load: () => dispatch(load())
+})
+
+export default connect(null, mapDispatchToProps)(Asks)

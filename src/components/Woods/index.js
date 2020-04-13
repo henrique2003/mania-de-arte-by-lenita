@@ -22,17 +22,14 @@ const Madeiras = ({ load }) => {
             const res = await api.get('/products/page/madeira')
 
             setProductData(res.data.docs)
-            setPaginate({
-                path: '/madeiras',
-                pages: res.data.pages
-            })
+            setPaginate({ pages: res.data.pages })
         }
         loadWoods()
     }, [load])
 
-    const [paginate, setPaginate] = useState({
-        pages: 1,
-        page: 1
+    const [paginate, setPaginate] = useState({ 
+        path: '/madeiras',
+        pages: 1
     })
 
     const [ProductData, setProductData] = useState([])

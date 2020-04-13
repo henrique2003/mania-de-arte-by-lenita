@@ -24,17 +24,14 @@ const Crochet = ({ load }) => {
         const res = await api.get('/products/page/crochet')
 
         setProductData(res.data.docs)
-        setPaginate({
-            path: '/crochet',
-            pages: res.data.pages
-        })
+        setPaginate({ pages: res.data.pages })
     }
 
     const [ProductData, setProductData] = useState([])
 
     const [panigate, setPaginate] = useState({
-        pages: 1,
-        page: 0
+        path: '/crochet',
+        pages: 1
     })
 
     return (
