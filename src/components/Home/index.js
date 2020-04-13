@@ -1,4 +1,9 @@
 import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+
+import { load } from '../../redux/actions/Auth'
+import token from '../../config/token'
+
 import Introdution from './components/Introdution'
 import AboutMe from './components/AboutMe'
 import SomeProducts from './components/SomeProducts'
@@ -11,10 +16,12 @@ import Truck from '../../utils/icons/truck.png'
 
 import './style.scss'
 
-const Home = () => {
+const Home = ({ load }) => {
     useEffect(() => {
+        token()
         window.scrollTo(0, 0);
-    }, []);
+        load()
+    }, [load]);
 
     return (
         <div className="wrapper_home">
@@ -39,4 +46,8 @@ const Home = () => {
     )
 }
 
-export default Home;
+const mapDispatchToProps = dispatch => ({
+    load: () => dispatch(load())
+})
+
+export default connect(null, mapDispatchToProps)(Home)

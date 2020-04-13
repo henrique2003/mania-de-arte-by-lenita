@@ -3,6 +3,20 @@ import api from '../../../services/api'
 import token from '../../../config/token'
 import { LOGIN, LOAD_USER, LOGOUT, USER_ERROR } from './types'
 
+export const load = () => async dispatch => {
+    try {
+        token()
+        const res = await api.get("/admin/load")
+
+        dispatch({
+            type: LOAD_USER,
+            payload: res.data
+        })
+    } catch (error) {
+        dispatch({ type: USER_ERROR })
+    }
+}
+
 export const loadUser = (history) => async dispatch => {
     try {
         token()
