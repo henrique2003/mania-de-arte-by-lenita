@@ -118,7 +118,7 @@ const Admins = ({ loadPrimary, history, location }) => {
                             <li className="col-6 col-sm-6 col-md-4 col-lg-3">Nome</li>
                             <li className="col-3 col-sm-3 col-md-5 col-lg-4 d-none d-md-block">Email</li>
                             <li className="col-6 col-sm-6 col-md-3 col-lg-2">Função</li>
-                            <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">Criação</li>
+                            <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">Data de criação</li>
                         </div>
                     </ul>
                     {Admins.map((admin) => (<AdminItem key={admin._id} admin={admin} alert={alertDelete}/>))}
