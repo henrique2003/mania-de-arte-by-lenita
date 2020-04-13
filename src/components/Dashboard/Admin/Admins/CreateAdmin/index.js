@@ -16,13 +16,15 @@ const CreateAdmin = ({ loadPrimary, history }) => {
         password: '',
         role: ''
     })
-    const { name, email, password, role } = data
+    const { name, email, password } = data
 
     useEffect(() => {
         window.scrollTo(0, 0)
         token()
         loadPrimary(history)
     }, [loadPrimary, history])
+
+    const onChange = e => setData({...data, [e.target.name]: e.target.value})
 
     const onSubmit = async e => {
         e.preventDefault()
@@ -38,44 +40,47 @@ const CreateAdmin = ({ loadPrimary, history }) => {
 
     return (
         <div className="wrapper_new_admin">
-            <form className="form_new_admin col-12 col-sm-12 col-md-11 col-lg-10 mx-auto" onSubmit={onSubmit}>
+            <form className="form_new_admin col-11 col-sm-12 col-md-11 col-lg-10 mx-auto" onSubmit={onSubmit}>
                 <div className="form-row">
                     <div className="form-group col-12 col-sm-12 col-md-6">
-                        <label for="name">Nome:</label>
+                        <label htmlFor="name">Nome:</label>
                         <input
                             type="text"
                             id="name"
                             name="name"
                             value={name}
                             placeholder="Exemplo: Henrique de Melo"
+                            onChange={onChange}
                             className="form-control"
                         />
                     </div>
                     <div className="form-group col-12 col-sm-12 col-md-6">
-                        <label for="email">Email:</label>
+                        <label htmlFor="email">Email:</label>
                         <input
                             type="email"
                             id="email"
                             name="email"
                             value={email}
                             placeholder="Exemplo: henrique@gmail.com"
+                            onChange={onChange}
                             className="form-control"
                         />
                     </div>
                     <div className="form-group col-12 col-sm-12 col-md-6">
-                        <label for="password">Senha:</label>
+                        <label htmlFor="password">Senha:</label>
                         <input
                             type="password"
                             id="password"
                             name="password"
                             value={password}
                             placeholder="Exemplo: henrique123"
+                            onChange={onChange}
                             className="form-control"
                         />
                     </div>
                     <div className="form-group col-12 col-sm-12 col-md-6">
-                        <label for="role">Função:</label>
-                        <select id="role" className="form-control" onChange={(e) => setData({ role: e.target.value })}>
+                        <label htmlFor="role">Função:</label>
+                        <select id="role" className="form-control" onChange={onChange}>
                             <option value="Primary">Admin</option>
                             <option value="Secondary">Ajudante</option>
                         </select>
