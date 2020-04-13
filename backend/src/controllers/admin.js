@@ -23,7 +23,9 @@ module.exports = {
         const { email, password } = req.body
         try {
             if (await Admin.findOne({ email }))
-                return badRequest(res, "Admin already exists")
+                return badRequest(res, "Email em uso")
+
+            if(!email || !password) return badRequest(res, "Campo em branco")
 
             req.body.password = await bcrypt.hash(password, 10)
 

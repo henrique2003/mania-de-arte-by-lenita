@@ -14,9 +14,9 @@ const CreateAdmin = ({ loadPrimary, history }) => {
         name: '',
         email: '',
         password: '',
-        role: ''
+        role: 'Primary'
     })
-    const { name, email, password } = data
+    const { name, email, password, role } = data
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -28,14 +28,18 @@ const CreateAdmin = ({ loadPrimary, history }) => {
 
     const onSubmit = async e => {
         e.preventDefault()
-        // try {
-        //     let res = await api.post(`/admin`, data)
+        
+        if(!name || !password || !role || !email) return toast.error("Campo em branco")
 
-        //     toast.success("Cadastrado com sucesso")
-        //     return history.push('/admin/admins')
-        // } catch (error) {
-        //     return toast.error("Erro ao cadastrar novo usuário")
-        // }
+        try {
+             await api.post(`/admin`, data)
+
+            toast.success("Cadastrado com sucesso")
+            return history.push('/admin/admins')
+        } catch (error) {
+            if(error.response.status) return toast.error(error.response.data)
+            return toast.error("Erro ao cadastrar novo usuário")
+        }
     }
 
     return (

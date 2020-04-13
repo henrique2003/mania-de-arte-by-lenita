@@ -47,7 +47,7 @@
 - [x] O Admin primário pode deletar todos os ajudantes de uma vez.
 - [x] O Admin primário pode deletar outros admins.
 - [x] O Admin primários pode alterar a função do restante dos Admins.
-- [ ] O Admin primário pode adicionar um novo admin de qualquer função.
+- [x] O Admin primário pode adicionar um novo admin de qualquer função.
 
 #### Produtos - front-end
 
