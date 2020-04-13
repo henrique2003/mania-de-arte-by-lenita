@@ -66,7 +66,7 @@ const Admins = ({ loadPrimary, history, location }) => {
         }
     }
 
-    function alert(id) {
+    function alertDelete(id) {
         confirmAlert({
             title: 'Você tem certeza',
             message: 'Você tem certeza que deseja apagar esse usuário?',
@@ -74,6 +74,22 @@ const Admins = ({ loadPrimary, history, location }) => {
                 {
                     label: 'Deletar',
                     onClick: () => delete_item(id)
+                },
+                {
+                    label: 'Cancelar'
+                }
+            ]
+        })
+    }
+    
+    function alertDeleteAll() {
+        confirmAlert({
+            title: 'Você tem certeza',
+            message: 'Você tem certeza que deseja apagar todos os seus ajudantes?',
+            buttons: [
+                {
+                    label: 'Deletar',
+                    onClick: () => deleteAll()
                 },
                 {
                     label: 'Cancelar'
@@ -91,7 +107,7 @@ const Admins = ({ loadPrimary, history, location }) => {
                         <Link to="/admin/criar/admins" className="action_add">
                             <i className="fas fa-plus mr-1"></i>
                             Criar novo</Link>
-                        <button type="button" onClick={deleteAll} className="action_delete_all">
+                        <button type="button" onClick={alertDeleteAll} className="action_delete_all">
                             <i className="fas fa-minus mr-1"></i>
                             Deletar todos</button>
                     </div>
@@ -105,7 +121,7 @@ const Admins = ({ loadPrimary, history, location }) => {
                             <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">Criação</li>
                         </div>
                     </ul>
-                    {Admins.map((admin) => (<AdminItem key={admin._id} admin={admin} alert={alert}/>))}
+                    {Admins.map((admin) => (<AdminItem key={admin._id} admin={admin} alert={alertDelete}/>))}
                     <Paginate paginate={paginate} />
                 </div>
             </div>
