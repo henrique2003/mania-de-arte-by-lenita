@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+
+import { load } from '../../redux/actions/Auth'
+import token from '../../config/token'
 import api from '../../services/api'
 
 import Title from '../Bases/Title'
@@ -8,11 +12,13 @@ import Warning from '../Bases/Warning'
 
 import './style.scss'
 
-const Crochet = () => {
+const Crochet = ({ load }) => {
     useEffect(() => {
         window.scrollTo(0, 0)
+        token()
+        load()
         loadCrochet()
-    }, [])
+    }, [load])
 
     async function loadCrochet() {
         const res = await api.get('/products/page/crochet')
@@ -49,4 +55,8 @@ const Crochet = () => {
     )
 }
 
-export default Crochet
+const mapDispatchToProps = dispatch => ({
+    load: () => dispatch(load())
+})
+
+export default connect(null, mapDispatchToProps)(Crochet)
