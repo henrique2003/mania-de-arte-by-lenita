@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { load } from '../../redux/actions/Auth'
+import token from '../../config/token'
 import api from '../../services/api'
 
 import MercadoPago from '../../utils/icons/mercado_pago.jpg'
@@ -7,9 +11,12 @@ import Warning from '../Bases/Warning'
 
 import './style.scss'
 
-const ProductPage = ({ match }) => {
+const ProductPage = ({ match, load }) => {
     useEffect(() => {
         window.scrollTo(0, 0)
+        token()
+        load()
+
         async function loadProduct() {
             const res = await api.get(`/products/${match.params.id}`)
 
@@ -20,7 +27,7 @@ const ProductPage = ({ match }) => {
         }
         
         loadProduct()
-    }, [match.params.id])
+    }, [load, match.params.id])
 
 
     const [product, setProduct] = useState({})
@@ -55,4 +62,8 @@ const ProductPage = ({ match }) => {
     )
 }
 
-export default ProductPage
+const mapDispatchToProps = dispatch => ({
+    load: () => dispatch(load())
+})
+
+export default connect(null, mapDispatchToProps)(ProductPage)
