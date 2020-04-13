@@ -43,7 +43,7 @@ const Header = ({ history, user, logout }) => {
                     <>
                         <HeaderLink to="/" title="Home" />
                         <HeaderLink to="/madeiras" title="Madeiras" />
-                        <HeaderLink to="/croche" title="Croche" />
+                        <HeaderLink to="/crochet" title="Croche" />
                         <HeaderLink to="/duvidas" title="Dúvidas" />
                     </>
                 )
@@ -75,7 +75,7 @@ const Header = ({ history, user, logout }) => {
                     <>
                         <span onClick={closeNavbar}><HeaderLink to="/" title="Home" /></span>
                         <span onClick={closeNavbar}><HeaderLink to="/madeiras" title="Madeiras" /></span>
-                        <span onClick={closeNavbar}><HeaderLink to="/croche" title="Croche" /></span>
+                        <span onClick={closeNavbar}><HeaderLink to="/crochet" title="Croche" /></span>
                         <span onClick={closeNavbar}><HeaderLink to="/duvidas" title="Dúvidas" /></span>
                     </>
                 )

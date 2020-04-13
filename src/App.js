@@ -54,7 +54,7 @@ function App() {
   const WithFooter = withRouter(({ location }) => {
     if (location.pathname === '/' ||
       location.pathname === '/madeiras' ||
-      location.pathname === '/croche' ||
+      location.pathname === '/crochet' ||
       location.pathname === '/duvidas' ||
       location.pathname === '/produtos/mais/:id'
     ) return <Footer />
@@ -71,7 +71,7 @@ function App() {
           {/* Web */}
           <Route path="/" exact component={Home} />
           <Route path="/madeiras" component={Woods} />
-          <Route path="/croche" component={Crochet} />
+          <Route path="/crochet" component={Crochet} />
           <Route path="/duvidas" component={Asks} />
           <Route path="/produtos/mais/:id" component={ProductPage} />
 
