@@ -9,7 +9,7 @@ import { loadPrimary } from '../../../../redux/actions/Auth'
 import token from '../../../../config/token'
 import api from '../../../../services/api'
 
-import AdminItem from './AdminItem'
+import AdminItem from './components/AdminItem'
 import Paginate from '../../../Bases/Paginate'
 
 import './style.scss'
@@ -87,9 +87,13 @@ const Admins = ({ loadPrimary, history, location }) => {
             <div className="container-fluid">
                 <div className="wrapper_title">
                     <h3>Admins</h3>
-                    <div className="wrapper_title_actions">
-                        <Link to="/admin/criar/admins" className="action_add">Criar novo</Link>
-                        <button type="button" onClick={deleteAll} className="action_delete_all">Deletar todos</button>
+                    <div>
+                        <Link to="/admin/criar/admins" className="action_add">
+                            <i className="fas fa-plus mr-1"></i>
+                            Criar novo</Link>
+                        <button type="button" onClick={deleteAll} className="action_delete_all">
+                            <i className="fas fa-minus mr-1"></i>
+                            Deletar todos</button>
                     </div>
                 </div>
                 <div className="wrapper_admins_all">
