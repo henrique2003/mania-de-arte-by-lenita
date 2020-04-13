@@ -13,10 +13,12 @@ const CreateAdmin = ({ loadPrimary, history }) => {
     const [data, setData] = useState({
         name: '',
         email: '',
-        password: '',
-        role: 'Primary'
+        password: ''
     })
-    const { name, email, password, role } = data
+    const { name, email, password } = data
+
+    const [Role, setRole] = useState({ role: 'Primary' })
+    const { role } = Role
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -32,7 +34,14 @@ const CreateAdmin = ({ loadPrimary, history }) => {
         if(!name || !password || !role || !email) return toast.error("Campo em branco")
 
         try {
-             await api.post(`/admin`, data)
+            let data_body = {
+                name,
+                email,
+                password,
+                role
+            }
+
+             await api.post(`/admin`, data_body)
 
             toast.success("Cadastrado com sucesso")
             return history.push('/admin/admins')
@@ -84,7 +93,7 @@ const CreateAdmin = ({ loadPrimary, history }) => {
                     </div>
                     <div className="form-group col-12 col-sm-12 col-md-6">
                         <label htmlFor="role">Função:</label>
-                        <select id="role" className="form-control" onChange={onChange}>
+                        <select id="role" className="form-control" onChange={(e) => setRole({ role: e.target.value })}>
                             <option value="Primary">Admin</option>
                             <option value="Secondary">Ajudante</option>
                         </select>
