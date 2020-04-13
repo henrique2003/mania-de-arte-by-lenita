@@ -88,7 +88,7 @@ const Admins = ({ loadPrimary, history, location }) => {
                 <div className="wrapper_title">
                     <h3>Admins</h3>
                     <div className="wrapper_title_actions">
-                        <Link to="admin/admins/novo" className="action_add">Criar novo</Link>
+                        <Link to="/admin/criar/admins" className="action_add">Criar novo</Link>
                         <button type="button" onClick={deleteAll} className="action_delete_all">Deletar todos</button>
                     </div>
                 </div>

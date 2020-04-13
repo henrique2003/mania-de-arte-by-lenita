@@ -34,6 +34,7 @@ import DashboardIndex from './components/Dashboard/Index'
 import Admins from './components/Dashboard/Admin/Admins'
 import AdminProducts from './components/Dashboard/Admin/AdminProducts'
 import SetAccess from './components/Dashboard/Admin/Admins/SetAccess'
+import CreateAdmin from './components/Dashboard/Admin/Admins/CreateAdmin'
 
 //Users
 
@@ -79,6 +80,7 @@ function App() {
           <Route path="/admin" exact component={DashboardIndex}/>
           <Route path="/admin/admins" exact component={Admins}/>
           <Route path="/admin/admins/:id" component={SetAccess}/>
+          <Route path="/admin/criar/admins" component={CreateAdmin} />
           <Route path="/admin/produtos" component={AdminProducts}/>
           <Route path="/admin/produto/editar/:id" component={AdminProducts} />
 
