@@ -4,6 +4,14 @@
     height: 100vh;
     background: #eee;
 
+    .back_to_home {
+        i {
+            padding: 20px 30px;
+            font-size: 30px;
+            color: #464545;
+        }
+    }
+
     .wrapper_auth_form {
         background: white;
         position: absolute;
@@ -61,8 +69,8 @@
 //Smathphone
 @media (max-width: 600px) {
     .wrapper_auth_form {
-        width: 350px;
-        padding: 20px 25px;
+        width: 350px !important;
+        transform: translate(-50%, -50%) !important;
 
         h4 {
             margin: 20px 0 30px 0;
@@ -84,11 +92,10 @@
 }
 
 //Celphone
-@media (max-width: 400px) {
+@media (max-width: 350px) {
     .wrapper_auth_form {
-        transform: translate(-50%, -50%);
-        width: 280px;
-        padding: 20px 20px;
+        width: 280px !important;
+        transform: translate(-50%, -40%) !important;
 
         h4 {
             margin: 20px 0 30px 0;

@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 //Redux
 import { connect } from 'react-redux'
-import { login } from '../../redux/actions/Auth'
+import { login, load } from '../../redux/actions/Auth'
+import token from '../../config/token'
 
 import Error from '../Bases/Error'
 
 import './style.scss'
 
-const Auth = ({ history, login }) => {
-    useEffect(() => window.scrollTo(0, 0), [])
+const Auth = ({ load, history, login }) => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        token()
+        load()
+    }, [load])
 
     const [FormData, setFormData] = useState({
         email: '',
@@ -37,6 +42,11 @@ const Auth = ({ history, login }) => {
 
     return (
         <div className="wrapper_auth">
+            <div className="back_to_home">
+                <Link to="/">
+                    <i className="fas fa-arrow-left"></i>
+                </Link>
+            </div>
             <div className="wrapper_auth_form">
                 <h4>Acesso admin:</h4>
                 {show && <Error text={message} />}
@@ -72,4 +82,9 @@ const Auth = ({ history, login }) => {
     )
 }
 
-export default connect(null, { login })(withRouter(Auth))
+const mapDispatchToProps = dispatch => ({
+    login: (data, history) => dispatch(login(data, history)),
+    load: () => dispatch(load())
+})
+
+export default connect(null, mapDispatchToProps)(withRouter(Auth))
