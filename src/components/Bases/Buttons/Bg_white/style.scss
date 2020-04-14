@@ -23,6 +23,13 @@
         }
     }
 
+    &:hover > a {
+        transition: all 0.3s ease;
+        background: #9370db;
+        color: white !important;
+        text-decoration: none;
+    }
+
     &:hover {
         transition: all 0.3s ease;
         background: #9370db;
