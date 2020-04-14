@@ -8,7 +8,7 @@ import token from '../../../config/token'
 
 import BoxInfo from './components/BoxInfo'
 import AdminTitle from '../../Bases/Titles/AdminTitle'
-import HeadAdmin from '../../Bases/Containers/HeadAdmin'
+import CtnHeadDashboard from '../../Bases/Containers/CtnHeadDashboard'
 
 import './style.scss'
 
@@ -46,10 +46,10 @@ const Index = ({ user, history, loadUser }) => {
         <>
             <div className="wrapper_index">
                 <div className="container-fluid">
-                    <HeadAdmin>
+                    <CtnHeadDashboard>
                         <AdminTitle text={`Olá, ${user.name}!`} />
                         <p className="wrapper_index_description">Eu estava a sua espera, o que vamos fazer hoje?</p>
-                    </HeadAdmin>
+                    </CtnHeadDashboard>
                     <div className="row">
                         <BoxInfo
                             icon="far fa-plus-square"
