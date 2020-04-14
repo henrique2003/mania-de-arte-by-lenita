@@ -105,10 +105,10 @@ const Admins = ({ loadPrimary, history, location }) => {
                     <h3>Admins</h3>
                     <div>
                         <Link to="/admin/criar/admins" className="action_add">
-                            <i className="fas fa-plus mr-1"></i>
+                            <i className="fas fa-plus mr-1 mr-md-2"></i>
                             Criar novo</Link>
                         <button type="button" onClick={alertDeleteAll} className="action_delete_all">
-                            <i className="fas fa-minus mr-1"></i>
+                            <i className="fas fa-minus mr-1 mr-md-2"></i>
                             Deletar todos</button>
                     </div>
                 </div>
