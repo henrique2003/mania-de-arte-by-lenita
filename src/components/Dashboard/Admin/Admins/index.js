@@ -12,6 +12,7 @@ import AdminItem from './components/AdminItem'
 import Paginate from '../../../Bases/Paginate'
 import ButtonBgWhite from '../../../Bases/Buttons/Bg_white'
 import AdminTitle from '../../../Bases/Titles/AdminTitle'
+import HeadAdmin from '../../../Bases/Containers/HeadAdmin'
 
 import './style.scss'
 
@@ -19,7 +20,7 @@ const Admins = ({ loadPrimary, history, location }) => {
     const [Admins, setAdmins] = useState([])
     const [paginate, setPaginate] = useState({
         page: 1,
-        pages: 1 
+        pages: 1
     })
 
     useEffect(() => {
@@ -82,7 +83,7 @@ const Admins = ({ loadPrimary, history, location }) => {
             ]
         })
     }
-    
+
     function alertDeleteAll() {
         confirmAlert({
             title: 'Você tem certeza',
@@ -102,13 +103,15 @@ const Admins = ({ loadPrimary, history, location }) => {
     return (
         <div className="wrapper_admins">
             <div className="container-fluid">
-                <div className="wrapper_title">
-                    <AdminTitle text="Admins"/>
-                    <div>
-                        <ButtonBgWhite text={`Criar novo`} link="/admin/criar/admins" />
-                        <ButtonBgWhite action={alertDeleteAll} text={`Deletar todos`} />
+                <HeadAdmin>
+                    <div className="wrapper_admins_actions">
+                        <AdminTitle text="Admins" />
+                        <div>
+                            <ButtonBgWhite text={`Criar novo`} link="/admin/criar/admins" />
+                            <ButtonBgWhite action={alertDeleteAll} text={`Deletar todos`} />
+                        </div>
                     </div>
-                </div>
+                </HeadAdmin>
                 <div className="wrapper_admins_all">
                     <ul className="wrapper_admins_all_head">
                         <div className="row">
@@ -118,7 +121,7 @@ const Admins = ({ loadPrimary, history, location }) => {
                             <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">Data de criação</li>
                         </div>
                     </ul>
-                    {Admins.map((admin) => (<AdminItem key={admin._id} admin={admin} alert={alertDelete}/>))}
+                    {Admins.map((admin) => (<AdminItem key={admin._id} admin={admin} alert={alertDelete} />))}
                     <Paginate paginate={paginate} />
                 </div>
             </div>
