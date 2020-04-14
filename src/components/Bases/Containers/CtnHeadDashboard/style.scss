@@ -1,28 +1,5 @@
 .base_head_dashboard {
     padding-left: 5px;
-    margin: 50px 25px 30px 25px;
+    margin: 50px 0 30px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-//Ipad Pró
-@media (max-width: 1024px) {
-    .base_head_dashboard {
-        margin: 50px 10px 30px 10px;
-    }
-}
-
-//Ipad
-@media (max-width: 768px) {
-    .base_head_dashboard {
-        padding-left: 5px;
-        margin: 40px 0px 20px 0px;
-    }
-}
-
-//Celphone
-@media (max-width: 480px) {
-    .base_head_dashboard {
-        margin: 40px 0px 20px 0px;
-        padding-bottom: 5px;
-    }
 }
