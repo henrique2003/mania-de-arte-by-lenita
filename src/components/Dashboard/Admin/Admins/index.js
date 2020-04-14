@@ -12,7 +12,7 @@ import AdminItem from './components/AdminItem'
 import Paginate from '../../../Bases/Paginate'
 import ButtonBgWhite from '../../../Bases/Buttons/Bg_white'
 import AdminTitle from '../../../Bases/Titles/AdminTitle'
-import HeadAdmin from '../../../Bases/Containers/HeadAdmin'
+import CtnHeadDashboard from '../../../Bases/Containers/CtnHeadDashboard'
 
 import './style.scss'
 
@@ -103,7 +103,7 @@ const Admins = ({ loadPrimary, history, location }) => {
     return (
         <div className="wrapper_admins">
             <div className="container-fluid">
-                <HeadAdmin>
+                <CtnHeadDashboard>
                     <div className="wrapper_admins_actions">
                         <AdminTitle text="Admins" />
                         <div>
@@ -111,7 +111,7 @@ const Admins = ({ loadPrimary, history, location }) => {
                             <ButtonBgWhite action={alertDeleteAll} text={`Deletar todos`} />
                         </div>
                     </div>
-                </HeadAdmin>
+                </CtnHeadDashboard>
                 <div className="wrapper_admins_all">
                     <ul className="wrapper_admins_all_head">
                         <div className="row">
