@@ -1,37 +1,26 @@
-.wrapper_index {
-    margin: 0 40px;
-    margin-top: 30px;
-
-    .wrapper_index_description {
-        margin-top: 15px;
-        letter-spacing: 1px;
-        line-height: 10px;
-        font-size: 18px;
-        font-family: "Poppins";
-        color: #9370db;
-    }
+.wrapper_index_description {
+    margin-top: 15px;
+    letter-spacing: 1px;
+    line-height: 10px;
+    font-size: 18px;
+    font-family: "Poppins";
+    color: #9370db;
 }
 
 //Ipad
 @media (max-width: 768px) {
-    .wrapper_index {
-        .wrapper_index_description {
-            margin-top: 13px;
-            font-size: 17px;
-        }
+    .wrapper_index_description {
+        margin-top: 13px;
+        font-size: 17px;
+        line-height: 20px;
     }
 }
 
 //Celphone
 @media (max-width: 480px) {
-    .wrapper_index {
-        margin: 0 20px;
-
-        .wrapper_index_description {
-            margin-top: 10px;
-            line-height: 20px;
-            font-size: 15px;
-            line-height: 20px;
-        }
+    .wrapper_index_description {
+        margin-top: 10px;
+        font-size: 15px;
+        line-height: 20px;
     }
 }

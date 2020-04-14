@@ -9,6 +9,7 @@ import token from '../../../config/token'
 import BoxInfo from './components/BoxInfo'
 import AdminTitle from '../../Bases/Titles/AdminTitle'
 import CtnHeadDashboard from '../../Bases/Containers/CtnHeadDashboard'
+import CtnDashboard from '../../Bases/Containers/CtnDashboard'
 
 import './style.scss'
 
@@ -43,36 +44,34 @@ const Index = ({ user, history, loadUser }) => {
     }, [history, loadUser])
 
     return (
-        <>
-            <div className="wrapper_index">
-                <div className="container-fluid">
-                    <CtnHeadDashboard>
-                        <AdminTitle text={`Olá, ${user.name}!`} />
-                        <p className="wrapper_index_description">Eu estava a sua espera, o que vamos fazer hoje?</p>
-                    </CtnHeadDashboard>
-                    <div className="row">
-                        <BoxInfo
-                            icon="far fa-plus-square"
-                            text="Cadastrados"
-                            link="produtos"
-                            length={Regitered}
-                        />
-                        <BoxInfo
-                            icon="fas fa-cart-plus"
-                            text="Pedidos"
-                            link="pedidos"
-                            length={Purchased}
-                        />
-                        <BoxInfo
-                            icon="fas fa-user-plus"
-                            text="Admins"
-                            link="admins"
-                            length={Admins}
-                        />
-                    </div>
+        <CtnDashboard>
+            <div className="container-fluid">
+                <CtnHeadDashboard>
+                    <AdminTitle text={`Olá, ${user.name}!`} />
+                    <p className="wrapper_index_description">Eu estava a sua espera, o que vamos fazer hoje?</p>
+                </CtnHeadDashboard>
+                <div className="row">
+                    <BoxInfo
+                        icon="far fa-plus-square"
+                        text="Cadastrados"
+                        link="produtos"
+                        length={Regitered}
+                    />
+                    <BoxInfo
+                        icon="fas fa-cart-plus"
+                        text="Pedidos"
+                        link="pedidos"
+                        length={Purchased}
+                    />
+                    <BoxInfo
+                        icon="fas fa-user-plus"
+                        text="Admins"
+                        link="admins"
+                        length={Admins}
+                    />
                 </div>
             </div>
-        </>
+        </CtnDashboard>
     )
 }
 

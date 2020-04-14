@@ -3,10 +3,8 @@ import './style.scss'
 
 export default function CtnHeadDashboard({ children }) {
     return (
-        <div className="head_admin">
-            <div className="container-fluid">
-                {children}
-            </div>
+        <div className="base_head_dashboard">
+            {children}
         </div>
     )
 }

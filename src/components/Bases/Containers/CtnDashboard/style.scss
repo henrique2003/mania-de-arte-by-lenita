@@ -1,3 +1,10 @@
 .base_ctn_dashborad {
     margin: 30px 40px;
 }
+
+//Celphone
+@media (max-width: 480px) {
+    .base_ctn_dashborad {
+        margin: 10px 0;
+    }
+}
