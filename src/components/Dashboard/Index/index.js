@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+
 import { loadUser } from '../../../redux/actions/Auth'
 import api from '../../../services/api'
 import token from '../../../config/token'
 
 import BoxInfo from './components/BoxInfo'
 import AdminTitle from '../../Bases/Titles/AdminTitle'
+import HeadAdmin from '../../Bases/Containers/HeadAdmin'
 
 import './style.scss'
 
@@ -44,10 +46,10 @@ const Index = ({ user, history, loadUser }) => {
         <>
             <div className="wrapper_index">
                 <div className="container-fluid">
-                    <div className="wrapper_welcome">
+                    {/* <HeadAdmin>
                         <AdminTitle text={`Olá, ${user.name}!`} />
                         <p>Eu estava a sua espera, o que vamos fazer hoje?</p>
-                    </div>
+                    </HeadAdmin> */}
                     <div className="row">
                         <BoxInfo
                             icon="far fa-plus-square"
