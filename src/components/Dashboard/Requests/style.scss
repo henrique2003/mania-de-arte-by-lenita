@@ -1,0 +1,64 @@
+.wrapper_requets {
+    .wrapper_requets_title {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 5px;
+        margin: 50px 25px 30px 25px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        padding-bottom: 5px;
+
+        h3 {
+            letter-spacing: 1px;
+            font-size: 28px;
+            font-family: "Poppins";
+            color: #464545;
+            margin: 0;
+        }
+    }
+}
+
+//Ipad Pró
+@media (max-width: 1024px) {
+    .wrapper_admins {
+        .wrapper_title {
+            margin: 50px 10px 30px 10px;
+
+            h3 {
+                font-size: 27px;
+            }
+        }
+    }
+}
+
+//Ipad
+@media (max-width: 768px) {
+    .wrapper_admins {
+        .wrapper_title {
+            padding-left: 5px;
+            margin: 40px 0px 20px 0px;
+
+            h3 {
+                font-size: 26px;
+            }
+        }
+    }
+}
+
+//Celphone
+@media (max-width: 480px) {
+    .wrapper_admins {
+        margin: 0 15px;
+
+        .wrapper_title {
+            margin: 40px 0px 20px 0px;
+            display: block;
+            border: none;
+
+            h3 {
+                font-size: 25px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+}

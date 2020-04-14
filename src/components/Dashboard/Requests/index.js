@@ -12,10 +12,7 @@ const Requets = () => {
             <div className="wrapper_requets_title">
                     <h3>Admins</h3>
                     <div>
-                        <button type="button" className="action_delete_all">
-                            <i className="fas fa-minus mr-1 mr-md-2"></i>
-                            Deletar todos
-                        </button>
+                        <button type="button" className="action_delete_all"> Deletar todos </button>
                     </div>
                 </div>
             </div>

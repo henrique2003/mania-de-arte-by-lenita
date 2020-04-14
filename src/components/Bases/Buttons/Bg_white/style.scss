@@ -1,0 +1,55 @@
+.button_bg_white {
+    outline: none;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 3px 25px;
+    color: #9370db !important;
+    letter-spacing: 1px;
+    font-family: "Roboto";
+    font-size: 17px;
+    background: white;
+    border: 1px solid #9370db;
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    a {
+        color: #9370db !important;
+
+        &:hover {
+            transition: all 0.3s ease;
+            background: #9370db !important;
+            color: white !important;
+            text-decoration: none;
+        }
+    }
+
+    &:hover {
+        transition: all 0.3s ease;
+        background: #9370db;
+        color: white !important;
+        text-decoration: none;
+    }
+}
+
+//Ipad Pró
+@media (max-width: 1024px) {
+    .button_bg_white {
+        padding: 5.5px 25px;
+    }
+}
+
+//Ipad
+@media (max-width: 768px) {
+    .button_bg_white {
+        padding: 5px 23px;
+        font-size: 16px;
+    }
+}
+
+//Celphone
+@media (max-width: 480px) {
+    .button_bg_white {
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+}

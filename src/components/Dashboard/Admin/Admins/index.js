@@ -11,6 +11,7 @@ import api from '../../../../services/api'
 
 import AdminItem from './components/AdminItem'
 import Paginate from '../../../Bases/Paginate'
+import ButtonBgWhite from '../../../Bases/Buttons/Bg_white'
 
 import './style.scss'
 
@@ -104,12 +105,8 @@ const Admins = ({ loadPrimary, history, location }) => {
                 <div className="wrapper_title">
                     <h3>Admins</h3>
                     <div>
-                        <Link to="/admin/criar/admins" className="action_add">
-                            <i className="fas fa-plus mr-1 mr-md-2"></i>
-                            Criar novo</Link>
-                        <button type="button" onClick={alertDeleteAll} className="action_delete_all">
-                            <i className="fas fa-minus mr-1 mr-md-2"></i>
-                            Deletar todos</button>
+                        <ButtonBgWhite text={`Criar novo`} link="/admin/criar/admins" />
+                        <ButtonBgWhite action={alertDeleteAll} text={`Deletar todos`} />
                     </div>
                 </div>
                 <div className="wrapper_admins_all">
