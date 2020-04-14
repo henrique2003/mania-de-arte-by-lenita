@@ -1,0 +1,20 @@
+.base_title_admin {
+    letter-spacing: 1px;
+    font-size: 30px;
+    font-family: "Poppins";
+    color: #464545;
+}
+
+//Ipad
+@media (max-width: 768px) {
+    .base_title_admin {
+        font-size: 28px;
+    }
+}
+
+//Celphone
+@media (max-width: 480px) {
+    .base_title_admin {
+        font-size: 25px;
+    }
+}

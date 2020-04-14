@@ -6,6 +6,7 @@ import api from '../../../services/api'
 import token from '../../../config/token'
 
 import BoxInfo from './components/BoxInfo'
+import AdminTitle from '../../Bases/Titles/AdminTitle'
 
 import './style.scss'
 
@@ -44,7 +45,7 @@ const Index = ({ user, history, loadUser }) => {
             <div className="wrapper_index">
                 <div className="container-fluid">
                     <div className="wrapper_welcome">
-                        <h3>Olá, {user.name}!</h3>
+                        <AdminTitle text={`Olá, ${user.name}!`} />
                         <p>Eu estava a sua espera, o que vamos fazer hoje?</p>
                     </div>
                     <div className="row">
