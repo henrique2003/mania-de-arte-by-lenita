@@ -41,9 +41,7 @@
 
 //Ipad Pró
 @media(max-width: 1024px) {
-    .wrapper_boxinfo {
-        margin: 0 10px;
-    
+    .wrapper_boxinfo {    
         .wrapper_boxinfo_content {
             margin: 25px 0;
     
@@ -67,9 +65,7 @@
 
 //Ipad
 @media(max-width: 768px) {
-    .wrapper_boxinfo {
-        margin: 0;
-    
+    .wrapper_boxinfo {    
         .wrapper_boxinfo_content {
             margin: 25px 0;
     
@@ -93,8 +89,6 @@
 //Celphone
 @media(max-width: 480px) {
     .wrapper_boxinfo {
-        margin: 0 20px;
-
         .wrapper_boxinfo_content {
             margin: 20px 0;
     
