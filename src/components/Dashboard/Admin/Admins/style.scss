@@ -9,73 +9,23 @@
         padding-left: 5px;
         margin: 50px 25px 30px 25px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-        padding-bottom: 5px;
-
-        h3 {
-            letter-spacing: 1px;
-            font-size: 28px;
-            font-family: "Poppins";
-            color: #464545;
-            margin: 0;
-        }
-
-        .action_add {
-            outline: none;
-            margin-right: 10px;
-            border-radius: 5px;
-            padding: 5px 25px;
-            color: #9370db;
-            letter-spacing: 1px;
-            font-family: 'Roboto';
-            font-size: 17px;
-            background: white;
-            border: 1px solid #9370db;
-            transition: all .3s ease;
-
-            &:hover {
-                transition: all .3s ease;
-                background: #9370db;
-                color: white;
-                text-decoration: none;
-            }
-        }
-
-        .action_delete_all {
-            outline: none;
-            border-radius: 5px;
-            padding: 2.5px 25px;
-            color: white;
-            letter-spacing: 1px;
-            font-family: 'Roboto';
-            font-size: 17px;
-            background: #9370db;
-            border: 1px solid #9370db;
-            transition: all .3s ease;
-
-            &:hover {
-                transition: all .3s ease;
-                background: white;
-                color: #9370db;
-                text-decoration: none;
-            }
-        }
     }
 
     .wrapper_admins_all {
         margin: 0 40px;
-        
+
         .wrapper_admins_all_head {
             margin-top: 40px;
             list-style: none;
             padding: 0;
             padding-bottom: 7px;
-            
+
             li {
                 font-size: 18px;
                 letter-spacing: 1px;
-                font-family: 'Roboto';
+                font-family: "Roboto";
                 color: #9370db;
-                border-bottom: 1px solid rgba(0,0,0,0.2);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
                 border-left: 5px solid white;
                 padding: 0;
             }
@@ -88,14 +38,6 @@
     .wrapper_admins {
         .wrapper_title {
             margin: 50px 10px 30px 10px;
-
-            h3 {
-                font-size: 27px;
-            }
-
-            .action_add {
-                padding: 5.5px 25px;
-            }
         }
     }
 }
@@ -106,49 +48,19 @@
         .wrapper_title {
             padding-left: 5px;
             margin: 40px 0px 20px 0px;
-
-            h3 {
-                font-size: 26px;
-            }
-
-            .action_add {
-                padding: 5px 23px;
-                font-size: 16px;
-            }
-
-            .action_delete_all {
-                padding: 2px 23px;
-                font-size: 16px;
-            }
         }
     }
 }
 
 //Celphone
-@media(max-width: 480px) {
-    .wrapper_admins {  
+@media (max-width: 480px) {
+    .wrapper_admins {
         margin: 0 15px;
-          
+
         .wrapper_title {
             margin: 40px 0px 20px 0px;
             display: block;
             border: none;
-            
-            h3 {
-                font-size: 25px;
-                margin-bottom: 10px;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-            }
-
-            .action_add {
-                padding: 4px 8px;
-                font-size: 14px;
-            }
-
-            .action_delete_all {
-                padding: 1.5px 10px;
-                font-size: 14px;
-            }
         }
     }
 }

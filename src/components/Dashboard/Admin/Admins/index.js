@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -12,6 +11,7 @@ import api from '../../../../services/api'
 import AdminItem from './components/AdminItem'
 import Paginate from '../../../Bases/Paginate'
 import ButtonBgWhite from '../../../Bases/Buttons/Bg_white'
+import AdminTitle from '../../../Bases/Titles/AdminTitle'
 
 import './style.scss'
 
@@ -103,7 +103,7 @@ const Admins = ({ loadPrimary, history, location }) => {
         <div className="wrapper_admins">
             <div className="container-fluid">
                 <div className="wrapper_title">
-                    <h3>Admins</h3>
+                    <AdminTitle text="Admins"/>
                     <div>
                         <ButtonBgWhite text={`Criar novo`} link="/admin/criar/admins" />
                         <ButtonBgWhite action={alertDeleteAll} text={`Deletar todos`} />

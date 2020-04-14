@@ -6,6 +6,7 @@ import { loadUser } from '../../../redux/actions/Auth'
 import token from '../../../config/token'
 
 import ButtonBgWhite from '../../Bases/Buttons/Bg_white'
+import AdminTitle from '../../Bases/Titles/AdminTitle'
 
 import './style.scss'
 
@@ -20,7 +21,7 @@ const Requets = ({ loadUser, history }) => {
         <div className="wrapper_requets">
             <div className="container-fluid">
                 <div className="wrapper_requets_title">
-                    <h3>Admins</h3>
+                    <AdminTitle text="Pedidos" />
                     <ButtonBgWhite text="Deletar todos" />
                 </div>
             </div>
