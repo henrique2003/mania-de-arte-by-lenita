@@ -7,6 +7,8 @@ import token from '../../../config/token'
 
 import ButtonBgWhite from '../../Bases/Buttons/Bg_white'
 import AdminTitle from '../../Bases/Titles/AdminTitle'
+import CtnDashboard from '../../Bases/Containers/CtnDashboard'
+import CtnHeadDashboard from '../../Bases/Containers/CtnHeadDashboard'
 
 import './style.scss'
 
@@ -18,14 +20,12 @@ const Requets = ({ loadUser, history }) => {
     }, [history, loadUser])
 
     return (
-        <div className="wrapper_requets">
-            <div className="container-fluid">
-                <div className="wrapper_requets_title">
-                    <AdminTitle text="Pedidos" />
-                    <ButtonBgWhite text="Deletar todos" />
-                </div>
-            </div>
-        </div>
+        <CtnDashboard>
+            <CtnHeadDashboard>
+                <AdminTitle text="Pedidos" />
+                <ButtonBgWhite text="Deletar todos" />
+            </CtnHeadDashboard>
+        </CtnDashboard>
     )
 }
 

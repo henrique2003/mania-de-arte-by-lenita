@@ -14,6 +14,7 @@ import ButtonBgWhite from '../../../Bases/Buttons/Bg_white'
 import AdminTitle from '../../../Bases/Titles/AdminTitle'
 import CtnHeadDashboard from '../../../Bases/Containers/CtnHeadDashboard'
 import CtnDashboard from '../../../Bases/Containers/CtnDashboard'
+import CtnHeadBtn from '../../../Bases/Containers/CtnHeadBtn'
 
 import './style.scss'
 
@@ -104,13 +105,13 @@ const Admins = ({ loadPrimary, history, location }) => {
     return (
         <CtnDashboard>
             <CtnHeadDashboard>
-                <div className="wrapper_admins_actions">
+                <CtnHeadBtn>
                     <AdminTitle text="Admins" />
                     <div className="pb-2 pb-sm-2 pb-md-0">
                         <ButtonBgWhite text={`Criar novo`} link="/admin/criar/admins" />
                         <ButtonBgWhite action={alertDeleteAll} text={`Deletar todos`} />
                     </div>
-                </div>
+                </CtnHeadBtn>
             </CtnHeadDashboard>
             <div className="wrapper_admins_all">
                 <ul className="wrapper_admins_all_head">

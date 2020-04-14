@@ -1,0 +1,11 @@
+.base_head_btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+//Celphone
+@media (max-width: 480px) {
+    .wrapper_admins_actions {
+        display: block;
+    }
+}
