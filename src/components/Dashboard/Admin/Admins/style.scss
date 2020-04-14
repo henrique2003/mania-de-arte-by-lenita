@@ -4,8 +4,8 @@
     margin-bottom: 20px;
 
     .wrapper_admins_actions {
-        display: flex !important;
-        justify-content: space-between !important;
+        display: flex;
+        justify-content: space-between;
     }
 
     .wrapper_admins_all {
@@ -34,5 +34,9 @@
 @media (max-width: 480px) {
     .wrapper_admins {
         margin: 0 15px;
+
+        .wrapper_admins_actions {
+            display: block;
+        }
     }
 }
