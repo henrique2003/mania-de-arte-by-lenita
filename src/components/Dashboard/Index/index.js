@@ -46,10 +46,10 @@ const Index = ({ user, history, loadUser }) => {
         <>
             <div className="wrapper_index">
                 <div className="container-fluid">
-                    {/* <HeadAdmin>
+                    <HeadAdmin>
                         <AdminTitle text={`Olá, ${user.name}!`} />
-                        <p>Eu estava a sua espera, o que vamos fazer hoje?</p>
-                    </HeadAdmin> */}
+                        <p className="wrapper_index_description">Eu estava a sua espera, o que vamos fazer hoje?</p>
+                    </HeadAdmin>
                     <div className="row">
                         <BoxInfo
                             icon="far fa-plus-square"

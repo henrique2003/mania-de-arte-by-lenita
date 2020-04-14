@@ -2,59 +2,35 @@
     margin: 0 40px;
     margin-top: 30px;
 
-    .wrapper_welcome {
-        padding-left: 5px;
-        margin: 50px 25px 30px 25px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-
-        p {
-            margin-top: 15px;
-            letter-spacing: 1px;
-            line-height: 10px;
-            font-size: 18px;
-            font-family: "Poppins";
-            color: #9370db;
-        }
-    }
-}
-
-//Ipad Pró
-@media (max-width: 1024px) {
-    .wrapper_index {
-        .wrapper_welcome {
-            margin: 50px 10px 30px 10px;
-        }
+    .wrapper_index_description {
+        margin-top: 15px;
+        letter-spacing: 1px;
+        line-height: 10px;
+        font-size: 18px;
+        font-family: "Poppins";
+        color: #9370db;
     }
 }
 
 //Ipad
 @media (max-width: 768px) {
     .wrapper_index {
-        .wrapper_welcome {
-            padding-left: 5px;
-            margin: 40px 0px 20px 0px;
-
-            p {
-                margin-top: 13px;
-                font-size: 17px;
-            }
+        .wrapper_index_description {
+            margin-top: 13px;
+            font-size: 17px;
         }
     }
 }
 
 //Celphone
-@media(max-width: 480px) {
-    .wrapper_index {  
+@media (max-width: 480px) {
+    .wrapper_index {
         margin: 0 20px;
-          
-        .wrapper_welcome {
-            margin: 40px 0px 20px 0px;
-    
-            p {
-                margin-top: 10px;
-                line-height: 20px;
-                font-size: 15px;
-            }
+
+        .wrapper_index_description {
+            margin-top: 10px;
+            line-height: 20px;
+            font-size: 15px;
         }
     }
 }
