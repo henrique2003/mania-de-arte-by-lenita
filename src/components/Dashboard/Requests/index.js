@@ -1,19 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import './style.scss'
 import { loadUser } from '../../../redux/actions/Auth'
+import token from '../../../config/token'
 
-const Requets = () => {
+import ButtonBgWhite from '../../Bases/Buttons/Bg_white'
+
+import './style.scss'
+
+const Requets = ({ loadUser, history }) => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        token()
+        loadUser(history)
+    }, [history, loadUser])
+
     return (
         <div className="wrapper_requets">
             <div className="container-fluid">
-            <div className="wrapper_requets_title">
+                <div className="wrapper_requets_title">
                     <h3>Admins</h3>
-                    <div>
-                        <button type="button" className="action_delete_all"> Deletar todos </button>
-                    </div>
+                    <ButtonBgWhite text="Deletar todos" />
                 </div>
             </div>
         </div>

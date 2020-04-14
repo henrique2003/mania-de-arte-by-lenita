@@ -5,7 +5,7 @@ import { load } from '../../redux/actions/Auth'
 import token from '../../config/token'
 import api from '../../services/api'
 
-import Title from '../Bases/Title'
+import WebTitle from '../Bases/Titles/WebTitle'
 import Product from '../Product'
 import Paginate from '../Bases/Paginate'
 import Warning from '../Bases/Warning'
@@ -36,7 +36,7 @@ const Madeiras = ({ load }) => {
 
     return (
         <div className="wrapper_woods">
-            <Title text="Madeiras" />
+            <WebTitle text="Madeiras" />
             <div className="container-fluid">
                 <div className="row">
                     {ProductData.length === 0 ?

@@ -5,7 +5,7 @@ import { load } from '../../redux/actions/Auth'
 import token from '../../config/token'
 import api from '../../services/api'
 
-import Title from '../Bases/Title'
+import WebTitle from '../Bases/Titles/WebTitle'
 import Product from '../Product'
 import Paginate from '../Bases/Paginate'
 import Warning from '../Bases/Warning'
@@ -36,7 +36,7 @@ const Crochet = ({ load }) => {
 
     return (
         <div className="wrapper_crochet">
-            <Title text="Cochet" />
+            <WebTitle text="Cochet" />
             <div className="container-fluid">
                 <div className="row">
                     {ProductData.length === 0 ?

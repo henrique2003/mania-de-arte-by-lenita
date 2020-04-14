@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { load } from '../../redux/actions/Auth'
 import token from '../../config/token'
 
-import Title from '../../components/Bases/Title'
+import WebTitle from '../../components/Bases/Titles/WebTitle'
 import Questions from './components/Questions'
 
 import './style.scss'
@@ -19,7 +19,7 @@ const Asks = ({ load }) => {
     return (
         <div className="wrapper_asks">
             <div className="container-fluid">
-                <Title text="Dúvidas ?" />
+                <WebTitle text="Dúvidas ?" />
                 <div className="row">
                     <Questions
                         title="Informações de pagamento"
