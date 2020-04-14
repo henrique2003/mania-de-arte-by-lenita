@@ -13,6 +13,7 @@ import Paginate from '../../../Bases/Paginate'
 import ButtonBgWhite from '../../../Bases/Buttons/Bg_white'
 import AdminTitle from '../../../Bases/Titles/AdminTitle'
 import CtnHeadDashboard from '../../../Bases/Containers/CtnHeadDashboard'
+import CtnDashboard from '../../../Bases/Containers/CtnDashboard'
 
 import './style.scss'
 
@@ -101,31 +102,29 @@ const Admins = ({ loadPrimary, history, location }) => {
     }
 
     return (
-        <div className="wrapper_admins">
-            <div className="container-fluid">
-                <CtnHeadDashboard>
-                    <div className="wrapper_admins_actions">
-                        <AdminTitle text="Admins" />
-                        <div>
-                            <ButtonBgWhite text={`Criar novo`} link="/admin/criar/admins" />
-                            <ButtonBgWhite action={alertDeleteAll} text={`Deletar todos`} />
-                        </div>
+        <CtnDashboard>
+            <CtnHeadDashboard>
+                <div className="wrapper_admins_actions">
+                    <AdminTitle text="Admins" />
+                    <div className="pb-2 pb-sm-2 pb-md-0">
+                        <ButtonBgWhite text={`Criar novo`} link="/admin/criar/admins" />
+                        <ButtonBgWhite action={alertDeleteAll} text={`Deletar todos`} />
                     </div>
-                </CtnHeadDashboard>
-                <div className="wrapper_admins_all">
-                    <ul className="wrapper_admins_all_head">
-                        <div className="row">
-                            <li className="col-6 col-sm-6 col-md-4 col-lg-3">Nome</li>
-                            <li className="col-3 col-sm-3 col-md-5 col-lg-4 d-none d-md-block">Email</li>
-                            <li className="col-6 col-sm-6 col-md-3 col-lg-2">Função</li>
-                            <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">Data de criação</li>
-                        </div>
-                    </ul>
-                    {Admins.map((admin) => (<AdminItem key={admin._id} admin={admin} alert={alertDelete} />))}
-                    <Paginate paginate={paginate} />
                 </div>
+            </CtnHeadDashboard>
+            <div className="wrapper_admins_all">
+                <ul className="wrapper_admins_all_head">
+                    <div className="row">
+                        <li className="col-6 col-sm-6 col-md-4 col-lg-3">Nome</li>
+                        <li className="col-3 col-sm-3 col-md-5 col-lg-4 d-none d-md-block">Email</li>
+                        <li className="col-6 col-sm-6 col-md-3 col-lg-2">Função</li>
+                        <li className="col-3 col-sm-3 col-md-4 col-lg-3 d-none d-lg-block">Data de criação</li>
+                    </div>
+                </ul>
+                {Admins.map((admin) => (<AdminItem key={admin._id} admin={admin} alert={alertDelete} />))}
+                <Paginate paginate={paginate} />
             </div>
-        </div>
+        </CtnDashboard>
     )
 }
 

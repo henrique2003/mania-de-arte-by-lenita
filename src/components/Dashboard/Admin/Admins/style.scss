@@ -1,42 +1,33 @@
-.wrapper_admins {
-    margin: 0 40px;
-    margin-top: 30px;
-    margin-bottom: 20px;
+.wrapper_admins_actions {
+    display: flex;
+    justify-content: space-between;
+}
 
-    .wrapper_admins_actions {
-        display: flex;
-        justify-content: space-between;
-    }
+.wrapper_admins_all {
+    margin: 0 15px;
 
-    .wrapper_admins_all {
-        margin: 0 40px;
+    .wrapper_admins_all_head {
+        margin-top: 40px;
+        list-style: none;
+        padding: 0;
+        padding-bottom: 7px;
 
-        .wrapper_admins_all_head {
-            margin-top: 40px;
-            list-style: none;
+        li {
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-family: "Roboto";
+            color: #9370db;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            border-left: 5px solid white;
             padding: 0;
-            padding-bottom: 7px;
-
-            li {
-                font-size: 18px;
-                letter-spacing: 1px;
-                font-family: "Roboto";
-                color: #9370db;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-                border-left: 5px solid white;
-                padding: 0;
-            }
+            margin: 0;
         }
     }
 }
 
 //Celphone
 @media (max-width: 480px) {
-    .wrapper_admins {
-        margin: 0 15px;
-
-        .wrapper_admins_actions {
-            display: block;
-        }
+    .wrapper_admins_actions {
+        display: block;
     }
 }
