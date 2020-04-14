@@ -3,45 +3,13 @@
     margin-top: 80px;
 
     .form_new_admin {
-        padding: 30px;
-        box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
-        font-family: "Poppins";
-
         .form-group {
             margin-top: 15px;
             font-size: 18px;
-
-            input {
-                border: 1px solid rgba(0, 0, 0, 0.3) !important;
-            }
-
-            select {
-                border: 1px solid rgba(0, 0, 0, 0.3) !important;
-                outline: none;
-                box-shadow: none;
-            }
         }
 
         button {
-            outline: none;
-            margin-right: 10px;
             margin-top: 15px;
-            border-radius: 5px;
-            padding: 5px 25px;
-            color: #9370db;
-            letter-spacing: 1px;
-            font-family: "Roboto";
-            font-size: 17px;
-            background: white;
-            border: 1px solid #9370db;
-            transition: all 0.3s ease;
-
-            &:hover {
-                transition: all 0.3s ease;
-                background: #9370db;
-                color: white;
-                text-decoration: none;
-            }
         }
     }
 }
@@ -52,9 +20,7 @@
     .wrapper_new_admin {
         margin: 40px 20px;
     
-        .form_new_admin {
-            padding: 30px;
-    
+        .form_new_admin {    
             .form-group {
                 margin-top: 15px;
                 font-size: 18px;
@@ -83,14 +49,9 @@
                 margin-top: 0px;
                 font-size: 16px !important;
             }
-
-            input {
-                font-size: 15px !important;
-            }
     
             button {
                 margin-top: 5px;
-                padding: 4px 20px;
             }
         }
     }
@@ -100,18 +61,14 @@
 @media(max-width: 480px) {
     .wrapper_new_admin {
         margin: 40px 0px;
+
+        .form-group {
+            font-size: 17px !important;
+        }
     
-        .form_new_admin {
-            padding: 20px;
-    
-            .form-group {
-                font-size: 17px;
-            }
-    
+        .form_new_admin {    
             button {
                 margin-top: 5px;
-                padding: 4px 20px;
-                font-size: 15px !important;
             }
         }
     }

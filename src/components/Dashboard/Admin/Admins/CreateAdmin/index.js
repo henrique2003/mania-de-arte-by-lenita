@@ -7,6 +7,8 @@ import { loadPrimary } from '../../../../../redux/actions/Auth/index'
 import token from '../../../../../config/token'
 import api from '../../../../../services/api'
 
+import { Input, ButtonSubmit, Select, Form } from '../../../../Bases'
+
 import './style.scss'
 
 const CreateAdmin = ({ loadPrimary, history }) => {
@@ -53,11 +55,11 @@ const CreateAdmin = ({ loadPrimary, history }) => {
 
     return (
         <div className="wrapper_new_admin">
-            <form className="form_new_admin col-11 col-sm-12 col-md-11 col-lg-10 mx-auto" onSubmit={onSubmit}>
+            <Form className="form_new_admin col-11 col-sm-12 col-md-11 col-lg-10 mx-auto" onSubmit={onSubmit}>
                 <div className="form-row">
                     <div className="form-group col-12 col-sm-12 col-md-6">
                         <label htmlFor="name">Nome:</label>
-                        <input
+                        <Input
                             type="text"
                             id="name"
                             name="name"
@@ -69,7 +71,7 @@ const CreateAdmin = ({ loadPrimary, history }) => {
                     </div>
                     <div className="form-group col-12 col-sm-12 col-md-6">
                         <label htmlFor="email">Email:</label>
-                        <input
+                        <Input
                             type="email"
                             id="email"
                             name="email"
@@ -81,7 +83,7 @@ const CreateAdmin = ({ loadPrimary, history }) => {
                     </div>
                     <div className="form-group col-12 col-sm-12 col-md-6">
                         <label htmlFor="password">Senha:</label>
-                        <input
+                        <Input
                             type="password"
                             id="password"
                             name="password"
@@ -93,14 +95,14 @@ const CreateAdmin = ({ loadPrimary, history }) => {
                     </div>
                     <div className="form-group col-12 col-sm-12 col-md-6">
                         <label htmlFor="role">Função:</label>
-                        <select id="role" className="form-control" onChange={(e) => setRole({ role: e.target.value })}>
+                        <Select id="role" className="form-control" onChange={(e) => setRole({ role: e.target.value })}>
                             <option value="Primary">Admin</option>
                             <option value="Secondary">Ajudante</option>
-                        </select>
+                        </Select>
                     </div>
                 </div>
-                <button type="submit">Cadastrar</button>
-            </form>
+                <ButtonSubmit text="Cadastrar" />
+            </Form>
         </div>
     )
 }

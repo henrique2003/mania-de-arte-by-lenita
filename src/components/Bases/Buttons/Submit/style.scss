@@ -1,0 +1,35 @@
+.base_btn_submit {
+    outline: none;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 5px 25px;
+    color: #9370db;
+    letter-spacing: 1px;
+    font-family: "Roboto";
+    font-size: 17px;
+    background: white;
+    border: 1px solid #9370db;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transition: all 0.3s ease;
+        background: #9370db;
+        color: white;
+        text-decoration: none;
+    }
+}
+
+//Ipad
+@media(max-width: 768px) {
+    .base_btn_submit {
+        padding: 4px 20px;
+    }
+}
+
+//Celphone
+@media(max-width: 480px) {
+    .base_btn_submit {
+        padding: 4px 20px;
+        font-size: 15px !important;
+    }
+}

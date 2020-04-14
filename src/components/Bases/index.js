@@ -1,5 +1,11 @@
 //Buttons
-import ButtonBgWhite from './Buttons/Bg_white'
+import ButtonBgWhite from './Buttons/ButtonBgWhite'
+import LinkBgWhite from './Buttons/Link_bg_white'
+import ButtonSubmit from './Buttons/Submit'
+//Forms
+import Form from './Forms/Form'
+import Input from './Forms/Input'
+import Select from './Forms/Select'
 //Containers
 import CtnDashboard from './Containers/CtnDashboard'
 import CtnHeadBtn from './Containers/CtnHeadBtn'
@@ -20,6 +26,11 @@ import Warning from './Warning'
 
 export {
     ButtonBgWhite,
+    ButtonSubmit,
+    LinkBgWhite,
+    Form,
+    Input,
+    Select,
     CtnDashboard,
     CtnHeadBtn,
     CtnHeadDashboard,

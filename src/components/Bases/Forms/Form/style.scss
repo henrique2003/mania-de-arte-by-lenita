@@ -1,0 +1,11 @@
+.base_form {
+    padding: 30px;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+//Celphone
+@media (max-width: 480px) {
+    .base_form {
+        padding: 20px;
+    }
+}

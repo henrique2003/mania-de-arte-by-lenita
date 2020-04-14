@@ -12,24 +12,6 @@
     transition: all 0.3s ease;
     text-decoration: none;
 
-    a {
-        color: #9370db !important;
-
-        &:hover {
-            transition: all 0.3s ease;
-            background: #9370db !important;
-            color: white !important;
-            text-decoration: none;
-        }
-    }
-
-    &:hover > a {
-        transition: all 0.3s ease;
-        background: #9370db;
-        color: white !important;
-        text-decoration: none;
-    }
-
     &:hover {
         transition: all 0.3s ease;
         background: #9370db;

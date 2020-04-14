@@ -1,0 +1,21 @@
+.base_select {
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    outline: none;
+    box-shadow: none;
+    font-size: 18px;
+    font-family: "Poppins";
+}
+
+//Ipad
+@media(max-width: 768px) {
+    .base_select {
+        font-size: 16px !important;
+    }
+}
+
+//Celphone
+@media(max-width: 480px) {
+    .base_select {
+        font-size: 17px;
+    }
+}

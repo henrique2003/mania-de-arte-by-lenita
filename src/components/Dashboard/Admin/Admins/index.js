@@ -15,7 +15,8 @@ import {
     AdminTitle,
     CtnHeadDashboard,
     CtnDashboard,
-    CtnHeadBtn
+    CtnHeadBtn,
+    LinkBgWhite
 } from '../../../Bases'
 
 import './style.scss'
@@ -47,12 +48,12 @@ const Admins = ({ loadPrimary, history, location }) => {
     async function deleteAll() {
         try {
             let res = await api.delete('/deleteall/admin')
-            toast.success(res.data)
             setAdmins(res.data.docs)
             setPaginate({
                 path: '/admin/admins',
                 pages: res.data.pages
             })
+            toast.success("Deletados com sucesso")
         } catch (error) {
             return toast.error("Erro ao deletar")
         }
@@ -61,12 +62,12 @@ const Admins = ({ loadPrimary, history, location }) => {
     async function delete_item(id) {
         try {
             let res = await api.delete(`/admin/${id}`)
-            toast.success("Deletado com sucesso")
             setAdmins(res.data.docs)
             setPaginate({
                 path: '/admin/admins',
                 pages: res.data.pages
             })
+            toast.success("Deletado com sucesso")
         } catch (error) {
             return toast.error("Erro ao deletar")
         }
@@ -110,7 +111,7 @@ const Admins = ({ loadPrimary, history, location }) => {
                 <CtnHeadBtn>
                     <AdminTitle text="Admins" />
                     <div className="pb-2 pb-sm-2 pb-md-0">
-                        <ButtonBgWhite text={`Criar novo`} link="/admin/criar/admins" />
+                        <LinkBgWhite text="Criar novo" path="/admin/criar/admins"/>
                         <ButtonBgWhite action={alertDeleteAll} text={`Deletar todos`} />
                     </div>
                 </CtnHeadBtn>
