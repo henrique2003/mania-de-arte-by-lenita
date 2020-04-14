@@ -9,6 +9,7 @@ import ButtonBgWhite from '../../Bases/Buttons/Bg_white'
 import AdminTitle from '../../Bases/Titles/AdminTitle'
 import CtnDashboard from '../../Bases/Containers/CtnDashboard'
 import CtnHeadDashboard from '../../Bases/Containers/CtnHeadDashboard'
+import CtnHeadBtn from '../../Bases/Containers/CtnHeadBtn'
 
 import './style.scss'
 
@@ -22,8 +23,12 @@ const Requets = ({ loadUser, history }) => {
     return (
         <CtnDashboard>
             <CtnHeadDashboard>
-                <AdminTitle text="Pedidos" />
-                <ButtonBgWhite text="Deletar todos" />
+                <CtnHeadBtn>
+                    <AdminTitle text="Pedidos" />
+                    <div className="pb-2 pb-sm-2 pb-md-0">
+                        <ButtonBgWhite text="Deletar todos" />
+                    </div>
+                </CtnHeadBtn>
             </CtnHeadDashboard>
         </CtnDashboard>
     )
