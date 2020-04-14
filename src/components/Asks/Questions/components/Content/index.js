@@ -1,7 +1,6 @@
 import React from 'react'
 
-import SubTitle from './components/SubTitle'
-import ParagrathAsks from './components/ParagrathAsks'
+import { SubTitle, ParagrathAsks } from './components'
 
 import './style.scss'
 

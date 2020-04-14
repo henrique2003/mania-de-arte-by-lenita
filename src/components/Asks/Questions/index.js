@@ -1,7 +1,6 @@
 import React from 'react'
 
-import TitleAsks from '../TitleAsks'
-import Content from '../Content'
+import { Content, TitleAsks } from './components'
 
 import './style.scss'
 

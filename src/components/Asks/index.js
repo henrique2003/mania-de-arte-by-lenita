@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { load } from '../../redux/actions/Auth'
 import token from '../../config/token'
 
-import WebTitle from '../../components/Bases/Titles/WebTitle'
-import Questions from './components/Questions'
+import { WebTitle } from '../Bases'
+import Questions from './Questions'
 
 import './style.scss'
 

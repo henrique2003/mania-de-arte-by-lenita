@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { login, load } from '../../redux/actions/Auth'
 import token from '../../config/token'
 
-import Error from '../Bases/Error'
+import { Error } from '../Bases'
 
 import './style.scss'
 
