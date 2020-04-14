@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../../../../services/api'
 
 import Product from '../../../Product'
-import WebTitle from '../../../Bases/Titles/WebTitle'
-import Warning from '../../../Bases/Warning'
+import { WebTitle, Warning } from '../../../Bases'
 
 import './style.scss';
 

@@ -5,10 +5,8 @@ import { load } from '../../redux/actions/Auth'
 import token from '../../config/token'
 import api from '../../services/api'
 
-import WebTitle from '../Bases/Titles/WebTitle'
 import Product from '../Product'
-import Paginate from '../Bases/Paginate'
-import Warning from '../Bases/Warning'
+import { Warning, Paginate, WebTitle } from '../Bases'
 
 import './style.scss'
 

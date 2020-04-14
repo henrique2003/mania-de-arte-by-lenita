@@ -6,8 +6,8 @@ import { load } from '../../redux/actions/Auth'
 import token from '../../config/token'
 import api from '../../services/api'
 
-import MercadoPago from '../../utils/icons/mercado_pago.jpg'
-import Warning from '../Bases/Warning'
+import { MercadoPago } from '../../utils'
+import { Warning } from '../Bases'
 
 import './style.scss'
 

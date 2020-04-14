@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './base.scss';
+
 //React confirm alert
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
@@ -7,7 +9,6 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import './base.scss';
 
 //React-router
 import { Route, BrowserRouter, Switch, withRouter } from 'react-router-dom';
@@ -18,31 +19,26 @@ import store from './redux'
 
 //Components Layout
 //Bases
-import Footer from './components/Bases/Footer'
-import Header from './components/Header'
-import ScrollBar from './components/Bases/ScrollBar'
-
-import Home from './components/Home'
-import Woods from './components/Woods'
-import Crochet from './components/Crochet'
-import Asks from './components/Asks'
-import ProductPage from './components/ProductPage'
-
-//Admin
-import Auth from './components/Auth'
-import DashboardIndex from './components/Dashboard/Index'
-import Admins from './components/Dashboard/Admin/Admins'
-import AdminProducts from './components/Dashboard/Admin/AdminProducts'
-import SetAccess from './components/Dashboard/Admin/Admins/SetAccess'
-import CreateAdmin from './components/Dashboard/Admin/Admins/CreateAdmin'
-import Requests from './components/Dashboard/Requests';
-
-//Users
-
-
-// store.subscribe(() => {
-//     console.log(store.getState());
-// })
+import {
+  //Bases
+  Footer,
+  Header,
+  ScrollBar,
+  //Pages all users
+  Home,
+  Woods,
+  Crochet,
+  Asks,
+  ProductPage,
+  //Admin
+  Auth,
+  DashboardIndex,
+  Admins,
+  ProductAdmin,
+  SetAccess,
+  CreateAdmin,
+  Requests
+} from './components'
 
 function App() {
   //WithHeader Header
@@ -83,8 +79,8 @@ function App() {
           <Route path="/admin/admins/:id" component={SetAccess}/>
           <Route path="/admin/criar/admins" component={CreateAdmin} />
           <Route path="/admin/pedidos" component={Requests} />
-          <Route path="/admin/produtos" component={AdminProducts}/>
-          <Route path="/admin/produto/editar/:id" component={AdminProducts} />
+          <Route path="/admin/produtos" component={ProductAdmin}/>
+          {/* <Route path="/admin/produto/editar/:id" component={AdminProducts} /> */}
 
           {/* Auth */}
           <Route path="/login" component={Auth} />

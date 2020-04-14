@@ -4,15 +4,9 @@ import { connect } from 'react-redux'
 import { load } from '../../redux/actions/Auth'
 import token from '../../config/token'
 
-import Introdution from './components/Introdution'
-import AboutMe from './components/AboutMe'
-import SomeProducts from './components/SomeProducts'
-import Features from '../Home/components/Features'
-
+import { Introdution, AboutMe, SomeProducts, Features } from './components'
 //Icons of features
-import Art from '../../utils/icons/art.png'
-import Present from '../../utils/icons/present.png'
-import Truck from '../../utils/icons/truck.png'
+import { Art, Present, Truck } from '../../utils'
 
 import './style.scss'
 

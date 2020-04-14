@@ -8,13 +8,15 @@ import { loadPrimary } from '../../../../redux/actions/Auth'
 import token from '../../../../config/token'
 import api from '../../../../services/api'
 
-import AdminItem from './components/AdminItem'
-import Paginate from '../../../Bases/Paginate'
-import ButtonBgWhite from '../../../Bases/Buttons/Bg_white'
-import AdminTitle from '../../../Bases/Titles/AdminTitle'
-import CtnHeadDashboard from '../../../Bases/Containers/CtnHeadDashboard'
-import CtnDashboard from '../../../Bases/Containers/CtnDashboard'
-import CtnHeadBtn from '../../../Bases/Containers/CtnHeadBtn'
+import AdminItem from './AdminItem'
+import {
+    Paginate,
+    ButtonBgWhite,
+    AdminTitle,
+    CtnHeadDashboard,
+    CtnDashboard,
+    CtnHeadBtn
+} from '../../../Bases'
 
 import './style.scss'
 

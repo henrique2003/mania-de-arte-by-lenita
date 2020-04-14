@@ -1,6 +1,7 @@
 import React from 'react';
-import Lenita from '../../../../utils/images/Home/lenita.jpg';
-import Star from '../../../../utils/icons/star.png';
+
+import { Lenita, Star } from '../../../../utils'
+
 import './style.scss';
 
 const Introdution = () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import titleize from '../../utils/scripts/titleize'
+import { titleize } from '../../utils'
+
 import link from './link.json'
 import './style.scss'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import editDate from '../../../../../../utils/scripts/editDate'
+import { editDate } from '../../../../../utils'
 
 import './style.scss'
 

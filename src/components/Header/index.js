@@ -5,8 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { logout } from '../../redux/actions/Auth'
 
 import HeaderLink from './HeaderLink'
-
-import logo from '../../utils/images/logo.png'
+import { Logo } from '../../utils'
 
 import './style.scss';
 
@@ -88,7 +87,7 @@ const Header = ({ history, user, logout }) => {
                 <div className="container-fluid">
                     <div className="row">
                         <NavLink to="/" className="wrapper_logo">
-                            <img src={logo} className="img-fluid" alt="" />
+                            <img src={Logo} className="img-fluid" alt="" />
                         </NavLink>
                         <div className="icon-menu" onClick={closeNavbar}>
                             <span></span>

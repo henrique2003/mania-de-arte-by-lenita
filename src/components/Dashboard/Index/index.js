@@ -7,9 +7,7 @@ import api from '../../../services/api'
 import token from '../../../config/token'
 
 import BoxInfo from './components/BoxInfo'
-import AdminTitle from '../../Bases/Titles/AdminTitle'
-import CtnHeadDashboard from '../../Bases/Containers/CtnHeadDashboard'
-import CtnDashboard from '../../Bases/Containers/CtnDashboard'
+import { AdminTitle, CtnHeadDashboard, CtnDashboard } from '../../Bases'
 
 import './style.scss'
 
