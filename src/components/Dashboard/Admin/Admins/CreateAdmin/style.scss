@@ -1,5 +1,4 @@
 .wrapper_new_admin {
-    margin: 40px;
     margin-top: 80px;
 
     .form_new_admin {
@@ -17,9 +16,7 @@
 
 //Ipad Pró
 @media(max-width: 1024px) {
-    .wrapper_new_admin {
-        margin: 40px 20px;
-    
+    .wrapper_new_admin {    
         .form_new_admin {    
             .form-group {
                 margin-top: 15px;
@@ -39,9 +36,7 @@
 
 //Ipad
 @media(max-width: 768px) {
-    .wrapper_new_admin {
-        margin: 40px 0px;
-    
+    .wrapper_new_admin {    
         .form_new_admin {
             padding: 30px;
     
@@ -60,8 +55,6 @@
 //Celphone
 @media(max-width: 480px) {
     .wrapper_new_admin {
-        margin: 40px 0px;
-
         .form-group {
             font-size: 17px !important;
         }

@@ -7,7 +7,7 @@ import { loadPrimary } from '../../../../../redux/actions/Auth/index'
 import token from '../../../../../config/token'
 import api from '../../../../../services/api'
 
-import { Input, ButtonSubmit, Select, Form } from '../../../../Bases'
+import { Input, ButtonSubmit, Select, Form, CtnDashboard } from '../../../../Bases'
 
 import './style.scss'
 
@@ -54,7 +54,7 @@ const CreateAdmin = ({ loadPrimary, history }) => {
     }
 
     return (
-        <div className="wrapper_new_admin">
+        <CtnDashboard className="wrapper_new_admin">
             <Form className="form_new_admin col-11 col-sm-12 col-md-11 col-lg-10 mx-auto" onSubmit={onSubmit}>
                 <div className="form-row">
                     <div className="form-group col-12 col-sm-12 col-md-6">
@@ -103,7 +103,7 @@ const CreateAdmin = ({ loadPrimary, history }) => {
                 </div>
                 <ButtonSubmit text="Cadastrar" />
             </Form>
-        </div>
+        </CtnDashboard>
     )
 }
 
