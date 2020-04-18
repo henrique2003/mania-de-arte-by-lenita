@@ -1,6 +1,8 @@
 const { ok, serverError, badRequest, notFound, unauthorized } = require('http-server-res')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const validator = require('email-validator')
+
 const authConfig = require('../config/auth.json')
 const { Admin } = require('../models')
 const { dateNow } = require('../utils')
@@ -14,7 +16,6 @@ module.exports = {
 
             return ok(res, admins)
         } catch (error) {
-            console.error(error.message)
             return serverError(res, 'Server error in read Admin')
         }
     },
@@ -26,6 +27,7 @@ module.exports = {
                 return badRequest(res, "Email em uso")
 
             if(!email || !password) return badRequest(res, "Campo em branco")
+            if(!validator.validate(password)) badRequest(res, "Email inválido")
 
             req.body.password = await bcrypt.hash(password, 10)
 
@@ -34,7 +36,6 @@ module.exports = {
 
             return ok(res, admins)
         } catch (error) {
-            console.log(error.message)
             return serverError(res, 'Server error in create Admin')
         }
     },
@@ -62,7 +63,6 @@ module.exports = {
             return ok(res, admin)
         }
         catch (error) {
-            console.log(error.message)
             return serverError(res, "Server error in update Admin")
         }
     },
@@ -85,7 +85,6 @@ module.exports = {
 
             return ok(res, admin)
         } catch (error) {
-            console.log(error.message)
             return serverError(res, "Server Error in update_access")
         }
     },
@@ -99,7 +98,6 @@ module.exports = {
             return ok(res, admin)
         }
         catch (error) {
-            console.error(error.message)
             return serverError(res, "Server error in show admin")
         }
     },
@@ -118,7 +116,6 @@ module.exports = {
 
             return ok(res, admins)
         } catch (error) {
-            console.log(error.message)
             return serverError(res, "Server error in destroy Admin")
         }
     },
@@ -144,7 +141,6 @@ module.exports = {
             return ok(res, admin)
         }
         catch (error) {
-            console.log(error.message)
             return serverError(res, 'Server error in all Admin')
         }
     },
@@ -166,7 +162,6 @@ module.exports = {
 
             return ok(res, { user, token })
         } catch (error) {
-            console.log(error.message)
             return serverError(res, 'Server error in auth')
         }
     },

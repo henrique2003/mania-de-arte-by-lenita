@@ -14,7 +14,6 @@ module.exports = {
             return ok(res, products)
         }
         catch (error) {
-            console.log(error.message)
             return serverError(res, 'Server erro in read products')
         }
     },
@@ -28,7 +27,6 @@ module.exports = {
 
             return ok(res, product)
         } catch (error) {
-            console.log(error.message)
             return serverError(res, "Server error in show_home")
         }
     },
@@ -71,7 +69,6 @@ module.exports = {
             return ok(res, products)
         }
         catch (error) {
-            console.log(error.message)
             return serverError(res, 'Server erro in create products')
         }
     },
@@ -147,7 +144,6 @@ module.exports = {
         }
         catch (error) {
             await destroyImage(req.file)
-            console.log(error.message)
             return serverError(res, 'Server erro in update products')
         }
     },
@@ -164,7 +160,6 @@ module.exports = {
             return ok(res, product)
         }
         catch (error) {
-            console.log(error.message)
             return serverError(res, 'show products')
         }
     },
@@ -180,7 +175,6 @@ module.exports = {
 
             return ok(res, product)
         } catch (error) {
-            console.log(error.message)
             return serverError(res, "Server error in show_pages")
         }
     },
@@ -216,7 +210,6 @@ module.exports = {
 
             return ok(res, "Deletado com sucesso")
         } catch (error) {
-            console.log(error.message)
             return serverError(res, 'Server erro in destroy all products')
         }
     },
@@ -228,7 +221,6 @@ module.exports = {
             return ok(res, products)
         }
         catch (error) {
-            console.log(error.message)
             return serverError(res, 'Server erro in all products')
         }
     }

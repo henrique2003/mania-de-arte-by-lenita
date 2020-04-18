@@ -17,7 +17,7 @@ const Asks = ({ load, user }) => {
         load()
     }, [load])
 
-    if(user) return <Redirect to="/admin" />
+    if (user) return <Redirect to="/admin" />
     return (
         <div className="wrapper_asks">
             <div className="container-fluid">
