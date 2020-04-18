@@ -1,7 +1,7 @@
 const { ok, serverError, badRequest, notFound, unauthorized } = require('http-server-res')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const validator = require('email-validator')
+// const validator = require('email-validator')
 
 const authConfig = require('../config/auth.json')
 const { Admin } = require('../models')
@@ -23,11 +23,10 @@ module.exports = {
     async store(req, res) {
         const { email, password } = req.body
         try {
-            if (await Admin.findOne({ email }))
-                return badRequest(res, "Email em uso")
+            if (await Admin.findOne({ email })) return badRequest(res, "Email em uso")
 
             if(!email || !password) return badRequest(res, "Campo em branco")
-            if(!validator.validate(password)) badRequest(res, "Email inválido")
+            // if(!validator.validate(password)) return badRequest(res, "Email inválido")
 
             req.body.password = await bcrypt.hash(password, 10)
 
