@@ -26,20 +26,50 @@ const Requets = ({ loadUser, history }) => {
 				title: "Quadrado um",
 				quantify: 2,
 				color: "vermelho",
+				user: {
+					name: "Henrique de Melo",
+					zip_code: "04205000",
+					state: "Amazonas",
+					city: "Acre",
+					neighborhood: "ipiranga",
+					street: "chacara clabim",
+					number: 203,
+					complement: "apto: 223"
+				}
 			},
 			{
 				createAt: "2020-04-08T22:54:21.851Z",
-				_id: "5e8e5712694f8b399ca12399",
+				_id: "5e8e5712694f8b399a12399",
 				title: "Quadrado um",
 				quantify: 2,
 				color: "vermelho",
+				user: {
+					name: "Henrique de Melo",
+					zip_code: "04205000",
+					state: "Amazonas",
+					city: "Acre",
+					neighborhood: "ipiranga",
+					street: "chacara clabim",
+					number: 203,
+					complement: "apto: 223"
+				}
 			},
 			{
 				createAt: "2020-04-08T22:54:21.851Z",
-				_id: "5e8e5712694f8b399ca12399",
+				_id: "5e8e572694f8b399ca12399",
 				title: "Quadrado um",
 				quantify: 2,
 				color: "vermelho",
+				user: {
+					name: "Henrique de Melo",
+					zip_code: "04205000",
+					state: "Amazonas",
+					city: "Acre",
+					neighborhood: "ipiranga",
+					street: "chacara clabim",
+					number: 203,
+					complement: "apto: 223"
+				}
 			}
 		]
 	)
@@ -50,20 +80,24 @@ const Requets = ({ loadUser, history }) => {
 		loadUser(history)
 	}, [history, loadUser])
 
+	function deleter(id) {
+		// return id
+	}
+
 	return (
 		<CtnDashboard>
 			<CtnHeadDashboard>
 				<CtnHeadBtn>
 					<AdminTitle text="Pedidos" />
 					<div className="pb-2 pb-sm-2 pb-md-0">
-						<ButtonBgWhite text="Deletar todos" />
+						<ButtonBgWhite text="Resolver todos" />
 					</div>
 				</CtnHeadBtn>
 			</CtnHeadDashboard>
 			<div className="row">
-			{Requests.map((request) => (
-				<RequestItem request={request} />
-			))}
+				{Requests.map((request) => (
+					<RequestItem key={request._id} request={request} onClick={deleter}/>
+				))}
 			</div>
 		</CtnDashboard>
 	)
