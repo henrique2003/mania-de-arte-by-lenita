@@ -8,3 +8,25 @@
     margin-right: 5px;
   }
 }
+
+//Ipad Pró
+@media(max-width: 1024px) {
+  .request_item_info {
+    font-size: 16px;
+  
+    span {
+      font-size: 17px;
+    }
+  }
+}
+
+//Celphone
+@media(max-width: 480px) {
+  .request_item_info {
+    font-size: 15px;
+  
+    span {
+      font-size: 16px;
+    }
+  }
+}

@@ -35,3 +35,29 @@
     }
   }
 }
+
+//Ipad Pró
+@media(max-width: 1024px) {
+  .request_item {  
+    .request_item_border {
+      margin-top: 5px;
+      margin-bottom: 20px;
+    }
+  
+    button {
+      padding: 5px 0;
+      font-size: 16px;
+      margin: 5px 15px;
+    }
+  }
+}
+
+//Ipad Pró
+@media(max-width: 480px) {
+  .request_item {    
+    button {
+      padding: 3px 0;
+      font-size: 15px;
+    }
+  }
+}
