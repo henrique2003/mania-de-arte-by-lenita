@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import { load } from '../../redux/actions/Auth'
 import token from '../../config/token'
@@ -9,13 +10,14 @@ import Questions from './Questions'
 
 import './style.scss'
 
-const Asks = ({ load }) => {
+const Asks = ({ load, user }) => {
     useEffect(() => {
         window.scrollTo(0, 0)
         token()
         load()
     }, [load])
 
+    if(user) return <Redirect to="/admin" />
     return (
         <div className="wrapper_asks">
             <div className="container-fluid">
@@ -51,4 +53,8 @@ const mapDispatchToProps = dispatch => ({
     load: () => dispatch(load())
 })
 
-export default connect(null, mapDispatchToProps)(Asks)
+const mapStateToProps = state => ({
+    user: state.user
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Asks)

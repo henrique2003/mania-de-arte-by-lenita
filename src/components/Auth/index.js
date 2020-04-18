@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link, Redirect } from 'react-router-dom'
 
 //Redux
 import { connect } from 'react-redux'
@@ -10,7 +10,7 @@ import { Error } from '../Bases'
 
 import './style.scss'
 
-const Auth = ({ load, history, login }) => {
+const Auth = ({ user, load, history, login }) => {
     useEffect(() => {
         window.scrollTo(0, 0)
         token()
@@ -40,6 +40,7 @@ const Auth = ({ load, history, login }) => {
         return login(FormData, history)
     }
 
+    if(user) return <Redirect to="/admin" />
     return (
         <div className="wrapper_auth">
             <div className="back_to_home">
@@ -87,4 +88,8 @@ const mapDispatchToProps = dispatch => ({
     load: () => dispatch(load())
 })
 
-export default connect(null, mapDispatchToProps)(withRouter(Auth))
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Auth))

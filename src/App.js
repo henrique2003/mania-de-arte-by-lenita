@@ -40,6 +40,10 @@ import {
   Requests
 } from './components'
 
+// store.subscribe(() => {
+//   console.log(store.getState())
+// })
+
 function App() {
   //WithHeader Header
   const IfHeader = withRouter(({ location }) => {

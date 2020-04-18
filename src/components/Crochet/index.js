@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import { load } from '../../redux/actions/Auth'
 import token from '../../config/token'
@@ -10,7 +11,7 @@ import { Warning, Paginate, WebTitle } from '../Bases'
 
 import './style.scss'
 
-const Crochet = ({ load }) => {
+const Crochet = ({ load, user }) => {
     useEffect(() => {
         window.scrollTo(0, 0)
         token()
@@ -32,6 +33,7 @@ const Crochet = ({ load }) => {
         pages: 1
     })
 
+    if(user) return <Redirect to="/admin" />
     return (
         <div className="wrapper_crochet">
             <WebTitle text="Cochet" />
@@ -54,4 +56,8 @@ const mapDispatchToProps = dispatch => ({
     load: () => dispatch(load())
 })
 
-export default connect(null, mapDispatchToProps)(Crochet)
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Crochet)

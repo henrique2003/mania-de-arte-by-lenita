@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import { load } from '../../redux/actions/Auth'
 import token from '../../config/token'
@@ -10,13 +11,14 @@ import { Art, Present, Truck } from '../../utils'
 
 import './style.scss'
 
-const Home = ({ load }) => {
+const Home = ({ load, user }) => {
     useEffect(() => {
         token()
         window.scrollTo(0, 0);
         load()
     }, [load]);
-
+    
+    if(user) return <Redirect to="/admin" />
     return (
         <div className="wrapper_home">
             <Introdution />
@@ -44,4 +46,8 @@ const mapDispatchToProps = dispatch => ({
     load: () => dispatch(load())
 })
 
-export default connect(null, mapDispatchToProps)(Home)
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
