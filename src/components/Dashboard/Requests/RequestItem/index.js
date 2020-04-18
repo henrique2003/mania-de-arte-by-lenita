@@ -5,7 +5,7 @@ import RequestItemInfo from './RequestItemInfo'
 
 import './style.scss'
 
-function RequestItem({ request, onClick }) {
+function RequestItem({ request, alert }) {
   const { _id, title, quantify, color, createAt, user } = request
   const { name, zip_code, state, city, neighborhood, street, number, complement } = user
 
@@ -29,7 +29,7 @@ function RequestItem({ request, onClick }) {
           <RequestItemInfo text="Número" value={number} />
           {complement && <RequestItemInfo text="Complemento" value={complement} />}
           {/* Delete */}
-          <button type="button" onClick={onClick(_id)}>Resolver</button>
+          <button type="button" onClick={() => alert(_id)}>Resolver</button>
         </div>
       </div>
     </div>

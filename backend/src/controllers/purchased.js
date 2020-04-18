@@ -15,7 +15,7 @@ module.exports = {
 		try {
 			const { page = 1 } = req.query
 
-			const purchased = await Purchased.paginate({}, { page, limit: 25 })
+			const purchased = await Purchased.paginate({}, { page, limit: 8 })
 
 			ok(res, purchased)
 		} catch (error) {
@@ -63,12 +63,15 @@ module.exports = {
 	async destroy(req, res) {
 		try {
 			const { id } = req.params
+			const { page = 1 } = req.query
 
 			if (!id) return badRequest(res, "Id requerido")
 
 			await Purchased.findByIdAndDelete(id)
 
-			return ok(res, "Deletado com sucesso")
+			let purchased = await Purchased.paginate({}, { page, limit: 8 })
+
+			return ok(res, purchased)
 		} catch (error) {
 			return serverError(res, "Server Erros in purchased destroy")
 		}
