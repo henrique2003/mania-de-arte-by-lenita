@@ -15,7 +15,8 @@ import {
 	AdminTitle,
 	CtnDashboard,
 	CtnHeadDashboard,
-	CtnHeadBtn
+	CtnHeadBtn,
+	Warning
 } from '../../Bases'
 
 import './style.scss'
@@ -116,7 +117,8 @@ const Requets = ({ loadUser, history, location }) => {
 				</CtnHeadBtn>
 			</CtnHeadDashboard>
 			<div className="row">
-				{Requests.map((request) => (
+				{Requests.length === 0 ? <Warning text="Sem pedidos no momento" color="greey"/>:
+				Requests.map((request) => (
 					<RequestItem key={request._id} request={request} alert={alertDelete} />
 				))}
 			</div>
