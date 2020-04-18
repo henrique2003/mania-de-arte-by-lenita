@@ -7,6 +7,7 @@ import { loadUser } from '../../../redux/actions/Auth'
 import token from '../../../config/token'
 import api from '../../../services/api'
 
+import { Paginate } from '../../Bases'
 import RequestItem from './RequestItem'
 
 import {
@@ -20,8 +21,12 @@ import {
 import './style.scss'
 import { toast } from 'react-toastify'
 
-const Requets = ({ loadUser, history }) => {
+const Requets = ({ loadUser, history, location }) => {
 	const [Requests, setRequests] = useState([])
+	const [paginate, setPaginate] = useState({
+		path: '/admin/pedidos',
+		pages: 1
+	})
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -29,16 +34,24 @@ const Requets = ({ loadUser, history }) => {
 		loadUser(history)
 
 		async function loadRequests() {
-			let res = await api.get('/purchased')
+			let res = await api.get(`/purchased${location.search}`)
 			setRequests(res.data.docs)
+			setPaginate({
+				path: '/admin/pedidos',
+				pages: res.data.pages
+			})
 		}
 		loadRequests()
-	}, [history, loadUser])
+	}, [history, loadUser, location.search])
 
 	async function deleteAll() {
 		try {
 			await api.delete('/all/purchased')
 			setRequests([])
+			setPaginate({
+				path: '/admin/pedidos',
+				pages: 1
+			})
 
 			return toast.success("Resolvidos com sucesso")
 		} catch (error) {
@@ -50,6 +63,9 @@ const Requets = ({ loadUser, history }) => {
 		try {
 			let res = await api.delete(`/purchased/${id}`)
 			setRequests(res.data.docs)
+			setPaginate({
+				pages: res.data.pages
+			})
 
 			return toast.success("Resolvido com sucesso")
 		} catch (error) {
@@ -95,7 +111,7 @@ const Requets = ({ loadUser, history }) => {
 				<CtnHeadBtn>
 					<AdminTitle text="Pedidos" />
 					<div className="pb-2 pb-sm-2 pb-md-0">
-						<ButtonBgWhite text="Resolver todos" onClick={alertDeleteAll} />
+						<ButtonBgWhite text="Resolver todos" action={alertDeleteAll} />
 					</div>
 				</CtnHeadBtn>
 			</CtnHeadDashboard>
@@ -104,6 +120,7 @@ const Requets = ({ loadUser, history }) => {
 					<RequestItem key={request._id} request={request} alert={alertDelete} />
 				))}
 			</div>
+			<Paginate paginate={paginate} />
 		</CtnDashboard>
 	)
 }

@@ -24,7 +24,7 @@ import './style.scss'
 const Admins = ({ loadPrimary, history, location }) => {
     const [Admins, setAdmins] = useState([])
     const [paginate, setPaginate] = useState({
-        page: 1,
+        path: '/admin/admins',
         pages: 1
     })
 

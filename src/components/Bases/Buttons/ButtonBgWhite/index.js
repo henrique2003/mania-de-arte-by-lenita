@@ -7,7 +7,7 @@ function ButtonBgWhite({ text, action, className }) {
         <button
             type="button"
             className={`button_bg_white ${className}`}
-            onClick={action}>
+            onClick={() => action()}>
             {text}
         </button>
     )
