@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 import './style.scss'
 
 const AdminProductItem = ({ data }) => {
@@ -7,17 +8,21 @@ const AdminProductItem = ({ data }) => {
     const productImg = require(`../../../../../utils/images/Products/${image.key}`)
 
     return (
-        <div key={_id} className="col-12 col-sm-12 col-md-6 col-lg-4 wrapper_product_admin">
-            <div className="wrapper_product_card">
-                <img src={productImg}  alt="" className="img-fluid" />
-                <div className="text-left p-lg-3">
-                    <h4 className="wrapper_product_card_title">{title}</h4>
-                    <div className="mt-3">
-                        <p className="wrapper_product_card_cost">R$ - {cost.toFixed(2).replace(".", ",")}</p>
-                        <p className="wrapper_product_card_cost_description">{description}</p>
+        <div className="wrapper_product_admin_item">
+            <div className="row">
+                <div className="col-12 col-sm-12 col-md-12 col-lg-4">
+                    <img src={productImg} alt="" className="img-fluid"/>
+                </div>
+                <div className="col-12 col-sm-12 col-md-12 col-lg-8">
+                    <div className="content">
+                        <h3>{title}</h3>
+                        <p>R$: {cost.toFixed(2).replace('.', ',')}</p>
+                        <p>{description}</p>
+                        <div className="row">
+                            <Link to={`/admin/produtos/editar/${_id}`}>Editar</Link>
+                            <button type="button">Deletar</button>
+                        </div>
                     </div>
-                    <Link className="btn_edit" to={`/admin/produto/editar/${_id}`}>Editar</Link>
-                    <button className="btn_delete" type="button">Apagar</button>
                 </div>
             </div>
         </div>
