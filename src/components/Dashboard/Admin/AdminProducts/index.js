@@ -1,61 +1,84 @@
 import React, { useEffect, useState } from 'react'
-import ProductAdmin from './ProductAdmin'
-import Paginate from '../../../Bases/Paginate'
-import Warning from '../../../Bases/Warning'
+
+import { Paginate, Warning, CtnDashboard, CtnHeadDashboard, CtnHeadBtn, AdminTitle, LinkBgWhite, ButtonBgWhite } from '../../../Bases'
+
+import AdminProductItem from './AdminProductItem'
+
 import './style.scss'
 
 const AdminProducts = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    })
-    
-    const [ProductData] = useState([
-        {
-            'id': 1,
-            'title': 'Quadro Pendular',
-            'cost': '12,00',
-            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            'image': 'produto-test.jpg'
-        },
-        {
-            'id': 2,
-            'title': 'Quadro Pendular',
-            'cost': '12,00',
-            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            'image': 'produto-test.jpg'
-        },
-        {
-            'id': 3,
-            'title': 'Quadro Pendular',
-            'cost': '12,00',
-            'description': 'Descrição: Quadro amarelo com detalhes de madeira Descrição: Quadro amarelo com detalhes de madeiraDescrição: Quadro amarelo com detalhes de madeira',
-            'image': 'produto-test.jpg'
-        }
-    ])
+	const [paginate, setPaginate] = useState({
+		path: '/admin/produtos',
+		pages: 1
+	})
+	const [Products, setProducts] = useState([
+		{
+			"image": {
+				"name": "dribble-3.jpg",
+				"key": "092e1e29e39b5dc7-dribble-3.jpg"
+			},
+			"purchased": 0,
+			"_id": "5e9b78a99f20a82e383757d7",
+			"title": "Quadro crochet - 2",
+			"cost": 120,
+			"description": "Muito bom para isso e para aquilo e mais aquilo, e tudo aquilo também",
+			"role": "crochet",
+			"createAt": "2020-04-18T22:01:13.423Z",
+		},
+		{
+			"image": {
+				"name": "dribble-3.jpg",
+				"key": "092e1e29e39b5dc7-dribble-3.jpg"
+			},
+			"purchased": 0,
+			"_id": "5e9b78a99f20a82e383757d7",
+			"title": "Quadro crochet - 2",
+			"cost": 120,
+			"description": "Muito bom para isso e para aquilo e mais aquilo, e tudo aquilo também",
+			"role": "crochet",
+			"createAt": "2020-04-18T22:01:13.423Z",
+		},
+		{
+			"image": {
+				"name": "dribble-3.jpg",
+				"key": "092e1e29e39b5dc7-dribble-3.jpg"
+			},
+			"purchased": 0,
+			"_id": "5e9b78a99f20a82e383757d7",
+			"title": "Quadro crochet - 2",
+			"cost": 120,
+			"description": "Muito bom para isso e para aquilo e mais aquilo, e tudo aquilo também",
+			"role": "crochet",
+			"createAt": "2020-04-18T22:01:13.423Z",
+		}
+	])
 
-    return (
-        <div className="wrapper_admin_products">
-            <div className="container-fluid">
-                <div className="wrapper_welcome">
-                    <h3>Produtos cadastrados</h3>
-                </div>
-                <div className="row">
-                {ProductData.length === 0 ?
-                        <Warning color="greey" text="Sem produtos no momento!" /> :
-                        ProductData.map((product) => (
-                            <ProductAdmin
-                                data={product}
-                            />
-                        ))
-                    }
-                </div>
-                <Paginate paginate={{
-                    "page": 1,
-                    "pages": 3
-                }} />
-            </div>
-        </div>
-    )
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	})
+
+	return (
+		<CtnDashboard>
+			<CtnHeadDashboard className="mb-0">
+				<CtnHeadBtn>
+					<AdminTitle text="Produtos cadastrados" />
+					<div className="pb-2 pb-sm-2 pb-md-0">
+						<LinkBgWhite text="Criar novo" path="/admin/criar/admins" />
+						<ButtonBgWhite text={`Deletar todos`} />
+					</div>
+				</CtnHeadBtn>
+			</CtnHeadDashboard>
+			<div className="row">
+				{Products.length === 0 ?
+					<Warning color="greey" text="Sem produtos no momento!" /> :
+					Products.map((product) => (
+						<AdminProductItem data={product} />
+					))
+				}
+			</div>
+			<Paginate paginate={paginate} />
+		</CtnDashboard>
+	)
 }
 
 export default AdminProducts
