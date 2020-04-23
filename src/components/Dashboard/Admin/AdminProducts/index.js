@@ -52,21 +52,21 @@ const AdminProducts = ({ loadPrimary, history }) => {
 		})
 	}
 
-	// function alertDelete(id) {
-	// 	confirmAlert({
-	// 		title: 'Você tem certeza',
-	// 		message: 'Você tem certeza que deseja apagar esse usuário?',
-	// 		buttons: [
-	// 			{
-	// 				label: 'Deletar',
-	// 				onClick: () => delete_item(id)
-	// 			},
-	// 			{
-	// 				label: 'Cancelar'
-	// 			}
-	// 		]
-	// 	})
-	// }
+	function alertDelete(id) {
+		confirmAlert({
+			title: 'Você tem certeza',
+			message: 'Você tem certeza que deseja apagar esse usuário?',
+			buttons: [
+				{
+					label: 'Deletar',
+					onClick: () => deleteItem(id)
+				},
+				{
+					label: 'Cancelar'
+				}
+			]
+		})
+	}
 
 	function alertDeleteAll() {
 		confirmAlert({
@@ -99,7 +99,7 @@ const AdminProducts = ({ loadPrimary, history }) => {
 				{Products.length === 0 ?
 					<Warning color="greey" text="Sem produtos no momento!" /> :
 					Products.map((product) => (
-						<AdminProductItem key={product._id} data={product} deleteItem={deleteItem} />
+						<AdminProductItem key={product._id} data={product} deleteItem={alertDelete} />
 					))}
 			</div>
 			<Paginate paginate={paginate} />
