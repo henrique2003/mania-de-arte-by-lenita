@@ -42,6 +42,16 @@ const AdminProducts = ({ loadPrimary, history }) => {
 		})
 	}
 
+	async function deleteItem(id) {
+		let products = await api.delete(`/products/${id}`)
+		toast.success('Deletado com sucesso')
+		setProducts(products.data.docs)
+		setPaginate({
+			path: '/admin/produtos',
+			pages: products.data.pages
+		})
+	}
+
 	// function alertDelete(id) {
 	// 	confirmAlert({
 	// 		title: 'Você tem certeza',
@@ -89,7 +99,7 @@ const AdminProducts = ({ loadPrimary, history }) => {
 				{Products.length === 0 ?
 					<Warning color="greey" text="Sem produtos no momento!" /> :
 					Products.map((product) => (
-						<AdminProductItem key={product._id} data={product} />
+						<AdminProductItem key={product._id} data={product} deleteItem={deleteItem} />
 					))}
 			</div>
 			<Paginate paginate={paginate} />

@@ -18,11 +18,11 @@ module.exports = {
         }
     },
 
-    async index_home (req, res) {
+    async index_home(req, res) {
         try {
             const product = await Products.find({}).sort({ field: 'asc', purchased: -1 }).limit(3)
 
-            if(!product)
+            if (!product)
                 return notFound(res, "Produtos não encontrados")
 
             return ok(res, product)
@@ -83,13 +83,13 @@ module.exports = {
             //Valid if product exist
             if (!lastProduct) {
                 if (req.file) await destroyImage(req.file.filename)
-                    return notFound(res, "Produto não encontrado")
+                return notFound(res, "Produto não encontrado")
             }
 
             //Valid if have a repeat product
             let titleRepeat = await Products.findOne({ title })
             if (titleRepeat) {
-                if(titleRepeat.title === title) {
+                if (titleRepeat.title === title) {
 
                 }
                 else {
@@ -164,13 +164,13 @@ module.exports = {
         }
     },
 
-    async show_pages (req, res) {
+    async show_pages(req, res) {
         try {
             const { page } = req.params
 
             let product = await Products.paginate({ role: page }, { limit: 10 })
 
-            if(product.length === 0)
+            if (product.length === 0)
                 return badRequest(res, `Produtos com da pagina ${page} não encontrado!`)
 
             return ok(res, product)
@@ -181,19 +181,21 @@ module.exports = {
 
     async destroy(req, res) {
         try {
+            const { page = 1 } = req.query
             const { id } = req.params
 
-            let lastProduct = await Products.findById(id);
+            let lastProduct = await Products.findById(id)
 
-            if (!lastProduct)
-                return notFound(res, "Produto não encontrado")
+            if (!lastProduct) return notFound(res, "Produto não encontrado")
 
             let filename = lastProduct.image.key
             await destroyImage(filename)
 
-            await Products.findByIdAndRemove(req.params.id);
+            await Products.findByIdAndRemove(req.params.id)
 
-            return ok(res, "Deletado com sucesso")
+            let products = await Products.paginate({}, { page, limit: 10 })
+
+            return ok(res, products)
         } catch (error) {
             return serverError(res, 'Server erro in destroy products')
         }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import './style.scss'
 
-const AdminProductItem = ({ data }) => {
+const AdminProductItem = ({ data, deleteItem }) => {
 	const { _id, title, cost, description, image } = data
 	const productImg = require(`../../../../../utils/images/Products/${image.key}`)
 
@@ -21,7 +21,7 @@ const AdminProductItem = ({ data }) => {
 							<p className="description"><span>Descrição:</span> {description}</p>
 							<div className="row">
 								<Link to={`/admin/produtos/editar/${_id}`}>Editar</Link>
-								<button type="button" className="deleteItem">Deletar</button>
+								<button type="button" className="deleteItem" onClick={() => deleteItem(_id)}>Deletar</button>
 							</div>
 						</div>
 					</div>
