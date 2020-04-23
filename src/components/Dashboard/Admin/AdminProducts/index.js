@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import api from '../../../../services/api'
 import token from '../../../../config/token'
@@ -30,6 +31,16 @@ const AdminProducts = ({ loadPrimary, history }) => {
 		}
 	}, [loadPrimary, history])
 
+	async function deleteAll() {
+		await api.delete('/deleteall/products')
+		toast.success('Deletados com sucesso')
+		setProducts([])
+		setPaginate({
+			path: '/admin/produtos',
+			pages: 1
+		})
+	}
+
 	return (
 		<CtnDashboard>
 			<CtnHeadDashboard className="mb-0">
@@ -37,7 +48,7 @@ const AdminProducts = ({ loadPrimary, history }) => {
 					<AdminTitle text="Produtos cadastrados" />
 					<div className="pb-2 pb-sm-2 pb-md-0">
 						<LinkBgWhite text="Criar novo" path="/admin/criar/admins" />
-						<ButtonBgWhite text={`Deletar todos`} />
+						<ButtonBgWhite text={`Deletar todos`} action={deleteAll} />
 					</div>
 				</CtnHeadBtn>
 			</CtnHeadDashboard>
@@ -45,7 +56,7 @@ const AdminProducts = ({ loadPrimary, history }) => {
 				{Products.length === 0 ?
 					<Warning color="greey" text="Sem produtos no momento!" /> :
 					Products.map((product) => (
-						<AdminProductItem key={product._id} data={product}/>
+						<AdminProductItem key={product._id} data={product} />
 					))
 				}
 			</div>
