@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { confirmAlert } from 'react-confirm-alert'
 
 import api from '../../../../services/api'
 import token from '../../../../config/token'
@@ -41,6 +42,38 @@ const AdminProducts = ({ loadPrimary, history }) => {
 		})
 	}
 
+	// function alertDelete(id) {
+	// 	confirmAlert({
+	// 		title: 'Você tem certeza',
+	// 		message: 'Você tem certeza que deseja apagar esse usuário?',
+	// 		buttons: [
+	// 			{
+	// 				label: 'Deletar',
+	// 				onClick: () => delete_item(id)
+	// 			},
+	// 			{
+	// 				label: 'Cancelar'
+	// 			}
+	// 		]
+	// 	})
+	// }
+
+	function alertDeleteAll() {
+		confirmAlert({
+			title: 'Você tem certeza',
+			message: 'Você tem certeza que deseja apagar todos os produtos?',
+			buttons: [
+				{
+					label: 'Deletar',
+					onClick: () => deleteAll()
+				},
+				{
+					label: 'Cancelar'
+				}
+			]
+		})
+	}
+
 	return (
 		<CtnDashboard>
 			<CtnHeadDashboard className="mb-0">
@@ -48,7 +81,7 @@ const AdminProducts = ({ loadPrimary, history }) => {
 					<AdminTitle text="Produtos cadastrados" />
 					<div className="pb-2 pb-sm-2 pb-md-0">
 						<LinkBgWhite text="Criar novo" path="/admin/criar/admins" />
-						<ButtonBgWhite text={`Deletar todos`} action={deleteAll} />
+						<ButtonBgWhite text={`Deletar todos`} action={alertDeleteAll} />
 					</div>
 				</CtnHeadBtn>
 			</CtnHeadDashboard>
