@@ -90,8 +90,7 @@ const AdminProducts = ({ loadPrimary, history }) => {
 					<Warning color="greey" text="Sem produtos no momento!" /> :
 					Products.map((product) => (
 						<AdminProductItem key={product._id} data={product} />
-					))
-				}
+					))}
 			</div>
 			<Paginate paginate={paginate} />
 		</CtnDashboard>
