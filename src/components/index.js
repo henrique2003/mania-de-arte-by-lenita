@@ -12,6 +12,7 @@ import Header from './Header'
 import Home from './Home'
 import ProductPage from './ProductPage'
 import Woods from './Woods'
+import AdminCreateProduct from './Dashboard/Admin/AdminProducts/CreateProduct'
 
 export {
     Asks,
@@ -28,5 +29,6 @@ export {
     Home,
     ProductPage,
     Woods,
-    ScrollBar
+    ScrollBar,
+    AdminCreateProduct
 }

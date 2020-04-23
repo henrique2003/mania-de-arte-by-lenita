@@ -37,7 +37,8 @@ import {
   ProductAdmin,
   SetAccess,
   CreateAdmin,
-  Requests
+  Requests,
+  AdminCreateProduct
 } from './components'
 
 // store.subscribe(() => {
@@ -78,13 +79,13 @@ function App() {
           <Route path="/produtos/mais/:id" component={ProductPage} />
 
           {/* Admin */}
-          <Route path="/admin" exact component={DashboardIndex}/>
-          <Route path="/admin/admins" exact component={Admins}/>
-          <Route path="/admin/admins/:id" component={SetAccess}/>
+          <Route path="/admin" exact component={DashboardIndex} />
+          <Route path="/admin/admins" exact component={Admins} />
+          <Route path="/admin/admins/:id" component={SetAccess} />
           <Route path="/admin/criar/admins" component={CreateAdmin} />
           <Route path="/admin/pedidos" component={Requests} />
-          <Route path="/admin/produtos" component={ProductAdmin}/>
-          {/* <Route path="/admin/produto/editar/:id" component={AdminProducts} /> */}
+          <Route path="/admin/produtos" component={ProductAdmin} />
+          <Route path="/admin/criar/produto" component={AdminCreateProduct} />
 
           {/* Auth */}
           <Route path="/login" component={Auth} />

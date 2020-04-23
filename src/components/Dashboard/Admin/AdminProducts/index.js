@@ -90,7 +90,7 @@ const AdminProducts = ({ loadPrimary, history }) => {
 				<CtnHeadBtn>
 					<AdminTitle text="Produtos cadastrados" />
 					<div className="pb-2 pb-sm-2 pb-md-0">
-						<LinkBgWhite text="Criar novo" path="/admin/criar/admins" />
+						<LinkBgWhite text="Criar novo" path="/admin/criar/produto" />
 						<ButtonBgWhite text={`Deletar todos`} action={alertDeleteAll} />
 					</div>
 				</CtnHeadBtn>
