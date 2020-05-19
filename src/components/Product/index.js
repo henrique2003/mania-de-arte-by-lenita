@@ -1,13 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { titleize } from '../../utils'
+
+import { titleize, About } from '../../utils'
 
 import link from './link.json'
 import './style.scss'
 
 const Product = ({ data }) => {
-    const { _id , title, cost, description, image } = data
-    const productImg = require(`../../utils/images/Products/${image.key}`)
+    const { _id, title, cost, description, image } = data
+
+    let productImg = ''
+    if (!image) {
+        productImg = About
+    } else {
+        productImg = require(`../../utils/images/Products/${image.key}`)
+    }
 
     return (
         <div key={_id} className="col-12 col-sm-12 col-md-6 col-lg-4 wrapper_product">

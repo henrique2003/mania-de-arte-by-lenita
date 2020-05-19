@@ -1,11 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { About } from '../../../../../utils'
+
 import './style.scss'
 
 const AdminProductItem = ({ data, deleteItem }) => {
 	const { _id, title, cost, description, image } = data
-	const productImg = require(`../../../../../utils/images/Products/${image.key}`)
+
+	let productImg = ''
+	if (!image) {
+		productImg = About
+	} else {
+		productImg = require(`../../../../../utils/images/Products/${image.key}`)
+	}
 
 	return (
 		<div className="col-12 col-sm-12 col-md-6 col-lg-12">

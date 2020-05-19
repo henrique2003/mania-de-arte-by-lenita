@@ -1,15 +1,6 @@
 const { ok, serverError, badRequest } = require('http-server-res')
 const { Purchased } = require('../models')
 
-// "husky": {
-// 	"pre-commit": "lint-staged"
-// },
-// "lint-staged": {
-// 	"backend/*sepc.js": [
-// 		"",
-// 		"git add"
-// 	]
-// },
 module.exports = {
 	async index(req, res) {
 		try {
@@ -25,7 +16,7 @@ module.exports = {
 
 	async store(req, res) {
 		try {
-			const { title, quantify, color,	user } = req.body
+			const { title, quantify, color, user } = req.body
 			const {
 				name,
 				zip_code,
@@ -37,8 +28,8 @@ module.exports = {
 			} = user
 
 			if (
-				!title || 
-				!quantify || 
+				!title ||
+				!quantify ||
 				!color ||
 				!user ||
 				!name ||
@@ -47,10 +38,10 @@ module.exports = {
 				!city ||
 				!neighborhood ||
 				!street ||
-				!number ) return badRequest(res, "Campos em branco")
+				!number) return badRequest(res, "Campos em branco")
 
-				let valid_zip_code = /^[0-9]{8}$/
-				if(!valid_zip_code.test(zip_code)) return badRequest(res, "Cep inválido")
+			let valid_zip_code = /^[0-9]{8}$/
+			if (!valid_zip_code.test(zip_code)) return badRequest(res, "Cep inválido")
 
 			let purchased = await Purchased.create(req.body)
 
