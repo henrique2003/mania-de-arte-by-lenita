@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { withRouter, Link, Redirect } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 
 //Redux
 import { connect } from 'react-redux'
 import { login, load } from '../../redux/actions/Auth'
 import token from '../../config/token'
 
-import { Error } from '../Bases'
+import { Error, BackArrow } from '../Bases'
 
 import './style.scss'
 
@@ -43,11 +43,7 @@ const Auth = ({ user, load, history, login }) => {
 	if (user) return <Redirect to="/admin" />
 	return (
 		<div className="wrapper_auth">
-			<div className="back_to_home">
-				<Link to="/">
-					<i className="fas fa-arrow-left"></i>
-				</Link>
-			</div>
+			<BackArrow />
 			<div className="wrapper_auth_form">
 				<h4>Acesso admin:</h4>
 				{show && <Error text={message} />}

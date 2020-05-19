@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
-import { CtnDashboard, Form, Input, Select, ButtonSubmit } from '../../../../Bases'
+import { CtnDashboard, Form, Input, Select, ButtonSubmit, BackArrow } from '../../../../Bases'
 import { loadPrimary } from '../../../../../redux/actions/Auth'
 import token from '../../../../../config/token'
 
+
+
 import './style.scss'
-import { toast } from 'react-toastify'
 
 function AdminCreateProduct({ history, loadPrimary }) {
   useEffect(() => {
@@ -47,7 +49,8 @@ function AdminCreateProduct({ history, loadPrimary }) {
 
   return (
     <CtnDashboard className="wrapper_create_product">
-      <Form className="col-11 col-sm-11 col-md-10 mx-auto" onSubmit={onSubmit}>
+      <BackArrow to="/admin/produtos" />
+      <Form className="col-11 col-sm-11 col-md-10 mx-auto mt-3" onSubmit={onSubmit}>
         <div className="form-row">
           <div className="form-group col-12">
             <label htmlFor="title">Título:</label>

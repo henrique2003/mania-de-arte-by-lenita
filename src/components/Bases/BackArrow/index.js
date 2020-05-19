@@ -5,7 +5,7 @@ import './style.scss'
 
 const BackArrow = ({ to, className }) => {
   return (
-    <div className={`back_to_home" ${className}`}>
+    <div className={`back_to_home ${className}`}>
       <Link to={to}>
         <i className="fas fa-arrow-left"></i>
       </Link>
