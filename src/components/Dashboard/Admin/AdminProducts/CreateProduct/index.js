@@ -9,7 +9,7 @@ import token from '../../../../../config/token'
 import './style.scss'
 import { toast } from 'react-toastify'
 
-function AdminCreateProduct({ user, history, loadPrimary }) {
+function AdminCreateProduct({ history, loadPrimary }) {
   useEffect(() => {
     window.scrollTo(0, 0)
     token()
@@ -19,11 +19,13 @@ function AdminCreateProduct({ user, history, loadPrimary }) {
   const [FormData, setFormData] = useState({
     title: '',
     cost: '',
-    description: '',
-    role: ''
+    description: ''
   })
 
-  const { title, cost, description, role } = FormData
+  const [Role, setRole] = useState({ role: '' })
+
+  const { title, cost, description } = FormData
+  const { role } = Role
 
   const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
 
@@ -33,6 +35,14 @@ function AdminCreateProduct({ user, history, loadPrimary }) {
     if (!title || !cost || !description || !role) {
       return toast.error('Campo em branco')
     }
+
+    if (role !== 'crochet' && role !== 'madeira') {
+      return toast.error('Tipo do produto inválido')
+    }
+
+    const product = Object.assign({}, FormData, { cost: cost.replace(',', '.'), role })
+
+    console.log(product)
   }
 
   return (
@@ -62,7 +72,12 @@ function AdminCreateProduct({ user, history, loadPrimary }) {
           </div>
           <div className="form-group col-12 col-sm-12 col-md-6">
             <label htmlFor="role">Tipo:</label>
-            <Select id="role" className="form-control" onChange={onChange}>
+            <Select
+              id="role"
+              name="role"
+              className="form-control"
+              onChange={(e) => setRole({ role: e.target.value })}
+            >
               <option value="">Selecione um tipo</option>
               <option value="crochet">Crochet</option>
               <option value="madeira">Madeira</option>
@@ -92,8 +107,4 @@ const mapDispatchToProps = dispatch => ({
   loadPrimary: (history) => dispatch(loadPrimary(history))
 })
 
-const mapStateToProps = state => ({
-  user: state.user
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdminCreateProduct))
+export default connect(null, mapDispatchToProps)(withRouter(AdminCreateProduct))
