@@ -23,6 +23,8 @@ import WebTitle from './Titles/WebTitle'
 import AdminTitle from './Titles/AdminTitle'
 //Warning
 import Warning from './Warning'
+//More
+import BackArrow from './BackArrow'
 
 export {
     ButtonBgWhite,
@@ -40,5 +42,6 @@ export {
     ScrollBar,
     WebTitle,
     AdminTitle,
-    Warning
+    Warning,
+    BackArrow
 }
