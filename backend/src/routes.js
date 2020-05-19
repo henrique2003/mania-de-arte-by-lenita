@@ -15,7 +15,7 @@ router.get('/products', controllerProducts.index)
 //Index a Product home
 router.get('/products/home', controllerProducts.index_home)
 //Create Products
-router.post('/products', auth, isPrimary, multer(multerConfig).single('file'), controllerProducts.store)
+router.post('/products', auth, isPrimary, controllerProducts.store)
 //Update Product
 router.put('/products/:id', auth, isPrimary, multer(multerConfig).single('file'), controllerProducts.update)
 //Show a Product

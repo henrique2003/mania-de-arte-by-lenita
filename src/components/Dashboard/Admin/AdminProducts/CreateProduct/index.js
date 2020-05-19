@@ -7,6 +7,7 @@ import { loadPrimary } from '../../../../../redux/actions/Auth'
 import token from '../../../../../config/token'
 
 import './style.scss'
+import { toast } from 'react-toastify'
 
 function AdminCreateProduct({ user, history, loadPrimary }) {
   useEffect(() => {
@@ -22,14 +23,16 @@ function AdminCreateProduct({ user, history, loadPrimary }) {
     role: ''
   })
 
-  const { title, cost, description } = FormData
+  const { title, cost, description, role } = FormData
 
   const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
 
   const onSubmit = e => {
     e.preventDefault()
 
-    console.log(FormData)
+    if (!title || !cost || !description || !role) {
+      return toast.error('Campo em branco')
+    }
   }
 
   return (

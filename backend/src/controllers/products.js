@@ -35,21 +35,13 @@ module.exports = {
         try {
             const { title, cost, description, role } = req.body;
 
-            //Valid image
-            if (!req.file)
-                return badRequest(res, 'Campo imagem em branco')
-
-            const { originalname: name, filename: key } = req.file;
-
             //Valid fields
             if (!title || !cost || !description || !role) {
-                await destroyImage(key)
                 return badRequest(res, "Campos em branco")
             }
 
             //Valid if product exists
             if (await Products.findOne({ title })) {
-                await destroyImage(key)
                 return badRequest(res, "Produto ja existe")
             }
 
@@ -57,11 +49,7 @@ module.exports = {
                 title,
                 cost,
                 description,
-                role,
-                image: {
-                    name,
-                    key
-                }
+                role
             };
 
             const products = await Products.create(produtcBody);
