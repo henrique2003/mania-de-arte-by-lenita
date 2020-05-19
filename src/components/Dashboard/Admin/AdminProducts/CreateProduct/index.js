@@ -6,6 +6,8 @@ import { CtnDashboard, Form, Input, Select, ButtonSubmit } from '../../../../Bas
 import { loadPrimary } from '../../../../../redux/actions/Auth'
 import token from '../../../../../config/token'
 
+import './style.scss'
+
 function AdminCreateProduct({ user, history, loadPrimary }) {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -35,7 +37,7 @@ function AdminCreateProduct({ user, history, loadPrimary }) {
       <Form className="col-11 col-sm-11 col-md-10 mx-auto" onSubmit={onSubmit}>
         <div className="form-row">
           <div className="form-group col-12">
-            <label htmlFor="title">Título</label>
+            <label htmlFor="title">Título:</label>
             <Input
               type="text"
               id="title"
@@ -46,7 +48,7 @@ function AdminCreateProduct({ user, history, loadPrimary }) {
             />
           </div>
           <div className="form-group col-12 col-sm-12 col-md-6">
-            <label htmlFor="cost">Custo</label>
+            <label htmlFor="cost">Custo:</label>
             <Input
               type="number"
               name="cost"
@@ -63,8 +65,8 @@ function AdminCreateProduct({ user, history, loadPrimary }) {
               <option value="madeira">Madeira</option>
             </Select>
           </div>
-          <div className="form-group col-12 col-sm-12 col-md-6">
-            <label htmlFor="description">Descrição</label>
+          <div className="form-group col-12">
+            <label htmlFor="description">Descrição:</label>
             <textarea
               id="description"
               name="description"
@@ -75,7 +77,9 @@ function AdminCreateProduct({ user, history, loadPrimary }) {
             ></textarea>
           </div>
         </div>
-        <ButtonSubmit text="Cadastrar" />
+        <div className="text-right mt-md-2 mt-lg-3">
+          <ButtonSubmit text="Avançar" />
+        </div>
       </Form>
     </CtnDashboard>
   )

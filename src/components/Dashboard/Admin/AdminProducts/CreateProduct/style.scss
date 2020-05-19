@@ -35,3 +35,28 @@
     }
   }
 }
+
+// Celphone
+@media (max-width: 468px) {
+  .wrapper_create_product {
+    .form-group {
+      margin-top: 0px;
+
+      &:last-child {
+        margin-top: 5px;
+      }
+
+      &:first-child {
+        margin-top: 5px;
+      }
+
+      label {
+        font-size: 15px;
+      }
+
+      textarea {
+        font-size: 15px;
+      }
+    }
+  }
+}
