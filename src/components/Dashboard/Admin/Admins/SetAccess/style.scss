@@ -7,20 +7,7 @@
         box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
 
         button {
-            border: none;
-            border: 1px solid #9370db;
-            background: white;
-            color: #9370db;
-            border-radius: 5px;
-            font-size: 18px;
             padding: 4.5px 30px;
-            transition: all 0.3s ease;
-
-            &:hover {
-                transition: all 0.3s ease;
-                background: #9370db;
-                color: white;
-            }
         }
 
         .select_role_access {
@@ -40,6 +27,10 @@
         .wrapper_set_access_form {
             padding-top: 30px;
             padding-bottom: 15px;
+
+            button {
+                padding: 6px 30px;
+            }
         }
     }
 }
