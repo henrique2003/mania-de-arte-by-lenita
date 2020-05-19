@@ -7,6 +7,8 @@ import { loadPrimary } from '../../../../../redux/actions/Auth/index'
 import token from '../../../../../config/token'
 import api from '../../../../../services/api'
 
+import { Select } from '../../../../Bases'
+
 import './style.scss'
 
 const SetAccess = ({ loadPrimary, history, match }) => {
@@ -35,10 +37,10 @@ const SetAccess = ({ loadPrimary, history, match }) => {
             <form className="wrapper_set_access_form col-12 col-sm-12 col-md-11 col-lg-8  mx-auto" onSubmit={onSubmit}>
                 <div className="form-row">
                     <div className="form-group col-6">
-                        <select id="inputState" className="form-control" onChange={(e) => setRole({ role: e.target.value })}>
+                        <Select id="inputState" className="form-control select_role_access" onChange={(e) => setRole({ role: e.target.value })}>
                             <option value="Primary">Admin</option>
                             <option value="Secondary">Ajudante</option>
-                        </select>
+                        </Select>
                     </div>
                     <div className="form-group col-6 text-center">
                         <button type="submit">Editar</button>

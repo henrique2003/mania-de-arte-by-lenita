@@ -13,20 +13,17 @@
     }
 }
 
-
 //Ipad Pró
-@media(max-width: 1024px) {
-    .wrapper_new_admin {    
-        .form_new_admin {    
+@media (max-width: 1024px) {
+    .wrapper_new_admin {
+        .form_new_admin {
             .form-group {
-                margin-top: 15px;
-                font-size: 18px;
-    
-                input, select {
+                input,
+                select {
                     margin-top: -3px;
                 }
             }
-    
+
             button {
                 margin-top: 10px;
             }
@@ -35,16 +32,16 @@
 }
 
 //Ipad
-@media(max-width: 768px) {
-    .wrapper_new_admin {    
+@media (max-width: 768px) {
+    .wrapper_new_admin {
         .form_new_admin {
             padding: 30px;
-    
+
             .form-group {
                 margin-top: 0px;
                 font-size: 16px !important;
             }
-    
+
             button {
                 margin-top: 5px;
             }
@@ -53,13 +50,13 @@
 }
 
 //Celphone
-@media(max-width: 480px) {
+@media (max-width: 480px) {
     .wrapper_new_admin {
         .form-group {
             font-size: 17px !important;
         }
-    
-        .form_new_admin {    
+
+        .form_new_admin {
             button {
                 margin-top: 5px;
             }

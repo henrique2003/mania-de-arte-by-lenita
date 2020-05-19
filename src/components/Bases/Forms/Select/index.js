@@ -2,7 +2,7 @@ import React from 'react'
 
 import './style.scss'
 
-export default function Input({ id, children, onChange, className }) {
+export default function Select({ id, children, onChange, className }) {
     return (
         <select id={id} onChange={onChange} className={`base_select ${className}`}>
             {children}
@@ -10,7 +10,7 @@ export default function Input({ id, children, onChange, className }) {
     )
 }
 
-Input.defaulrProps = {
+Select.defaulrProps = {
     onChange: '',
     chieldren: '',
     id: ''

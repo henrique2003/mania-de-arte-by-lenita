@@ -1,4 +1,4 @@
-// const mercadopago = require('mercadopago')
+const mp = require('mercadopago')
 const { Products } = require('../models')
 const { serverError, success, badRequest } = require('../utils')
 
@@ -10,9 +10,10 @@ module.exports = {
             if (!idProduct)
                 return badRequest(res, "Id do produto requerido")
 
-            // Public key:TEST-8515a190-86b1-4468-92c9-dbcb9e85f94a
-            // Access token:TEST-4120477970615454-040123-172c1ed328a9eeba297ff4662dec44cc-538194476
-            // const id = req.userId
+            // mp.configure({
+            //     client_id: ,
+            //     access_token: 'APP_USR-4120477970615454-040123-36209535af09d836f9993ce0530400a2-538194476'
+            // })
 
             // const payment_data = {
             //     transaction_amount: 164,
@@ -33,13 +34,13 @@ module.exports = {
             //   })   
 
             //        
-            let lastValue = await Products.findById(idProduct)
+            // let lastValue = await Products.findById(idProduct)
 
-            let update = lastValue.purchased + 1
+            // let update = lastValue.purchased + 1
 
-            await Products.findByIdAndUpdate(idProduct, { $set: { purchased: update } }, { upsert: true })
+            // await Products.findByIdAndUpdate(idProduct, { $set: { purchased: update } }, { upsert: true })
 
-            return success(res, "Completo com sucesso")
+            // return success(res, "Completo com sucesso")
         } catch (error) {
             serverError(res, error, "Server error in pay-pagseguro")
         }

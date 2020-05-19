@@ -23,11 +23,9 @@
             }
         }
 
-        select {
-            border: 1px solid #9370db;
-            outline: none;
-            box-shadow: none;
-            font-family: 'Poppins';
+        .select_role_access {
+            border: 1px solid #9370db !important;
+            font-family: "Poppins";
             font-size: 16px;
             letter-spacing: 1px;
         }
@@ -35,10 +33,10 @@
 }
 
 //Celphone
-@media(max-width: 480px) {
+@media (max-width: 480px) {
     .wrapper_set_access {
         margin: 60px 15px;
-    
+
         .wrapper_set_access_form {
             padding-top: 30px;
             padding-bottom: 15px;

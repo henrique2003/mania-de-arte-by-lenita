@@ -96,7 +96,7 @@ function App() {
         <WithFooter />
       </BrowserRouter>
     </Provider>
-  );
+  )
 }
 
 export default App
