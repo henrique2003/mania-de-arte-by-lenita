@@ -40,19 +40,16 @@ module.exports = {
                 return badRequest(res, "Campos em branco")
             }
 
+            if (role !== 'crochet' && role !== 'madeira') {
+                return badRequest(res, "Role inválida")
+            }
+
             //Valid if product exists
             if (await Products.findOne({ title })) {
                 return badRequest(res, "Produto ja existe")
             }
 
-            let produtcBody = {
-                title,
-                cost,
-                description,
-                role
-            };
-
-            const products = await Products.create(produtcBody);
+            const products = await Products.create(req.body);
 
             return ok(res, products)
         }
