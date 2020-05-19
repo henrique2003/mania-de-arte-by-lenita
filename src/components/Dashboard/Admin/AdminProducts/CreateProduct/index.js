@@ -10,6 +10,7 @@ import token from '../../../../../config/token'
 
 
 import './style.scss'
+import api from '../../../../../services/api'
 
 function AdminCreateProduct({ history, loadPrimary }) {
   useEffect(() => {
@@ -31,7 +32,7 @@ function AdminCreateProduct({ history, loadPrimary }) {
 
   const onChange = e => setFormData({ ...FormData, [e.target.name]: e.target.value })
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault()
 
     if (!title || !cost || !description || !role) {
@@ -44,7 +45,13 @@ function AdminCreateProduct({ history, loadPrimary }) {
 
     const product = Object.assign({}, FormData, { cost: cost.replace(',', '.'), role })
 
-    console.log(product)
+    try {
+      await api.post('/products', product)
+
+      return history.push('/admin/criar/produto/imagem')
+    } catch (error) {
+      toast.error(error.response.data)
+    }
   }
 
   return (
