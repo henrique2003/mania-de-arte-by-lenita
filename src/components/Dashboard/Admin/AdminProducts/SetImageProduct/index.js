@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-// import { } from 'react-drop'
+import Dropzone from 'react-dropzone'
 
 import { loadPrimary } from '../../../../../redux/actions/Auth'
 import token from '../../../../../config/token'
@@ -19,14 +19,23 @@ const SetImageProduct = ({ loadPrimary, history }) => {
 
   const onSubmit = e => {
     e.preventDefault()
-
-
   }
 
   return (
     <CtnDashboard>
-      <Form onSubmit={onSubmit}>
-
+      <Form>
+        <Dropzone accept="image/*" onDropAccepted={() => { }}>
+          {({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
+            <div
+              className="wrapper_drop_container"
+              {...getRootProps()}
+              isDragActive={isDragActive}
+              isDragReject={isDragReject}
+            >
+              <input {...getInputProps()} />
+            </div>
+          )}
+        </Dropzone>
       </Form>
     </CtnDashboard>
   )
