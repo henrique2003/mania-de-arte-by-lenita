@@ -1,0 +1,19 @@
+.wrapper_set_image {
+  margin-top: 20%;
+  .wrapper_dropzone {
+    max-width: 350px;
+    margin: 0 auto;
+
+    .wrapper_drop_container {
+      border: 1px dashed #464545;
+
+      &.drag_acctive {
+        border-color: #78e5d5;
+      }
+
+      &.drag_reject {
+        border-color: #e57878;
+      }
+    }
+  }
+}

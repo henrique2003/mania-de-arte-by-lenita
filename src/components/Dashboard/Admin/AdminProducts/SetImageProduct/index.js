@@ -17,26 +17,25 @@ const SetImageProduct = ({ loadPrimary, history }) => {
     loadPrimary(history)
   }, [history, loadPrimary])
 
-  const onSubmit = e => {
-    e.preventDefault()
-  }
-
   return (
-    <CtnDashboard>
-      <Form>
+    <CtnDashboard className="wrapper_set_image">
+      <div className="wrapper_dropzone">
         <Dropzone accept="image/*" onDropAccepted={() => { }}>
           {({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
             <div
-              className="wrapper_drop_container"
+              className={`wrapper_drop_container 
+              ${isDragActive && 'drag_acctive'} 
+              ${isDragReject && 'drag_reject'}`}
               {...getRootProps()}
               isDragActive={isDragActive}
               isDragReject={isDragReject}
             >
               <input {...getInputProps()} />
+              jogue sua imagem aqui
             </div>
           )}
         </Dropzone>
-      </Form>
+      </div>
     </CtnDashboard>
   )
 }
