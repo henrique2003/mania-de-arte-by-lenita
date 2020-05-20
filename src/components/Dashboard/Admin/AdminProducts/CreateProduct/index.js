@@ -46,9 +46,9 @@ function AdminCreateProduct({ history, loadPrimary }) {
     const product = Object.assign({}, FormData, { cost: cost.replace(',', '.'), role })
 
     try {
-      await api.post('/products', product)
+      const res = await api.post('/products', product)
 
-      return history.push('/admin/editar/produto/imagem')
+      return history.push(`/admin/editar/produto/imagem/${res.data._id}`)
     } catch (error) {
       toast.error(error.response.data)
     }

@@ -87,7 +87,7 @@ function App() {
           <Route path="/admin/pedidos" component={Requests} />
           <Route path="/admin/produtos" component={ProductAdmin} />
           <Route path="/admin/criar/produto" component={AdminCreateProduct} />
-          <Route path="/admin/editar/produto/imagem" component={SetImageProduct} />
+          <Route path="/admin/editar/produto/imagem/:id" component={SetImageProduct} />
 
           {/* Auth */}
           <Route path="/login" component={Auth} />
