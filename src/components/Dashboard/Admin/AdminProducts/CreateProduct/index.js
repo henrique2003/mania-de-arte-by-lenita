@@ -48,7 +48,7 @@ function AdminCreateProduct({ history, loadPrimary }) {
     try {
       await api.post('/products', product)
 
-      return history.push('/admin/criar/produto/imagem')
+      return history.push('/admin/editar/produto/imagem')
     } catch (error) {
       toast.error(error.response.data)
     }

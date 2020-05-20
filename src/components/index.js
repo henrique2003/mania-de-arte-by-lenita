@@ -13,6 +13,7 @@ import Home from './Home'
 import ProductPage from './ProductPage'
 import Woods from './Woods'
 import AdminCreateProduct from './Dashboard/Admin/AdminProducts/CreateProduct'
+import SetImageProduct from './Dashboard/Admin/AdminProducts/SetImageProduct'
 
 export {
     Asks,
@@ -30,5 +31,6 @@ export {
     ProductPage,
     Woods,
     ScrollBar,
-    AdminCreateProduct
+    AdminCreateProduct,
+    SetImageProduct
 }
