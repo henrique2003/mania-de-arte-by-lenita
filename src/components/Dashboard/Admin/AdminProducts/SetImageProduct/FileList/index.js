@@ -29,8 +29,8 @@ const FileList = ({ file, progress }) => {
               />
             )}
 
-            {file.uploaded && <MdCheckCircle size={24} color="#78e5d5" />}
-            {file.error && <MdError size={24} color="#f15e5e" />}
+            {!!file.uploaded && <MdCheckCircle size={24} color="#78e5d5" />}
+            {!!file.error && <MdError size={24} color="#f15e5e" />}
           </div>
         </li>
       )}

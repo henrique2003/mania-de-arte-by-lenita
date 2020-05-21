@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone'
-import { uniqueId } from 'lodash'
 import filesize from 'filesize'
 
 import { loadPrimary } from '../../../../../redux/actions/Auth'
@@ -22,6 +21,7 @@ const SetImageProduct = ({ loadPrimary, history, match }) => {
     window.scrollTo(0, 0)
     token()
     loadPrimary(history)
+    console.log(upload)
   }, [history, loadPrimary, upload])
 
   const dropzoneMessage = (isDragActive, isDragReject) => {
@@ -39,7 +39,6 @@ const SetImageProduct = ({ loadPrimary, history, match }) => {
 
     const newFile = {
       file: file[0],
-      id: uniqueId(),
       name: file[0].name,
       size: filesize(file[0].size),
       preview: URL.createObjectURL(file[0]),
@@ -52,18 +51,26 @@ const SetImageProduct = ({ loadPrimary, history, match }) => {
     uploadImage(newFile)
   }
 
-  function uploadImage(file) {
-    const data = new FormData()
+  async function uploadImage(file) {
+    try {
+      const data = new FormData()
+      data.append('file', file.file, file.name)
 
-    data.append('file', file.file, file.name)
+      await api.put(`/products/${match.params.id}`, data, {
+        onUploadProgress: e => {
+          const progress = parseInt(Math.round((e.loaded * 100) / e.total))
 
-    api.put(`/products/${match.params.id}`, data, {
-      onUploadProgress: e => {
-        const progress = parseInt(Math.round((e.loaded * 100) / e.total))
+          setProgress(progress + progress)
+        }
+      })
 
-        setProgress(progress + progress)
-      }
-    })
+      console.log("efe")
+      setUpload(prevState => {
+        return { ...prevState, uploaded: true }
+      })
+    } catch (error) {
+
+    }
   }
 
   return (
