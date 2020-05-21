@@ -12,6 +12,7 @@ import { CtnDashboard } from '../../../../Bases'
 import FileList from './FileList'
 
 import './style.scss'
+import { toast } from 'react-toastify'
 
 const SetImageProduct = ({ loadPrimary, history, match }) => {
   const [upload, setUpload] = useState({})
@@ -75,6 +76,11 @@ const SetImageProduct = ({ loadPrimary, history, match }) => {
     }
   }
 
+  function next() {
+    toast.success('Cadastrado com sucesso')
+    history.push('/admin/produtos')
+  }
+
   return (
     <CtnDashboard className="wrapper_set_image">
       <div className="wrapper_dropzone">
@@ -92,6 +98,7 @@ const SetImageProduct = ({ loadPrimary, history, match }) => {
           )}
         </Dropzone>
         <FileList file={upload} />
+        {upload.uploaded && <button type="button" onClick={next}>Finalizar</button>}
       </div>
     </CtnDashboard>
   )
