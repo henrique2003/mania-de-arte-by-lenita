@@ -69,7 +69,9 @@ const SetImageProduct = ({ loadPrimary, history, match }) => {
         return { ...prevState, uploaded: true }
       })
     } catch (error) {
-
+      setUpload(prevState => {
+        return { ...prevState, error: true }
+      })
     }
   }
 
