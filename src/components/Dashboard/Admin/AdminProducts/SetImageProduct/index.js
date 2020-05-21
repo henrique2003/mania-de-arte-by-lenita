@@ -6,7 +6,8 @@ import Dropzone from 'react-dropzone'
 import { loadPrimary } from '../../../../../redux/actions/Auth'
 import token from '../../../../../config/token'
 
-import { CtnDashboard, Form } from '../../../../Bases'
+import { CtnDashboard } from '../../../../Bases'
+import FileList from './FileList'
 
 import './style.scss'
 
@@ -16,6 +17,16 @@ const SetImageProduct = ({ loadPrimary, history }) => {
     token()
     loadPrimary(history)
   }, [history, loadPrimary])
+
+  const dropzoneMessage = (isDragActive, isDragReject) => {
+    if (isDragReject) {
+      return <p className="message_dropzone_error">Arquivo inválido, porfavor escolha outro.</p>
+    }
+    if (!isDragActive) {
+      return <p className="message_dropzone_default">Jogue a sua imagem aqui.</p>
+    }
+    return <p className="message_dropzone_success">Pode soltar sua imagem aqui!</p>
+  }
 
   return (
     <CtnDashboard className="wrapper_set_image">
@@ -31,10 +42,11 @@ const SetImageProduct = ({ loadPrimary, history }) => {
               isDragReject={isDragReject}
             >
               <input {...getInputProps()} />
-              jogue sua imagem aqui
+              {dropzoneMessage(isDragActive, isDragReject)}
             </div>
           )}
         </Dropzone>
+        <FileList />
       </div>
     </CtnDashboard>
   )
