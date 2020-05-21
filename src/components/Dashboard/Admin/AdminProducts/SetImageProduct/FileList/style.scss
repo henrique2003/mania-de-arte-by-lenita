@@ -7,8 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #656464;
-    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
     margin-top: 2px;
 
     & + li {
@@ -28,15 +27,22 @@
           color: rgba(255, 255, 255, 0.835);
           letter-spacing: 1px;
           margin-top: 0px;
+
+          &:first-child {
+            font-size: 15px;
+          }
         }
       }
     }
 
-    img {
+    .img {
       width: 36px;
       height: 36px;
       border-radius: 5px;
-      margin-right: 5px;
+      margin-right: 10px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50% 50%;
     }
   }
 }
