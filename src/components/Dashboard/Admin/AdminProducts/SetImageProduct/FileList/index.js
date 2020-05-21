@@ -5,7 +5,7 @@ import { MdCheckCircle, MdError } from 'react-icons/md'
 
 import './style.scss'
 
-const FileList = ({ file, progress }) => {
+const FileList = ({ file }) => {
   return (
     <ul className="wrapper_file_list">
       {file.file && (
@@ -25,7 +25,7 @@ const FileList = ({ file, progress }) => {
                   path: { stroke: 'white' }
                 }}
                 strokeWidth={10}
-                value={progress}
+                value={file.progress}
               />
             )}
 

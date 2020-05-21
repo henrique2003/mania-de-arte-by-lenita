@@ -15,13 +15,11 @@ import './style.scss'
 
 const SetImageProduct = ({ loadPrimary, history, match }) => {
   const [upload, setUpload] = useState({})
-  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
     window.scrollTo(0, 0)
     token()
     loadPrimary(history)
-    console.log(upload)
   }, [history, loadPrimary, upload])
 
   const dropzoneMessage = (isDragActive, isDragReject) => {
@@ -42,6 +40,7 @@ const SetImageProduct = ({ loadPrimary, history, match }) => {
       name: file[0].name,
       size: filesize(file[0].size),
       preview: URL.createObjectURL(file[0]),
+      progress: 0,
       uploaded: false,
       error: false
     }
@@ -60,11 +59,12 @@ const SetImageProduct = ({ loadPrimary, history, match }) => {
         onUploadProgress: e => {
           const progress = parseInt(Math.round((e.loaded * 100) / e.total))
 
-          setProgress(progress + progress)
+          setUpload(prevState => {
+            return { ...prevState, progress }
+          })
         }
       })
 
-      console.log("efe")
       setUpload(prevState => {
         return { ...prevState, uploaded: true }
       })
@@ -89,7 +89,7 @@ const SetImageProduct = ({ loadPrimary, history, match }) => {
             </div>
           )}
         </Dropzone>
-        <FileList file={upload} progress={progress} />
+        <FileList file={upload} />
       </div>
     </CtnDashboard>
   )
